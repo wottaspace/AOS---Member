@@ -19,7 +19,15 @@ class KButton extends StatelessWidget {
       onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 18.0),
-        child: Text("$title"),
+        child: Text(
+          "$title",
+          style: Okito.theme.textTheme.bodyText2!.copyWith(
+            fontSize: 12.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+            letterSpacing: 1.4,
+          ),
+        ),
       ),
       style: ElevatedButton.styleFrom(
         primary: color,

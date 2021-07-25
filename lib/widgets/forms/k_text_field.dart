@@ -18,6 +18,7 @@ class KTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 12.0),
         hintText: hintText,
         prefixIcon: Icon(icon),
         border: OutlineInputBorder(

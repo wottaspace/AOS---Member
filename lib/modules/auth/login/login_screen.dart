@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  AspectRatio(aspectRatio: 5 / 3),
+                  Okito.isLandscape ? AspectRatio(aspectRatio: 15 / 1) : AspectRatio(aspectRatio: 5 / 3),
                   Container(
                     width: 200,
                     height: 80,
@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      // TODO: add navigation to forgot password screen
+                      KRouter().push(KRoutes.resetPasswordRoute);
                     },
                     child: Text(
                       "Forgot password ?",
@@ -90,6 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 20),
                 ],
               ),
             ),
