@@ -22,7 +22,7 @@ class KTextField extends StatelessWidget {
         hintText: hintText,
         prefixIcon: Icon(icon),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(2.0),
+          borderRadius: BorderRadius.circular(4.0),
           borderSide: BorderSide(color: ColorConstants.greyColor),
         ),
         focusedBorder: OutlineInputBorder(
@@ -30,6 +30,63 @@ class KTextField extends StatelessWidget {
           borderSide: BorderSide(color: Okito.theme.primaryColor),
         ),
       ),
+    );
+  }
+
+  static Widget soft({
+    required String label,
+    String? hintText,
+    bool isPassword = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "$label",
+          style: Okito.theme.textTheme.bodyText2!.copyWith(
+            color: ColorConstants.greyColor,
+            fontWeight: FontWeight.w500,
+            fontSize: 12.0,
+          ),
+        ),
+        SizedBox(height: 5),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.15),
+                blurRadius: 4.0,
+                offset: Offset(1, 2),
+              ),
+            ],
+            color: Colors.white,
+          ),
+          child: TextFormField(
+            obscureText: isPassword,
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: Okito.theme.textTheme.bodyText2!.copyWith(
+                fontSize: 14.0,
+                color: ColorConstants.greyColor,
+              ),
+              contentPadding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 12.0),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4.0),
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4.0),
+                borderSide: BorderSide(color: Colors.white),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(2.0),
+                borderSide: BorderSide(color: Colors.white),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

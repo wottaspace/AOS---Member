@@ -10,4 +10,11 @@ final ThemeData lightTheme = ThemeData(
       TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
     },
   ),
+  textTheme: TextTheme(
+    headline2: TextStyle(
+      fontSize: 28.0,
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
 );
