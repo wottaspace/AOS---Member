@@ -7,13 +7,12 @@ import 'package:openarc_employee/constants/app_constants.dart';
 class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return OkitoMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppConstants.applicationName,
       initialRoute: KRouter().getInitialRouteName(),
       routes: KRouter().getApplicationRoutes(),
       theme: lightTheme,
-      navigatorKey: Okito.navigatorKey,
     );
   }
 }

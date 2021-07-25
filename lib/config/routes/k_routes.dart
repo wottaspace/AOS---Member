@@ -19,5 +19,6 @@ class KRoutes {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
     KRouter().registerRoute(route: KRoute(name: KRoutes.registerRoute, page: RegisterScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.loginRoute, page: LoginScreen()));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.homeRoute, page: HomeScreen()));
   }
 }
