@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
 import 'package:openarc_employee/widgets/jobs/job_card.dart';
@@ -38,9 +40,19 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   SizedBox(height: 15),
                   Wrap(
                     children: [
-                      KChip(title: "Location", icon: PhosphorIcons.map_pin_fill),
+                      KChip(
+                        title: "Location",
+                        icon: PhosphorIcons.map_pin_fill,
+                        onTap: () {
+                          KRouter().push(KRoutes.locationFilterRoute);
+                        },
+                      ),
                       SizedBox(width: 10),
-                      KChip(title: "Filter", icon: PhosphorIcons.funnel_fill),
+                      KChip(
+                        title: "Filter",
+                        icon: PhosphorIcons.funnel_fill,
+                        onTap: () {},
+                      ),
                     ],
                   ),
                   SizedBox(height: 20),

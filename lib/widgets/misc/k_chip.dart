@@ -7,10 +7,12 @@ class KChip extends StatelessWidget {
     Key? key,
     required this.title,
     required this.icon,
+    required this.onTap,
   }) : super(key: key);
 
   final String title;
   final IconData icon;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,25 +28,31 @@ class KChip extends StatelessWidget {
           )
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              icon,
-              size: 14,
-              color: ColorConstants.greyColor,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  icon,
+                  size: 14,
+                  color: ColorConstants.greyColor,
+                ),
+                SizedBox(width: 5),
+                Text(
+                  "$title",
+                  style: Okito.theme.textTheme.bodyText2!.copyWith(
+                    fontSize: 12.0,
+                    color: ColorConstants.greyColor,
+                  ),
+                ),
+              ],
             ),
-            SizedBox(width: 5),
-            Text(
-              "$title",
-              style: Okito.theme.textTheme.bodyText2!.copyWith(
-                fontSize: 12.0,
-                color: ColorConstants.greyColor,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

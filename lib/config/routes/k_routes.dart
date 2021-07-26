@@ -3,6 +3,7 @@ import 'package:openarc_employee/modules/auth/forgot_password/reset_password_suc
 import 'package:openarc_employee/modules/auth/login/login_screen.dart';
 import 'package:openarc_employee/modules/auth/register/register_screen.dart';
 import 'package:openarc_employee/modules/home_screen.dart';
+import 'package:openarc_employee/modules/jobs/explore/location_filter_screen.dart';
 import 'package:openarc_employee/modules/splash_screen.dart';
 
 import './k_route.dart';
@@ -22,6 +23,7 @@ class KRoutes {
 
   //Explore routes
   static final String exploreRoute = "/explore";
+  static final String locationFilterRoute = "/filter-location";
 
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
@@ -31,5 +33,6 @@ class KRoutes {
     KRouter().registerRoute(route: KRoute(name: KRoutes.resetPasswordSuccessRoute, page: ResetPasswordSuccessScreen()));
     
     KRouter().registerRoute(route: KRoute(name: KRoutes.exploreRoute, page: HomeScreen()));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.locationFilterRoute, page: LocationFilterScreen()));
   }
 }
