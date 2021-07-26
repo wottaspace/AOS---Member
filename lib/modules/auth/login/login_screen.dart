@@ -52,7 +52,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 20),
                   KButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // TODO: implement login
+                      KRouter().push(KRoutes.exploreRoute);
+                    },
                     title: "LOG IN",
                     color: ColorConstants.greenColor,
                   ),
@@ -77,18 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: KButton.outlined(
-                          onPressed: () {
-                            KRouter().push(KRoutes.registerRoute);
-                          },
-                          title: "+ CREATE ACCOUNT",
-                          color: Okito.theme.primaryColor,
-                        ),
-                      ),
-                    ],
+                  KButton.outlined(
+                    expanded: true,
+                    onPressed: () {
+                      KRouter().push(KRoutes.registerRoute);
+                    },
+                    title: "+ CREATE ACCOUNT",
+                    color: Okito.theme.primaryColor,
                   ),
                   SizedBox(height: 20),
                 ],

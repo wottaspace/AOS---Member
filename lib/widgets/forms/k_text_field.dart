@@ -89,4 +89,50 @@ class KTextField extends StatelessWidget {
       ],
     );
   }
+
+  static Widget circular({
+    IconData? leading,
+    required String hintText,
+    required TextEditingController controller,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30.0),
+        color: Colors.white,
+      ),
+      child: TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.all(12.0),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            borderSide: BorderSide(
+              color: ColorConstants.greyColor.withOpacity(0.5),
+              width: 1.0,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            borderSide: BorderSide(
+              color: Okito.theme.primaryColor,
+              width: 1.0,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            borderSide: BorderSide(
+              color: ColorConstants.greyColor.withOpacity(0.5),
+              width: 1.0,
+            ),
+          ),
+          hintText: hintText,
+          hintStyle: Okito.theme.textTheme.bodyText2!.copyWith(
+            color: ColorConstants.greyColor,
+            fontSize: 14.0,
+          ),
+          prefixIcon: (leading != null) ? Icon(leading) : null,
+        ),
+      ),
+    );
+  }
 }

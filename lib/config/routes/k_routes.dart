@@ -12,19 +12,24 @@ import './k_router.dart';
 /// Declaring Routes
 ///
 class KRoutes {
-  static final String homeRoute = "/home";
+  static final String splashRoute = "/";
+  
+  // Login routes
   static final String loginRoute = "/login";
   static final String registerRoute = "/register";
-  static final String splashRoute = "/";
   static final String resetPasswordRoute = "/reset-password";
   static final String resetPasswordSuccessRoute = "/reset-password-success";
 
+  //Explore routes
+  static final String exploreRoute = "/explore";
+
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.loginRoute, page: LoginScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.registerRoute, page: RegisterScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.resetPasswordRoute, page: ResetPasswordScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.resetPasswordSuccessRoute, page: ResetPasswordSuccessScreen()));
-    KRouter().registerRoute(route: KRoute(name: KRoutes.loginRoute, page: LoginScreen()));
-    KRouter().registerRoute(route: KRoute(name: KRoutes.homeRoute, page: HomeScreen()));
+    
+    KRouter().registerRoute(route: KRoute(name: KRoutes.exploreRoute, page: HomeScreen()));
   }
 }

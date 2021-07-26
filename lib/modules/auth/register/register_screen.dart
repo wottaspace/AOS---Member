@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
 
@@ -58,18 +60,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     isPassword: true,
                   ),
                   Spacer(flex: 2),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: KButton.outlined(
-                          onPressed: () {
-                            // TODO: implement account creation
-                          },
-                          title: "CREATE ACCOUNT",
-                          color: Okito.theme.primaryColor,
-                        ),
-                      ),
-                    ],
+                  KButton.outlined(
+                    expanded: true,
+                    onPressed: () {
+                      // TODO: implement account creation
+                      KRouter().push(KRoutes.exploreRoute);
+                    },
+                    title: "CREATE ACCOUNT",
+                    color: Okito.theme.primaryColor,
                   ),
                   Spacer(),
                 ],
