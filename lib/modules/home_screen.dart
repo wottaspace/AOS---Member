@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
-import 'package:openarc_employee/modules/explore/explore_screen.dart';
+import 'package:openarc_employee/modules/jobs/explore/explore_screen.dart';
+import 'package:openarc_employee/modules/jobs/invites/invites_screen.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar_item.dart';
 
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             ExploreScreen(),
             Container(),
-            Container(),
+            InvitesScreen(),
             Container(),
             Container(),
           ],
