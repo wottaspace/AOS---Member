@@ -8,8 +8,12 @@ class KChip extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.onTap,
+    this.iconAlignedLeading = true,
+    this.circularCorners = false,
   }) : super(key: key);
 
+  final bool iconAlignedLeading;
+  final bool circularCorners;
   final String title;
   final IconData icon;
   final VoidCallback onTap;
@@ -18,7 +22,7 @@ class KChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4.0),
+        borderRadius: circularCorners ? BorderRadius.circular(60.0) : BorderRadius.circular(4.0),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -37,12 +41,14 @@ class KChip extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  icon,
-                  size: 14,
-                  color: ColorConstants.greyColor,
-                ),
-                SizedBox(width: 5),
+                if (iconAlignedLeading) ...[
+                  Icon(
+                    icon,
+                    size: 14,
+                    color: ColorConstants.greyColor,
+                  ),
+                  SizedBox(width: 5),
+                ],
                 Text(
                   "$title",
                   style: Okito.theme.textTheme.bodyText2!.copyWith(
@@ -50,6 +56,14 @@ class KChip extends StatelessWidget {
                     color: ColorConstants.greyColor,
                   ),
                 ),
+                if (!iconAlignedLeading) ...[
+                  SizedBox(width: 5),
+                  Icon(
+                    icon,
+                    size: 14,
+                    color: ColorConstants.greyColor,
+                  ),
+                ]
               ],
             ),
           ),

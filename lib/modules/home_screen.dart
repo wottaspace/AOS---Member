@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
+import 'package:openarc_employee/modules/finances/finances_screen.dart';
 import 'package:openarc_employee/modules/inbox/inbox_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/explore_screen.dart';
-import 'package:openarc_employee/modules/jobs/invites/invites_screen.dart';
+import 'package:openarc_employee/modules/jobs/job_listing/job_listing_screen.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar_item.dart';
 
@@ -68,8 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             ExploreScreen(),
             InboxScreen(),
-            InvitesScreen(),
-            Container(),
+            JobListingScreen(),
+            FinancesScreen(),
             Container(),
           ],
         ),

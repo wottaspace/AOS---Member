@@ -6,4 +6,5 @@ class ColorConstants {
   static final Color lightBlue = Color(0XFFE3F2FD);
   static final Color darkBlue = Color(0XFF9AACE0);
   static final Color purple = Color(0XFF6D06C4);
+  static final Color yellow = Color(0XFFFFBC53);
 }
