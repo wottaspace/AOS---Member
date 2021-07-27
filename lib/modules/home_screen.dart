@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
+import 'package:openarc_employee/modules/inbox/inbox_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/explore_screen.dart';
 import 'package:openarc_employee/modules/jobs/invites/invites_screen.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar.dart';
@@ -18,10 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   late int _activeTabIndex;
 
   late PageController _pageController;
+  late String _pageTitle;
 
   @override
   void initState() {
     _activeTabIndex = 0;
+    _pageTitle = "Browse jobs";
     _pageController = PageController(initialPage: 0);
     super.initState();
   }
@@ -34,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         iconTheme: IconThemeData(color: Colors.black, size: 24),
         backgroundColor: Colors.white,
         title: Text(
-          "Browse jobs",
+          "$_pageTitle",
           style: Okito.theme.textTheme.headline3,
         ),
         elevation: 0,
@@ -57,9 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: PageView(
           controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _activeTabIndex = index;
+            });
+          },
           children: [
             ExploreScreen(),
-            Container(),
+            InboxScreen(),
             InvitesScreen(),
             Container(),
             Container(),
@@ -71,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _activeTabIndex = index;
             _pageController.jumpToPage(index);
+            _pageTitle = _getPageTitle(index);
           });
         },
         items: [
@@ -102,5 +111,20 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  _getPageTitle(int index) {
+    switch (index) {
+      case 0:
+        return "Browse jobs";
+      case 1:
+        return "Inbox";
+      case 2:
+        return "Job listings";
+      case 3:
+        return "Finances";
+      case 4:
+        return "Saved";
+    }
   }
 }

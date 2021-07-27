@@ -22,14 +22,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  Icon(PhosphorIcons.arrow_left_bold),
+                  IconButton(
+                    onPressed: () {
+                      KRouter().pop();
+                    },
+                    icon: Icon(PhosphorIcons.arrow_left_bold),
+                  ),
                   SizedBox(height: 40),
                   Text(
                     "Sign Up",
@@ -59,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     label: "CONFIRM PASSWORD",
                     isPassword: true,
                   ),
-                  Spacer(flex: 2),
+                  Okito.isLandscape ? SizedBox(height: 50) : AspectRatio(aspectRatio: 5 / 1),
                   KButton.outlined(
                     expanded: true,
                     onPressed: () {
@@ -69,7 +73,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     title: "CREATE ACCOUNT",
                     color: Okito.theme.primaryColor,
                   ),
-                  Spacer(),
                 ],
               ),
             ),

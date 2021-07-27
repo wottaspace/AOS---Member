@@ -23,11 +23,18 @@ class _InvitesScreenState extends State<InvitesScreen> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
               height: 40,
               child: ToggleButtons(
                 borderRadius: BorderRadius.circular(8.0),
                 borderWidth: 0,
-                borderColor: Colors.transparent,
+                borderColor: Okito.theme.primaryColor,
+                onPressed: (index) {
+                  setState(() {
+                    _isSelected = [false, false, false];
+                    _isSelected[index] = true;
+                  });
+                },
                 children: [
                   Container(
                     color: _isSelected[0] ? Okito.theme.primaryColor : Colors.white,
