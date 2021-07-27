@@ -44,6 +44,9 @@ class _InvitesScreenState extends State<InvitesScreen> {
               onTap: () {
                 // TODO: go to job details
               },
+              onActionTapped: () {
+                
+              },
             );
           },
         ),

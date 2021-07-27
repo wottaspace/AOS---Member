@@ -122,6 +122,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         onTap: () {
                           // TODO: go to job details
                         },
+                        onActionTapped: () {},
                       );
                     },
                   ),

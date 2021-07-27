@@ -16,6 +16,9 @@ class JobCard extends StatelessWidget {
     required this.postedAt,
     required this.employeePhotoUrl,
     required this.onTap,
+    required this.onActionTapped,
+    this.liked = false,
+    this.status,
   }) : super(key: key);
 
   final String dateRange;
@@ -28,6 +31,9 @@ class JobCard extends StatelessWidget {
   final String employmentType;
   final String employeePhotoUrl;
   final VoidCallback onTap;
+  final bool liked;
+  final VoidCallback onActionTapped;
+  final String? status;
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +80,7 @@ class JobCard extends StatelessWidget {
                           text: "$payRate",
                           style: Okito.theme.textTheme.bodyText2!.copyWith(
                             fontSize: 12.0,
+                            fontWeight: FontWeight.w700,
                             color: Okito.theme.primaryColor,
                           ),
                           children: [
@@ -128,12 +135,20 @@ class JobCard extends StatelessWidget {
                         ],
                       ),
                       Spacer(),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          PhosphorIcons.heart,
-                          size: 20,
-                          color: ColorConstants.greyColor,
+                      Container(
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: ColorConstants.greyColor),
+                        ),
+                        child: IconButton(
+                          onPressed: onActionTapped,
+                          icon: Icon(
+                            liked ? PhosphorIcons.trash_fill : PhosphorIcons.heart,
+                            size: 12,
+                            color: ColorConstants.greyColor,
+                          ),
                         ),
                       ),
                     ],
@@ -161,14 +176,33 @@ class JobCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Text(
-                        "$applications people applied",
-                        style: Okito.theme.textTheme.bodyText2!.copyWith(
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
+                      if (status == null)
+                        Text(
+                          "$applications people applied",
+                          style: Okito.theme.textTheme.bodyText2!.copyWith(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        )
+                      else if (status == "EXPIRED")
+                        Text(
+                          "$status",
+                          style: Okito.theme.textTheme.bodyText2!.copyWith(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: ColorConstants.red,
+                          ),
+                        )
+                      else
+                        Text(
+                          "$status",
+                          style: Okito.theme.textTheme.bodyText2!.copyWith(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                            color: ColorConstants.greenColor,
+                          ),
+                        )
                     ],
                   ),
                 ],
