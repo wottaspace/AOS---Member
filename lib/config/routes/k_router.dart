@@ -31,7 +31,10 @@ class KRouter {
     return parsedRoutes;
   }
 
-  Future<T?> push<T>(String name, {Map<String, dynamic>? args}) {
+  Future<T?> push<T>(String name, {Map<String, dynamic>? args, bool replace = false}) {
+    if (replace) {
+      return Okito.pushReplacementNamed(name, arguments: args);
+    }
     return Okito.pushNamed(name, arguments: args);
   }
 

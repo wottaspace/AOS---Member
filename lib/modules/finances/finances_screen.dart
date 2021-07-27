@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_route.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/finances/finance_card.dart';
 import 'package:openarc_employee/widgets/misc/k_chip.dart';
@@ -114,7 +117,7 @@ class _FinancesScreenState extends State<FinancesScreen> {
                   jobTitle: "Talwar's Residency",
                   createdAt: DateTime.now(),
                   onTap: () {
-                    
+                    KRouter().push(KRoutes.financeDetailsRoute);
                   },
                 );
               },

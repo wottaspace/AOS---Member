@@ -22,7 +22,7 @@ class FinanceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8.0),
-      padding: const EdgeInsets.all(12.0),
+      
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -39,83 +39,86 @@ class FinanceCard extends StatelessWidget {
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "${Moment.fromDate(createdAt).format("dd MMM, yyyy")}",
-                style: Okito.theme.textTheme.bodyText2!.copyWith(
-                  fontSize: 10.0,
-                  fontWeight: FontWeight.w600,
-                  color: ColorConstants.greyColor,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${Moment.fromDate(createdAt).format("dd MMM, yyyy")}",
+                  style: Okito.theme.textTheme.bodyText2!.copyWith(
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.w600,
+                    color: ColorConstants.greyColor,
+                  ),
                 ),
-              ),
-              SizedBox(height: 5),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "$jobTitle",
+                SizedBox(height: 5),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "$jobTitle",
+                        style: Okito.theme.textTheme.bodyText2!.copyWith(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "\$130.99",
                       style: Okito.theme.textTheme.bodyText2!.copyWith(
                         fontSize: 14.0,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: ColorConstants.greenColor,
                       ),
-                    ),
-                  ),
-                  Text(
-                    "\$130.99",
-                    style: Okito.theme.textTheme.bodyText2!.copyWith(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.bold,
-                      color: ColorConstants.greenColor,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  CircleAvatar(),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "$company",
-                          style: Okito.theme.textTheme.bodyText2!.copyWith(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                    )
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    CircleAvatar(),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "$company",
+                            style: Okito.theme.textTheme.bodyText2!.copyWith(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 5),
-                        Row(
-                          children: [
-                            Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                            Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                            Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                            Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                            Icon(PhosphorIcons.star, color: ColorConstants.yellow, size: 10),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Invoice",
-                      style: Okito.theme.textTheme.bodyText2!.copyWith(
-                        fontSize: 10.0,
-                        color: Okito.theme.primaryColor,
+                          SizedBox(height: 5),
+                          Row(
+                            children: [
+                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
+                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
+                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
+                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
+                              Icon(PhosphorIcons.star, color: ColorConstants.yellow, size: 10),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Invoice",
+                        style: Okito.theme.textTheme.bodyText2!.copyWith(
+                          fontSize: 10.0,
+                          color: Okito.theme.primaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

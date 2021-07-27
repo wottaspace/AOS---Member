@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      KRouter().push(KRoutes.resetPasswordRoute);
+                      KRouter().push(KRoutes.resetPasswordRoute, replace: true);
                     },
                     child: Text(
                       "Forgot password ?",

@@ -2,6 +2,7 @@ import 'package:openarc_employee/modules/auth/forgot_password/reset_password_scr
 import 'package:openarc_employee/modules/auth/forgot_password/reset_password_success_screen.dart';
 import 'package:openarc_employee/modules/auth/login/login_screen.dart';
 import 'package:openarc_employee/modules/auth/register/register_screen.dart';
+import 'package:openarc_employee/modules/finances/finance_details_screen.dart';
 import 'package:openarc_employee/modules/home_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/location_filter_screen.dart';
 import 'package:openarc_employee/modules/splash_screen.dart';
@@ -21,9 +22,12 @@ class KRoutes {
   static final String resetPasswordRoute = "/reset-password";
   static final String resetPasswordSuccessRoute = "/reset-password-success";
 
-  //Explore routes
+  // Explore routes
   static final String exploreRoute = "/explore";
   static final String locationFilterRoute = "/filter-location";
+
+  // Finance routes
+  static final String financeDetailsRoute = "/finance-details";
 
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
@@ -34,5 +38,7 @@ class KRoutes {
     
     KRouter().registerRoute(route: KRoute(name: KRoutes.exploreRoute, page: HomeScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.locationFilterRoute, page: LocationFilterScreen()));
+
+    KRouter().registerRoute(route: KRoute(name: KRoutes.financeDetailsRoute, page: FinanceDetailsScreen()));
   }
 }

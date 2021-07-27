@@ -5,6 +5,7 @@ import 'package:openarc_employee/config/routes/k_router.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
+import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
 
 class LocationFilterScreen extends StatefulWidget {
   const LocationFilterScreen({Key? key}) : super(key: key);
@@ -20,23 +21,7 @@ class _LocationFilterScreenState extends State<LocationFilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.lightBlue,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            PhosphorIcons.caret_left_bold,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            KRouter().pop();
-          },
-        ),
-        title: Text(
-          "Location",
-          style: Okito.theme.textTheme.headline3,
-        ),
-      ),
+      appBar: KAppBar(title: "Location"),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -53,7 +38,7 @@ class _LocationFilterScreenState extends State<LocationFilterScreen> {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    "RECOMMENDED JOBS",
+                    "LOCATION",
                     style: Okito.theme.textTheme.bodyText2!.copyWith(
                       fontSize: 10.0,
                       letterSpacing: 1.3,
