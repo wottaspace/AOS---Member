@@ -12,7 +12,6 @@ class JobListingScreen extends StatefulWidget {
 
 class _JobListingScreenState extends State<JobListingScreen> with SingleTickerProviderStateMixin {
   List<bool> _isSelected = [true, false, false];
-  late TabController _tabController;
 
   void _updateActiveIndex(int index) {
     setState(() {
@@ -23,7 +22,6 @@ class _JobListingScreenState extends State<JobListingScreen> with SingleTickerPr
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 

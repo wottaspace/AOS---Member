@@ -35,8 +35,12 @@ class KTextField extends StatelessWidget {
 
   static Widget soft({
     required String label,
+    required TextEditingController controller,
     String? hintText,
     bool isPassword = false,
+    IconData? suffixIcon,
+    bool readOnly = false,
+    VoidCallback? onTap,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,6 +67,9 @@ class KTextField extends StatelessWidget {
             color: Colors.white,
           ),
           child: TextFormField(
+            controller: controller,
+            readOnly: readOnly,
+            onTap: onTap,
             obscureText: isPassword,
             decoration: InputDecoration(
               hintText: hintText,
@@ -70,6 +77,12 @@ class KTextField extends StatelessWidget {
                 fontSize: 14.0,
                 color: ColorConstants.greyColor,
               ),
+              suffixIcon: suffixIcon == null
+                  ? null
+                  : Icon(
+                      suffixIcon,
+                      color: Okito.theme.primaryColor,
+                    ),
               contentPadding: EdgeInsets.symmetric(vertical: 14.0, horizontal: 12.0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4.0),

@@ -14,6 +14,13 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _expireDateController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passConfirmController = TextEditingController();
+  final TextEditingController _badgeNumberController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,26 +49,35 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(height: 30),
                   KTextField.soft(
                     label: "NAME",
+                    controller: _nameController,
                   ),
                   SizedBox(height: 20),
                   KTextField.soft(
                     label: "EMAIL",
+                    controller: _emailController,
                   ),
                   SizedBox(height: 20),
-                  KTextField.soft(label: "BADGE NUMBER", hintText: "xxxx-xxxx-xxxx-xxxx"),
+                  KTextField.soft(
+                    label: "BADGE NUMBER",
+                    hintText: "xxxx-xxxx-xxxx-xxxx",
+                    controller: _badgeNumberController,
+                  ),
                   SizedBox(height: 20),
                   KTextField.soft(
                     label: "EXPIRY DATE",
+                    controller: _expireDateController,
                   ),
                   SizedBox(height: 20),
                   KTextField.soft(
                     label: "PASSWORD",
                     isPassword: true,
+                    controller: _passwordController,
                   ),
                   SizedBox(height: 20),
                   KTextField.soft(
                     label: "CONFIRM PASSWORD",
                     isPassword: true,
+                    controller: _passConfirmController,
                   ),
                   Okito.isLandscape ? SizedBox(height: 50) : AspectRatio(aspectRatio: 5 / 1),
                   KButton.outlined(
