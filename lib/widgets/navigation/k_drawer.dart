@@ -45,6 +45,9 @@ class KDrawer extends StatelessWidget {
                 SizedBox(height: 20),
                 ListTile(
                   dense: true,
+                  onTap: () {
+                    KRouter().push(KRoutes.choosePlanRoute);
+                  },
                   leading: Icon(
                     PhosphorIcons.buildings_fill,
                     color: ColorConstants.darkBlue,
