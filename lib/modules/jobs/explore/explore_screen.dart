@@ -110,6 +110,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         employeePhotoUrl: "adds",
                         onTap: () {
                           // TODO: go to job details
+                          KRouter().push(KRoutes.jobDetailsRoute);
                         },
                         onActionTapped: () {},
                       );

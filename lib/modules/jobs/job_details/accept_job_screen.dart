@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
 
@@ -39,7 +41,9 @@ class _AcceptJobScreenState extends State<AcceptJobScreen> {
             Spacer(),
             KButton(
               expanded: true,
-              onPressed: () {},
+              onPressed: () {
+                KRouter().push(KRoutes.applySuccessRoute);
+              },
               title: "APPLY FOR THIS JOB",
               color: Okito.theme.primaryColor,
             ),

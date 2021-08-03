@@ -38,6 +38,10 @@ class KRouter {
     return Okito.pushNamed(name, arguments: args);
   }
 
+  popUntil(RoutePredicate predicate) {
+    return Navigator.of(Okito.context!).popUntil(predicate);
+  }
+
   void pop<T extends Object?>([T? result]) {
     return Navigator.of(Okito.context!).pop();
   }
