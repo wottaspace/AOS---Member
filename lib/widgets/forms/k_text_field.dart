@@ -37,7 +37,10 @@ class KTextField extends StatelessWidget {
     required String label,
     required TextEditingController controller,
     String? hintText,
+    int minLines = 1,
+    int maxLines = 1,
     bool isPassword = false,
+    Color? titleTextColor,
     IconData? suffixIcon,
     Icon? prefixIcon,
     bool readOnly = false,
@@ -49,7 +52,7 @@ class KTextField extends StatelessWidget {
         Text(
           "$label",
           style: Okito.theme.textTheme.bodyText2!.copyWith(
-            color: ColorConstants.greyColor,
+            color: titleTextColor ?? ColorConstants.greyColor,
             fontWeight: FontWeight.w500,
             fontSize: 12.0,
           ),
@@ -71,6 +74,8 @@ class KTextField extends StatelessWidget {
             controller: controller,
             readOnly: readOnly,
             onTap: onTap,
+            minLines: minLines,
+            maxLines: maxLines,
             obscureText: isPassword,
             decoration: InputDecoration(
               hintText: hintText,

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
+import 'package:openarc_employee/modules/jobs/job_details/accept_job_screen.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/misc/info_field.dart';
 import 'package:openarc_employee/widgets/misc/section_title.dart';
@@ -16,6 +17,14 @@ class JobDetailsScreen extends StatefulWidget {
 }
 
 class _JobDetailsScreenState extends State<JobDetailsScreen> {
+  late bool actionsVisible;
+
+  @override
+  void initState() {
+    actionsVisible = true;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -124,40 +133,56 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
             ),
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              KButton(
-                expanded: true,
-                onPressed: () {},
-                title: "ACCEPT",
-                color: ColorConstants.greenColor,
-              ),
-              SizedBox(height: 5),
-              Row(
-                children: [
-                  Expanded(
-                    child: KButton.outlined(
-                      onPressed: () {},
-                      title: "MESSAGE EMPLOYER",
-                      color: Okito.theme.primaryColor,
+        bottomNavigationBar: actionsVisible
+            ? Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    KButton(
+                      expanded: true,
+                      onPressed: () {
+                        setState(() {
+                          actionsVisible = false;
+                        });
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AcceptJobScreen();
+                          },
+                        ).then((value) {
+                          setState(() {
+                            actionsVisible = true;
+                          });
+                        });
+                      },
+                      title: "ACCEPT",
+                      color: ColorConstants.greenColor,
                     ),
-                  ),
-                  SizedBox(width: 5),
-                  Expanded(
-                    child: KButton.outlined(
-                      onPressed: () {},
-                      title: "DECLINE",
-                      color: ColorConstants.red,
+                    SizedBox(height: 5),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: KButton.outlined(
+                            onPressed: () {},
+                            title: "MESSAGE EMPLOYER",
+                            color: Okito.theme.primaryColor,
+                          ),
+                        ),
+                        SizedBox(width: 5),
+                        Expanded(
+                          child: KButton.outlined(
+                            onPressed: () {},
+                            title: "DECLINE",
+                            color: ColorConstants.red,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+                  ],
+                ),
+              )
+            : null,
       ),
     );
   }
