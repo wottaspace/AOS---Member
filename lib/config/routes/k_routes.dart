@@ -8,6 +8,7 @@ import 'package:openarc_employee/modules/auth/subscription/upgrade_plan_screen.d
 import 'package:openarc_employee/modules/finances/finance_details_screen.dart';
 import 'package:openarc_employee/modules/home_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/location_filter_screen.dart';
+import 'package:openarc_employee/modules/jobs/job_details/job_details_screen.dart';
 import 'package:openarc_employee/modules/splash_screen.dart';
 
 import './k_route.dart';
@@ -18,7 +19,7 @@ import './k_router.dart';
 ///
 class KRoutes {
   static final String splashRoute = "/";
-  
+
   // Login routes
   static final String loginRoute = "/login";
   static final String registerRoute = "/register";
@@ -34,6 +35,7 @@ class KRoutes {
 
   // Explore routes
   static final String exploreRoute = "/explore";
+  static final String jobDetailsRoute = "/job-details";
   static final String locationFilterRoute = "/filter-location";
 
   // Finance routes
@@ -50,7 +52,8 @@ class KRoutes {
 
     KRouter().registerRoute(route: KRoute(name: KRoutes.choosePlanRoute, page: ChoosePlanScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.upgradePlanRoute, page: UpgradePlanScreen()));
-    
+    KRouter().registerRoute(route: KRoute(name: KRoutes.jobDetailsRoute, page: JobDetailsScreen()));
+
     KRouter().registerRoute(route: KRoute(name: KRoutes.exploreRoute, page: HomeScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.locationFilterRoute, page: LocationFilterScreen()));
 

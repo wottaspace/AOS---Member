@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:okito/okito.dart';
 import 'package:openarc_employee/config/routes/k_router.dart';
 import 'package:openarc_employee/config/routes/k_routes.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
 import 'package:openarc_employee/widgets/jobs/job_card.dart';
 import 'package:openarc_employee/widgets/jobs/recommended_job_card.dart';
 import 'package:openarc_employee/widgets/misc/k_chip.dart';
+import 'package:openarc_employee/widgets/misc/section_title.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({Key? key}) : super(key: key);
@@ -56,15 +55,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     ],
                   ),
                   SizedBox(height: 20),
-                  Text(
-                    "RECOMMENDED JOBS",
-                    style: Okito.theme.textTheme.bodyText2!.copyWith(
-                      fontSize: 10.0,
-                      letterSpacing: 1.3,
-                      fontWeight: FontWeight.w600,
-                      color: ColorConstants.greyColor,
-                    ),
-                  ),
+                  SectionTitle(title: "RECOMMENDED JOBS"),
                 ],
               ),
             ),
@@ -79,12 +70,18 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       company: "Zehr",
                       location: "Kitchener",
                       title: "Retail Shop guard",
+                      onTap: () {
+                        KRouter().push(KRoutes.jobDetailsRoute);
+                      },
                     ),
                   ),
                   RecommendedJobCard(
                     company: "BMO",
                     title: "Bank security guard",
                     location: "Waterbloq",
+                    onTap: () {
+                      KRouter().push(KRoutes.jobDetailsRoute);
+                    },
                   ),
                 ],
               ),
@@ -95,15 +92,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "JOBS",
-                    style: Okito.theme.textTheme.bodyText2!.copyWith(
-                      fontSize: 10.0,
-                      letterSpacing: 1.3,
-                      fontWeight: FontWeight.w600,
-                      color: ColorConstants.greyColor,
-                    ),
-                  ),
+                  SectionTitle(title: "JOBS"),
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),

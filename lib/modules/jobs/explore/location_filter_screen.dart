@@ -4,6 +4,7 @@ import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
+import 'package:openarc_employee/widgets/misc/section_title.dart';
 import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
 
 class LocationFilterScreen extends StatefulWidget {
@@ -36,15 +37,7 @@ class _LocationFilterScreenState extends State<LocationFilterScreen> {
                     controller: _searchController,
                   ),
                   SizedBox(height: 20),
-                  Text(
-                    "LOCATION",
-                    style: Okito.theme.textTheme.bodyText2!.copyWith(
-                      fontSize: 10.0,
-                      letterSpacing: 1.3,
-                      fontWeight: FontWeight.w600,
-                      color: ColorConstants.greyColor,
-                    ),
-                  ),
+                  SectionTitle(title: "LOCATION"),
                   ListView.builder(
                     itemCount: 3,
                     shrinkWrap: true,

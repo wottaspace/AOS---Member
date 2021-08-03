@@ -10,11 +10,15 @@ class RecommendedJobCard extends StatelessWidget {
     required this.company,
     required this.title,
     required this.location,
+    this.onApply,
+    this.onTap,
   }) : super(key: key);
 
   final String company;
   final String title;
   final String location;
+  final VoidCallback? onApply;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -25,94 +29,103 @@ class RecommendedJobCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
         color: ColorConstants.purple,
       ),
-      child: Stack(
-        children: [
-          _Circle(color: Colors.white.withOpacity(0.15), diameter: 50),
-          Positioned(
-            top: -15,
-            left: -15,
-            child: _Circle(color: Colors.white.withOpacity(0.1), diameter: 80),
-          ),
-          Positioned(
-            top: -30,
-            left: -30,
-            child: _Circle(color: Colors.white.withOpacity(0.09), diameter: 120),
-          ),
-          Positioned(
-            top: -50,
-            left: -50,
-            child: _Circle(color: Colors.white.withOpacity(0.09), diameter: 180),
-          ),
-          Positioned(
-            top: -50,
-            left: -50,
-            child: _Circle(color: Colors.white.withOpacity(0.08), diameter: 210),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "$location",
-                        style: Okito.theme.textTheme.bodyText2!.copyWith(
-                          fontSize: 12.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "$title",
-                        style: Okito.theme.textTheme.bodyText2!.copyWith(
-                          fontSize: 16.0,
-                          color: Colors.white,
-                          letterSpacing: 1.3,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Row(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12.0),
+          onTap: onTap,
+          child: Stack(
+            children: [
+              _Circle(color: Colors.white.withOpacity(0.15), diameter: 50),
+              Positioned(
+                top: -15,
+                left: -15,
+                child: _Circle(color: Colors.white.withOpacity(0.1), diameter: 80),
+              ),
+              Positioned(
+                top: -30,
+                left: -30,
+                child: _Circle(color: Colors.white.withOpacity(0.09), diameter: 120),
+              ),
+              Positioned(
+                top: -50,
+                left: -50,
+                child: _Circle(color: Colors.white.withOpacity(0.09), diameter: 180),
+              ),
+              Positioned(
+                top: -50,
+                left: -50,
+                child: _Circle(color: Colors.white.withOpacity(0.08), diameter: 210),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            PhosphorIcons.map_pin,
-                            size: 12,
-                            color: ColorConstants.greyColor,
-                          ),
-                          SizedBox(width: 5),
                           Text(
-                            "${location.toUpperCase()}",
+                            "$location",
                             style: Okito.theme.textTheme.bodyText2!.copyWith(
-                              fontSize: 10.0,
-                              color: ColorConstants.greyColor,
+                              fontSize: 12.0,
+                              color: Colors.white,
                               fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            "$title",
+                            style: Okito.theme.textTheme.bodyText2!.copyWith(
+                              fontSize: 16.0,
+                              color: Colors.white,
                               letterSpacing: 1.3,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                            children: [
+                              Icon(
+                                PhosphorIcons.map_pin,
+                                size: 12,
+                                color: ColorConstants.greyColor,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                "${location.toUpperCase()}",
+                                style: Okito.theme.textTheme.bodyText2!.copyWith(
+                                  fontSize: 10.0,
+                                  color: ColorConstants.greyColor,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1.3,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Spacer(),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              height: 30,
+                              child: KButton(
+                                padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 0),
+                                onPressed: () {
+                                  if (onApply != null) onApply!();
+                                },
+                                title: "APPLY",
+                                color: Colors.white.withOpacity(0.25),
+                              ),
                             ),
                           ),
                         ],
                       ),
-                      Spacer(),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Container(
-                          height: 30,
-                          child: KButton(
-                            padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 0),
-                            onPressed: () {},
-                            title: "APPLY",
-                            color: Colors.white.withOpacity(0.25),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

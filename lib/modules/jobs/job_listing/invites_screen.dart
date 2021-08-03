@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:okito/okito.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/jobs/job_card.dart';
+import 'package:openarc_employee/widgets/misc/section_title.dart';
 
 class InvitesScreen extends StatefulWidget {
   const InvitesScreen({Key? key}) : super(key: key);
@@ -16,15 +15,7 @@ class _InvitesScreenState extends State<InvitesScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "JOB LISTINGS",
-          style: Okito.theme.textTheme.bodyText2!.copyWith(
-            fontSize: 10.0,
-            letterSpacing: 1.3,
-            fontWeight: FontWeight.w600,
-            color: ColorConstants.greyColor,
-          ),
-        ),
+        SectionTitle(title: "JOB LISTINGS"),
         SizedBox(height: 10),
         ListView.builder(
           shrinkWrap: true,
@@ -44,9 +35,7 @@ class _InvitesScreenState extends State<InvitesScreen> {
               onTap: () {
                 // TODO: go to job details
               },
-              onActionTapped: () {
-                
-              },
+              onActionTapped: () {},
             );
           },
         ),

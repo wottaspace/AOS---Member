@@ -39,6 +39,7 @@ class KTextField extends StatelessWidget {
     String? hintText,
     bool isPassword = false,
     IconData? suffixIcon,
+    Icon? prefixIcon,
     bool readOnly = false,
     VoidCallback? onTap,
   }) {
@@ -77,6 +78,7 @@ class KTextField extends StatelessWidget {
                 fontSize: 14.0,
                 color: ColorConstants.greyColor,
               ),
+              prefixIcon: prefixIcon,
               suffixIcon: suffixIcon == null
                   ? null
                   : Icon(
