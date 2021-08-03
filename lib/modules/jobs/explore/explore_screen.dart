@@ -50,7 +50,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       KChip(
                         title: "Filter",
                         icon: PhosphorIcons.funnel_fill,
-                        onTap: () {},
+                        onTap: () {
+                          KRouter().push(KRoutes.filterRoute);
+                        },
                       ),
                     ],
                   ),
