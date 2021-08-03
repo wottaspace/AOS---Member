@@ -9,7 +9,7 @@ import 'package:openarc_employee/modules/finances/finances_screen.dart';
 import 'package:openarc_employee/modules/inbox/inbox_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/explore_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_listing/job_listing_screen.dart';
-import 'package:openarc_employee/modules/jobs/saved/saved_screen.dart';
+import 'package:openarc_employee/modules/saved/saved_screen.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar_item.dart';
 import 'package:openarc_employee/widgets/navigation/k_drawer.dart';

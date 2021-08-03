@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
 import 'package:openarc_employee/widgets/inbox/inbox_card.dart';
@@ -51,6 +53,7 @@ class _InboxScreenState extends State<InboxScreen> {
                   userPictureUrl: "userPictureUrl",
                   onTap: () {
                     // TODO: go to chat details
+                    KRouter().push(KRoutes.inboxDetailsRoute);
                   },
                 );
               },

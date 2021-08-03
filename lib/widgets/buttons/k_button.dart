@@ -54,17 +54,18 @@ class KButton extends StatelessWidget {
     required VoidCallback onPressed,
     required String title,
     required Color color,
+    bool dense = false,
     bool expanded = false,
   }) {
     final Widget buttonComponent = OutlinedButton(
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 10.0),
+        padding: dense ? EdgeInsets.all(4.0) : const EdgeInsets.symmetric(vertical: 14.0, horizontal: 10.0),
         child: Text(
           "$title",
           style: Okito.theme.textTheme.bodyText1!.copyWith(
             color: color,
-            fontSize: 12.0,
+            fontSize: dense ? 9.0 : 12.0,
           ),
         ),
       ),

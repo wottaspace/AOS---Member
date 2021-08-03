@@ -6,10 +6,12 @@ class SectionTitle extends StatelessWidget {
   const SectionTitle({
     Key? key,
     required this.title,
+    this.textColor,
     this.hasBoldTitle = false,
   }) : super(key: key);
 
   final String title;
+  final Color? textColor;
   final bool hasBoldTitle;
 
   @override
@@ -20,7 +22,7 @@ class SectionTitle extends StatelessWidget {
         fontSize: 10.0,
         letterSpacing: 1.3,
         fontWeight: hasBoldTitle ? FontWeight.bold : FontWeight.w600,
-        color: ColorConstants.greyColor,
+        color: textColor ?? ColorConstants.greyColor,
       ),
     );
   }
