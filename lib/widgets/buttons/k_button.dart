@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/constants/color_constants.dart';
 
 class KButton extends StatelessWidget {
   const KButton({
@@ -82,5 +83,33 @@ class KButton extends StatelessWidget {
       );
     }
     return buttonComponent;
+  }
+
+  static Widget regular({
+    required String title,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0XFFF5F7FD),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.15),
+            blurRadius: 2.0,
+            offset: Offset(0, 2),
+          )
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          "$title",
+          style: Okito.theme.textTheme.bodyText2!.copyWith(
+            fontWeight: FontWeight.bold,
+            fontSize: 10.0,
+            color: Okito.theme.primaryColor,
+          ),
+        ),
+      ),
+    );
   }
 }
