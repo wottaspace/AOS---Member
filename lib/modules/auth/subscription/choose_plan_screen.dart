@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
@@ -16,6 +18,7 @@ class ChoosePlanScreen extends StatefulWidget {
 
 class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
   late PageController _pageController;
+  late int _selectedIndex;
 
   @override
   void initState() {
@@ -23,6 +26,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
       viewportFraction: 0.3,
       initialPage: 1,
     );
+    _selectedIndex = 0;
     super.initState();
   }
 
@@ -95,6 +99,12 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
                         discount: "FREE TRIAL",
                         frequency: "first 3 mos",
                         price: "\$0.00flat",
+                        highlightTitle: _selectedIndex == 0,
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 0;
+                          });
+                        },
                       ),
                       PackItem(
                         label: "MEMBER",
@@ -103,15 +113,26 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
                         durationValue: "1",
                         frequency: "\$150/yearly",
                         price: "\$12.5 flat",
+                        highlightTitle: _selectedIndex == 1,
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 1;
+                          });
+                        },
                       ),
                       PackItem(
                         label: "DOVE MEMBERS",
-                        highlightTitle: true,
+                        highlightTitle: _selectedIndex == 2,
                         discount: "SAVE 42%",
                         durationUnit: "month",
                         durationValue: "1",
                         frequency: "\$105/yearly",
                         price: "\$15 flat",
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = 2;
+                          });
+                        },
                       ),
                     ],
                   ),
@@ -123,7 +144,9 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
         bottomNavigationBar: Padding(
           padding: EdgeInsets.all(12.0),
           child: KButton.outlined(
-            onPressed: () {},
+            onPressed: () {
+              KRouter().push(KRoutes.upgradePlanRoute);
+            },
             title: "CONTINUE",
             color: Okito.theme.primaryColor,
           ),

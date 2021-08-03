@@ -11,6 +11,7 @@ class PackItem extends StatelessWidget {
     required this.durationUnit,
     required this.frequency,
     required this.price,
+    this.onTap,
     this.highlightTitle = false,
   }) : super(key: key);
 
@@ -19,80 +20,89 @@ class PackItem extends StatelessWidget {
   final String durationValue;
   final String durationUnit;
   final String frequency;
+  final VoidCallback? onTap;
   final String price;
   final bool highlightTitle;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 90,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            if (!highlightTitle) ...[
-              Text(
-                "$label",
-                style: Okito.theme.textTheme.bodyText1!.copyWith(fontSize: 12.0),
-              ),
-              SizedBox(height: 5),
-            ] else
-              Container(
-                height: 20,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.all(4.0),
-                decoration: BoxDecoration(
-                  color: Okito.theme.primaryColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.0),
-                    topRight: Radius.circular(10.0),
-                  ),
-                ),
-                child: Text(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 90,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              if (!highlightTitle) ...[
+                Text(
                   "$label",
-                  textAlign: TextAlign.center,
-                  style: Okito.theme.textTheme.bodyText1!.copyWith(
-                    fontSize: 10.0,
-                    color: Colors.white,
-                  ),
+                  style: Okito.theme.textTheme.bodyText1!.copyWith(fontSize: 12.0),
                 ),
-              ),
-            Container(
-              height: 150,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6.0),
-                border: Border.all(
-                  color: ColorConstants.greyColor.withOpacity(0.5),
-                ),
-              ),
-              child: Column(
-                children: [
-                  SizedBox(height: 20),
-                  Text(
-                    "$durationValue",
-                    style: Okito.theme.textTheme.bodyText2!.copyWith(fontSize: 16.0),
-                  ),
-                  SizedBox(height: 5),
-                  Text("$durationUnit", style: Okito.theme.textTheme.bodyText2),
-                  SizedBox(height: 5),
-                  Text("$price", style: Okito.theme.textTheme.bodyText2),
-                  Spacer(),
-                  Text(
-                    "$discount",
-                    style: Okito.theme.textTheme.bodyText1!.copyWith(
-                      fontSize: 12.0,
-                      letterSpacing: 1.2,
-                      fontWeight: FontWeight.bold,
-                      color: Okito.theme.primaryColor,
+                SizedBox(height: 5),
+              ] else
+                Container(
+                  height: 20,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(4.0),
+                  decoration: BoxDecoration(
+                    color: Okito.theme.primaryColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0),
                     ),
                   ),
-                  Divider(),
-                  Text("$frequency"),
-                  SizedBox(height: 10),
-                ],
-              ),
-            )
-          ],
+                  child: Text(
+                    "$label",
+                    textAlign: TextAlign.center,
+                    style: Okito.theme.textTheme.bodyText1!.copyWith(
+                      fontSize: 10.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              Container(
+                height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: highlightTitle
+                      ? BorderRadius.only(
+                          bottomLeft: Radius.circular(10.0),
+                          bottomRight: Radius.circular(10.0),
+                        )
+                      : BorderRadius.circular(6.0),
+                  border: Border.all(
+                    color: ColorConstants.greyColor.withOpacity(0.5),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 20),
+                    Text(
+                      "$durationValue",
+                      style: Okito.theme.textTheme.bodyText2!.copyWith(fontSize: 16.0),
+                    ),
+                    SizedBox(height: 5),
+                    Text("$durationUnit", style: Okito.theme.textTheme.bodyText2),
+                    SizedBox(height: 5),
+                    Text("$price", style: Okito.theme.textTheme.bodyText2),
+                    Spacer(),
+                    Text(
+                      "$discount",
+                      style: Okito.theme.textTheme.bodyText1!.copyWith(
+                        fontSize: 12.0,
+                        letterSpacing: 1.2,
+                        fontWeight: FontWeight.bold,
+                        color: Okito.theme.primaryColor,
+                      ),
+                    ),
+                    Divider(),
+                    Text("$frequency"),
+                    SizedBox(height: 10),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
