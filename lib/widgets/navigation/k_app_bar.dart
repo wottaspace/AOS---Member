@@ -15,7 +15,7 @@ class KAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      elevation: 0,
+      elevation: 0.8,
       leading: IconButton(
         icon: Icon(
           PhosphorIcons.caret_left_bold,

@@ -13,6 +13,9 @@ import 'package:openarc_employee/modules/jobs/explore/location_filter_screen.dar
 import 'package:openarc_employee/modules/jobs/job_details/apply_success_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_details/job_details_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_listing/history_details_screen.dart';
+import 'package:openarc_employee/modules/settings/bank_details_screen.dart';
+import 'package:openarc_employee/modules/settings/change_password_screen.dart';
+import 'package:openarc_employee/modules/settings/settings_screen.dart';
 import 'package:openarc_employee/modules/splash_screen.dart';
 
 import './k_route.dart';
@@ -50,6 +53,10 @@ class KRoutes {
 
   static final String inboxDetailsRoute = "/inbox-details";
 
+  static final String settingsRoute = "/settings";
+  static final String bankDetailsRoute = "/bank-details";
+  static final String changePasswordRoute = "/change-password";
+
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
     KRouter().registerRoute(route: KRoute(name: KRoutes.loginRoute, page: LoginScreen()));
@@ -73,5 +80,9 @@ class KRoutes {
     KRouter().registerRoute(route: KRoute(name: KRoutes.financeDetailsRoute, page: FinanceDetailsScreen()));
 
     KRouter().registerRoute(route: KRoute(name: KRoutes.inboxDetailsRoute, page: InboxDetailsScreen()));
+
+    KRouter().registerRoute(route: KRoute(name: KRoutes.settingsRoute, page: SettingsScreen()));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.bankDetailsRoute, page: BankDetailsScreen()));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.changePasswordRoute, page: ChangePasswordScreen()));
   }
 }

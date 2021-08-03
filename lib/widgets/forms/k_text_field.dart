@@ -7,12 +7,12 @@ class KTextField extends StatelessWidget {
     Key? key,
     required this.controller,
     required this.hintText,
-    required this.icon,
+    this.icon,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class KTextField extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 12.0),
         hintText: hintText,
-        prefixIcon: Icon(icon),
+        prefixIcon: icon == null ? null : Icon(icon),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4.0),
           borderSide: BorderSide(color: ColorConstants.greyColor),
@@ -28,6 +28,30 @@ class KTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(2.0),
           borderSide: BorderSide(color: Okito.theme.primaryColor),
+        ),
+      ),
+    );
+  }
+
+  static Widget exposed({
+    String? hintText,
+    required TextEditingController controller,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0XFFF5F7FD),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
+          hintText: hintText,
+          hintStyle: Okito.theme.textTheme.bodyText2!.copyWith(
+            fontSize: 12.0,
+            color: ColorConstants.greyColor,
+          ),
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
         ),
       ),
     );
@@ -54,7 +78,7 @@ class KTextField extends StatelessWidget {
           style: Okito.theme.textTheme.bodyText2!.copyWith(
             color: titleTextColor ?? ColorConstants.greyColor,
             fontWeight: FontWeight.w500,
-            fontSize: 12.0,
+            fontSize: 10.0,
           ),
         ),
         SizedBox(height: 5),
