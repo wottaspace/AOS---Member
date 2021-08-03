@@ -3,9 +3,14 @@ import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 
 class SectionTitle extends StatelessWidget {
-  const SectionTitle({Key? key, required this.title}) : super(key: key);
+  const SectionTitle({
+    Key? key,
+    required this.title,
+    this.hasBoldTitle = false,
+  }) : super(key: key);
 
   final String title;
+  final bool hasBoldTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class SectionTitle extends StatelessWidget {
       style: Okito.theme.textTheme.bodyText2!.copyWith(
         fontSize: 10.0,
         letterSpacing: 1.3,
-        fontWeight: FontWeight.w600,
+        fontWeight: hasBoldTitle ? FontWeight.bold : FontWeight.w600,
         color: ColorConstants.greyColor,
       ),
     );

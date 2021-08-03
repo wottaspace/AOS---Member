@@ -46,7 +46,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               status: index.isEven ? "UNPAID" : "PAID",
               createdAt: DateTime.now(),
               onTap: () {
-                KRouter().push(KRoutes.financeDetailsRoute);
+                KRouter().push(KRoutes.historyDetailsRoute);
               },
             );
           },

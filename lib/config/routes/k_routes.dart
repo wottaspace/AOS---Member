@@ -11,6 +11,7 @@ import 'package:openarc_employee/modules/jobs/explore/filter_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/location_filter_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_details/apply_success_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_details/job_details_screen.dart';
+import 'package:openarc_employee/modules/jobs/job_listing/history_details_screen.dart';
 import 'package:openarc_employee/modules/splash_screen.dart';
 
 import './k_route.dart';
@@ -41,6 +42,7 @@ class KRoutes {
   static final String applySuccessRoute = "/apply-success";
   static final String locationFilterRoute = "/filter-location";
   static final String filterRoute = "/filter";
+  static final String historyDetailsRoute = "/history-details";
 
   // Finance routes
   static final String financeDetailsRoute = "/finance-details";
@@ -60,6 +62,7 @@ class KRoutes {
     KRouter().registerRoute(route: KRoute(name: KRoutes.applySuccessRoute, page: ApplySuccessScreen()));
 
     KRouter().registerRoute(route: KRoute(name: KRoutes.exploreRoute, page: HomeScreen()));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.historyDetailsRoute, page: HistoryDetailsScreen()));
 
     KRouter().registerRoute(route: KRoute(name: KRoutes.locationFilterRoute, page: LocationFilterScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.filterRoute, page: FilterScreen()));

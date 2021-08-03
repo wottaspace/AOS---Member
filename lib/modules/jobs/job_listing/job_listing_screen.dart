@@ -3,6 +3,7 @@ import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/modules/jobs/job_listing/history_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_listing/invites_screen.dart';
+import 'package:openarc_employee/modules/jobs/job_listing/timesheet_screen.dart';
 
 class JobListingScreen extends StatefulWidget {
   const JobListingScreen({Key? key}) : super(key: key);
@@ -101,7 +102,7 @@ class _JobListingScreenState extends State<JobListingScreen> with SingleTickerPr
       case 0:
         return InvitesScreen();
       case 1:
-        return Container();
+        return TimesheetScreen();
       case 2:
         return HistoryScreen();
       default:
