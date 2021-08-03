@@ -69,6 +69,7 @@ class KTextField extends StatelessWidget {
     Icon? prefixIcon,
     bool readOnly = false,
     VoidCallback? onTap,
+    bool withShadow = true,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,13 +86,13 @@ class KTextField extends StatelessWidget {
         DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
-            boxShadow: [
+            boxShadow: withShadow ? [
               BoxShadow(
                 color: Colors.black.withOpacity(0.15),
                 blurRadius: 4.0,
                 offset: Offset(1, 2),
               ),
-            ],
+            ] : null,
             color: Colors.white,
           ),
           child: TextFormField(

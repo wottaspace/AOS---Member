@@ -87,6 +87,7 @@ class KButton extends StatelessWidget {
 
   static Widget regular({
     required String title,
+    required VoidCallback onTap,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -99,14 +100,20 @@ class KButton extends StatelessWidget {
           )
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          "$title",
-          style: Okito.theme.textTheme.bodyText2!.copyWith(
-            fontWeight: FontWeight.bold,
-            fontSize: 10.0,
-            color: Okito.theme.primaryColor,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "$title",
+              style: Okito.theme.textTheme.bodyText2!.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 10.0,
+                color: Okito.theme.primaryColor,
+              ),
+            ),
           ),
         ),
       ),

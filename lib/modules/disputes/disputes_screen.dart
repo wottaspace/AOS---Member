@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/misc/dispute_card.dart';
@@ -47,7 +49,12 @@ class _DisputesScreenState extends State<DisputesScreen> {
                         style: Okito.theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    KButton.regular(title: "+ ADD DISPUTE"),
+                    KButton.regular(
+                      title: "+ ADD DISPUTE",
+                      onTap: () {
+                        KRouter().push(KRoutes.createDisputeRoute);
+                      },
+                    ),
                     SizedBox(width: 5),
                   ],
                 ),
