@@ -11,18 +11,19 @@ class FinanceCard extends StatelessWidget {
     required this.company,
     required this.jobTitle,
     required this.onTap,
+    this.status,
   }) : super(key: key);
 
   final String company;
   final String jobTitle;
   final DateTime createdAt;
   final VoidCallback onTap;
+  final String? status;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8.0),
-      
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -44,13 +45,28 @@ class FinanceCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "${Moment.fromDate(createdAt).format("dd MMM, yyyy")}",
-                  style: Okito.theme.textTheme.bodyText2!.copyWith(
-                    fontSize: 10.0,
-                    fontWeight: FontWeight.w600,
-                    color: ColorConstants.greyColor,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      "${Moment.fromDate(createdAt).format("dd MMM, yyyy")}",
+                      style: Okito.theme.textTheme.bodyText2!.copyWith(
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.w600,
+                        color: ColorConstants.greyColor,
+                      ),
+                    ),
+                    if (status != null) ...[
+                      Spacer(),
+                      Text(
+                        "$status",
+                        style: Okito.theme.textTheme.bodyText2!.copyWith(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.w600,
+                          color: status == "PAID" ? ColorConstants.greenColor : ColorConstants.red,
+                        ),
+                      )
+                    ]
+                  ],
                 ),
                 SizedBox(height: 5),
                 Row(

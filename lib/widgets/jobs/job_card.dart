@@ -75,23 +75,27 @@ class JobCard extends StatelessWidget {
                       SizedBox(width: 10),
                       Image.asset("assets/images/${isNightlyJob ? 'night.png' : 'sun.png'}"),
                       Spacer(),
-                      RichText(
-                        text: TextSpan(
-                          text: "$payRate",
-                          style: Okito.theme.textTheme.bodyText2!.copyWith(
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w700,
-                            color: Okito.theme.primaryColor,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: "/hr",
+                      Column(
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              text: "$payRate",
                               style: Okito.theme.textTheme.bodyText2!.copyWith(
-                                color: ColorConstants.greyColor,
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.w700,
+                                color: Okito.theme.primaryColor,
                               ),
+                              children: [
+                                TextSpan(
+                                  text: "/hr",
+                                  style: Okito.theme.textTheme.bodyText2!.copyWith(
+                                    color: ColorConstants.greyColor,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       )
                     ],
                   ),

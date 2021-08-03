@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/widgets/jobs/job_card.dart';
 import 'package:openarc_employee/widgets/misc/section_title.dart';
 
@@ -34,6 +36,7 @@ class _InvitesScreenState extends State<InvitesScreen> {
               employeePhotoUrl: "adds",
               onTap: () {
                 // TODO: go to job details
+                KRouter().push(KRoutes.jobDetailsRoute);
               },
               onActionTapped: () {},
             );

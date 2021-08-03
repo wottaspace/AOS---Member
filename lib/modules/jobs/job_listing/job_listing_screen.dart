@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
+import 'package:openarc_employee/modules/jobs/job_listing/history_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_listing/invites_screen.dart';
 
 class JobListingScreen extends StatefulWidget {
@@ -102,7 +103,7 @@ class _JobListingScreenState extends State<JobListingScreen> with SingleTickerPr
       case 1:
         return Container();
       case 2:
-        return Container();
+        return HistoryScreen();
       default:
         return Container();
     }
