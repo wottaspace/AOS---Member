@@ -4,6 +4,7 @@ import 'package:openarc_employee/modules/auth/login/login_screen.dart';
 import 'package:openarc_employee/modules/auth/profile/profile_screen.dart';
 import 'package:openarc_employee/modules/auth/register/register_screen.dart';
 import 'package:openarc_employee/modules/auth/subscription/choose_plan_screen.dart';
+import 'package:openarc_employee/modules/auth/subscription/pay_screen.dart';
 import 'package:openarc_employee/modules/auth/subscription/upgrade_plan_screen.dart';
 import 'package:openarc_employee/modules/disputes/create_dispute_screen.dart';
 import 'package:openarc_employee/modules/disputes/disputes_screen.dart';
@@ -64,6 +65,8 @@ class KRoutes {
 
   static final String inviteFriendsRoute = "/invite-friends";
 
+  static final String payRoute = "/pay";
+
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
     KRouter().registerRoute(route: KRoute(name: KRoutes.loginRoute, page: LoginScreen()));
@@ -96,5 +99,6 @@ class KRoutes {
     KRouter().registerRoute(route: KRoute(name: KRoutes.createDisputeRoute, page: CreateDisputeScreen()));
 
     KRouter().registerRoute(route: KRoute(name: KRoutes.inviteFriendsRoute, page: InviteFriendsScreen()));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.payRoute, page: PayScreen()));
   }
 }

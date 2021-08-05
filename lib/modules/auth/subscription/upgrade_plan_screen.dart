@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
@@ -104,7 +106,9 @@ class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(12.0),
         child: KButton(
-          onPressed: () {},
+          onPressed: () {
+            KRouter().push(KRoutes.payRoute);
+          },
           title: "UPGRADE NOW",
           color: ColorConstants.greenColor,
         ),
