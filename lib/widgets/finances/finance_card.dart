@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
+import 'package:openarc_employee/config/routes/k_router.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
+import 'package:openarc_employee/widgets/dialogs/invoice_details_dialog.dart';
 import 'package:simple_moment/simple_moment.dart';
 
 class FinanceCard extends StatelessWidget {
@@ -123,7 +125,34 @@ class FinanceCard extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      KRouter().pop();
+                                    },
+                                    iconSize: 10,
+                                    icon: Icon(PhosphorIcons.x_bold),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      "Talwar's Residency",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 14.0),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              content: InvoiceDetailsDialog(),
+                            );
+                          },
+                        );
+                      },
                       child: Text(
                         "Invoice",
                         style: Okito.theme.textTheme.bodyText2!.copyWith(

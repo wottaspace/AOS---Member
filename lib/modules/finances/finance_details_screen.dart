@@ -3,6 +3,7 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
+import 'package:openarc_employee/widgets/finances/detail_item.dart';
 import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
 
 class FinanceDetailsScreen extends StatefulWidget {
@@ -117,28 +118,28 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                 ),
               ),
               SizedBox(height: 20),
-              _DetailItem(
+              DetailItem(
                 title: "Agreed Pay per hour",
                 value: "\$12/hr",
                 boldValue: true,
               ),
-              _DetailItem(
+              DetailItem(
                 title: "AOS Standard edition per hour",
                 value: "\$0",
                 boldValue: true,
               ),
-              _DetailItem(
+              DetailItem(
                 title: "AOS one of Misc Payment",
                 value: "\$0",
                 boldValue: true,
               ),
-              _DetailItem(
+              DetailItem(
                 title: "Total Worked Hours",
                 value: "12",
                 boldValue: true,
                 boldTitle: true,
               ),
-              _DetailItem(
+              DetailItem(
                 title: "Total Pay",
                 value: "\$144",
                 boldValue: true,
@@ -157,17 +158,17 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                 ),
               ),
               SizedBox(height: 20),
-              _DetailItem(
+              DetailItem(
                 title: "*AOS Acccound Refunds",
                 value: "\$0",
                 boldValue: true,
               ),
-              _DetailItem(
+              DetailItem(
                 title: "Admin charges \$0.25/hr",
                 value: "\$3",
                 boldValue: true,
               ),
-              _DetailItem(
+              DetailItem(
                 title: "Net Pay",
                 value: "\$198.50",
                 boldValue: true,
@@ -189,47 +190,3 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
   }
 }
 
-class _DetailItem extends StatelessWidget {
-  const _DetailItem({
-    Key? key,
-    required this.title,
-    required this.value,
-    this.boldTitle = false,
-    this.boldValue = false,
-  }) : super(key: key);
-
-  final String title;
-  final String value;
-  final bool boldTitle;
-  final bool boldValue;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  "$title",
-                  style: TextStyle(
-                    fontWeight: boldTitle ? FontWeight.bold : FontWeight.normal,
-                  ),
-                ),
-              ),
-              Text(
-                "$value",
-                style: TextStyle(
-                  fontWeight: boldValue ? FontWeight.bold : FontWeight.normal,
-                ),
-              ),
-            ],
-          ),
-          Divider(),
-        ],
-      ),
-    );
-  }
-}
