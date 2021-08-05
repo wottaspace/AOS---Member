@@ -11,6 +11,7 @@ import 'package:openarc_employee/modules/jobs/explore/explore_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_listing/job_listing_screen.dart';
 import 'package:openarc_employee/modules/saved/saved_screen.dart';
 import 'package:openarc_employee/widgets/dialogs/notifications_dialog.dart';
+import 'package:openarc_employee/widgets/misc/double_tap_to_exit.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar.dart';
 import 'package:openarc_employee/widgets/navigation/k_bottom_navbar_item.dart';
 import 'package:openarc_employee/widgets/navigation/k_drawer.dart';
@@ -38,124 +39,126 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-      child: Scaffold(
-        backgroundColor: ColorConstants.lightBlue,
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.black, size: 24),
-          backgroundColor: Colors.white,
-          title: Text(
-            "$_pageTitle",
-            style: Okito.theme.textTheme.headline3,
-          ),
-          elevation: 0,
-          actions: [
-            IconButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              "Notifications",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 14.0),
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              KRouter().pop();
-                            },
-                            iconSize: 15,
-                            icon: Icon(PhosphorIcons.x_bold),
-                          ),
-                        ],
-                      ),
-                      content: Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        child: NotificationsDialog(),
-                      ),
-                    );
-                  },
-                );
-              },
-              icon: Icon(
-                PhosphorIcons.bell_fill,
-                size: 25,
-                color: ColorConstants.darkBlue.withOpacity(0.3),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: GestureDetector(
-                onTap: () {
-                  KRouter().push(KRoutes.profileRoute);
-                },
-                child: CircleAvatar(),
-              ),
-            ),
-          ],
+    return DoubleTapToExit(
+      child: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
         ),
-        drawer: KDrawer(),
-        body: SafeArea(
-          child: PageView(
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() {
-                _activeTabIndex = index;
-              });
-            },
-            children: [
-              ExploreScreen(),
-              InboxScreen(),
-              JobListingScreen(),
-              FinancesScreen(),
-              SavedScreen(),
+        child: Scaffold(
+          backgroundColor: ColorConstants.lightBlue,
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black, size: 24),
+            backgroundColor: Colors.white,
+            title: Text(
+              "$_pageTitle",
+              style: Okito.theme.textTheme.headline3,
+            ),
+            elevation: 0,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "Notifications",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 14.0),
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                KRouter().pop();
+                              },
+                              iconSize: 15,
+                              icon: Icon(PhosphorIcons.x_bold),
+                            ),
+                          ],
+                        ),
+                        content: Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: NotificationsDialog(),
+                        ),
+                      );
+                    },
+                  );
+                },
+                icon: Icon(
+                  PhosphorIcons.bell_fill,
+                  size: 25,
+                  color: ColorConstants.darkBlue.withOpacity(0.3),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: GestureDetector(
+                  onTap: () {
+                    KRouter().push(KRoutes.profileRoute);
+                  },
+                  child: CircleAvatar(),
+                ),
+              ),
             ],
           ),
-        ),
-        bottomNavigationBar: KBottomNavBar(
-          onTap: (index) {
-            setState(() {
-              _activeTabIndex = index;
-              _pageController.jumpToPage(index);
-              _pageTitle = _getPageTitle(index);
-            });
-          },
-          items: [
-            KBottomNavBarItem(
-              title: "EXPLORE",
-              icon: PhosphorIcons.magnifying_glass,
-              isActive: _activeTabIndex == 0,
+          drawer: KDrawer(),
+          body: SafeArea(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _activeTabIndex = index;
+                });
+              },
+              children: [
+                ExploreScreen(),
+                InboxScreen(),
+                JobListingScreen(),
+                FinancesScreen(),
+                SavedScreen(),
+              ],
             ),
-            KBottomNavBarItem(
-              title: "INBOX",
-              icon: PhosphorIcons.chat_circle_fill,
-              isActive: _activeTabIndex == 1,
-            ),
-            KBottomNavBarItem(
-              title: "JOB LISTING",
-              icon: PhosphorIcons.newspaper_fill,
-              isActive: _activeTabIndex == 2,
-            ),
-            KBottomNavBarItem(
-              title: "FINANCES",
-              icon: PhosphorIcons.currency_eur_fill,
-              isActive: _activeTabIndex == 3,
-            ),
-            KBottomNavBarItem(
-              title: "SAVED",
-              icon: PhosphorIcons.heart,
-              isActive: _activeTabIndex == 4,
-            ),
-          ],
+          ),
+          bottomNavigationBar: KBottomNavBar(
+            onTap: (index) {
+              setState(() {
+                _activeTabIndex = index;
+                _pageController.jumpToPage(index);
+                _pageTitle = _getPageTitle(index);
+              });
+            },
+            items: [
+              KBottomNavBarItem(
+                title: "EXPLORE",
+                icon: PhosphorIcons.magnifying_glass,
+                isActive: _activeTabIndex == 0,
+              ),
+              KBottomNavBarItem(
+                title: "INBOX",
+                icon: PhosphorIcons.chat_circle_fill,
+                isActive: _activeTabIndex == 1,
+              ),
+              KBottomNavBarItem(
+                title: "JOB LISTING",
+                icon: PhosphorIcons.newspaper_fill,
+                isActive: _activeTabIndex == 2,
+              ),
+              KBottomNavBarItem(
+                title: "FINANCES",
+                icon: PhosphorIcons.currency_eur_fill,
+                isActive: _activeTabIndex == 3,
+              ),
+              KBottomNavBarItem(
+                title: "SAVED",
+                icon: PhosphorIcons.heart,
+                isActive: _activeTabIndex == 4,
+              ),
+            ],
+          ),
         ),
       ),
     );

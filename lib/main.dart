@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:okito/okito.dart';
 import 'package:openarc_employee/config/routes/k_routes.dart';
 import 'package:openarc_employee/core/application.dart';
 
@@ -11,6 +12,8 @@ void main() async {
 
   // Registering routes
   KRoutes.registerRoutes();
+
+  OkitoStorage.init(storageName: "arc_open_data");
 
   // Running application
   runApp(Application());

@@ -22,6 +22,7 @@ import 'package:openarc_employee/modules/settings/bank_details_screen.dart';
 import 'package:openarc_employee/modules/settings/change_password_screen.dart';
 import 'package:openarc_employee/modules/settings/settings_screen.dart';
 import 'package:openarc_employee/modules/splash_screen.dart';
+import 'package:openarc_employee/modules/start_screen.dart';
 
 import './k_route.dart';
 import './k_router.dart';
@@ -31,6 +32,7 @@ import './k_router.dart';
 ///
 class KRoutes {
   static final String splashRoute = "/";
+  static final String stepperRoute = "/intro";
 
   // Login routes
   static final String loginRoute = "/login";
@@ -72,6 +74,7 @@ class KRoutes {
 
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.stepperRoute, page: StartScreen(), isInitial: true));
     KRouter().registerRoute(route: KRoute(name: KRoutes.loginRoute, page: LoginScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.registerRoute, page: RegisterScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.resetPasswordRoute, page: ResetPasswordScreen()));

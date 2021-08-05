@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   KButton(
                     onPressed: () {
                       // TODO: implement login
-                      KRouter().push(KRoutes.exploreRoute);
+                      KRouter().push(KRoutes.exploreRoute, replace: true);
                     },
                     title: "LOG IN",
                     color: ColorConstants.greenColor,
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      KRouter().push(KRoutes.resetPasswordRoute, replace: true);
+                      KRouter().push(KRoutes.resetPasswordRoute);
                     },
                     child: Text(
                       "Forgot password ?",
