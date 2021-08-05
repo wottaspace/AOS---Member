@@ -29,6 +29,7 @@ class InfoField extends StatelessWidget {
         SectionTitle(title: title),
         SizedBox(height: 5),
         Container(
+          width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
             boxShadow: [
@@ -47,7 +48,7 @@ class InfoField extends StatelessWidget {
                 if (leading != null) leading!,
                 SizedBox(width: 10),
                 if (contentSubtitle == null)
-                  titleWidget
+                  Expanded(child: titleWidget)
                 else
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

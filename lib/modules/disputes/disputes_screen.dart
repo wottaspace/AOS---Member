@@ -69,6 +69,9 @@ class _DisputesScreenState extends State<DisputesScreen> {
                   SectionTitle(title: "OPEN"),
                   SizedBox(height: 10),
                   DisputeCard(
+                    onTap: () {
+                      KRouter().push(KRoutes.disputeDetailsRoute);
+                    },
                     createdAt: DateTime.now(),
                     description: "Lorem ipsum dolot sit atmet consectur",
                     isClosed: false,
@@ -76,6 +79,9 @@ class _DisputesScreenState extends State<DisputesScreen> {
                   ),
                   SizedBox(height: 20),
                   DisputeCard(
+                    onTap: () {
+                      KRouter().push(KRoutes.disputeDetailsRoute);
+                    },
                     createdAt: DateTime.now(),
                     description: "Lorem ipsum dolot sit atmet consectur",
                     isClosed: false,
@@ -85,6 +91,9 @@ class _DisputesScreenState extends State<DisputesScreen> {
                   SectionTitle(title: "CLOSED"),
                   SizedBox(height: 10),
                   DisputeCard(
+                    onTap: () {
+                      KRouter().push(KRoutes.disputeDetailsRoute);
+                    },
                     createdAt: DateTime.now(),
                     description: "Lorem ipsum dolot sit atmet consectur",
                     isClosed: true,
