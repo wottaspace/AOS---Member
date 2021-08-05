@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/config/routes/k_routes.dart';
-import 'package:openarc_employee/widgets/buttons/k_button.dart';
-import 'package:openarc_employee/widgets/forms/k_text_field.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/routes/k_routes.dart';
+import 'package:arcopen_employee/widgets/buttons/k_button.dart';
+import 'package:arcopen_employee/widgets/forms/k_text_field.dart';
 
 class AcceptJobScreen extends StatefulWidget {
   const AcceptJobScreen({Key? key}) : super(key: key);

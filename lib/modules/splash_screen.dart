@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/config/routes/k_routes.dart';
-import 'package:openarc_employee/constants/app_constants.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/routes/k_routes.dart';
+import 'package:arcopen_employee/constants/app_constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

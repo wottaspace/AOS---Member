@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/config/routes/k_routes.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
-import 'package:openarc_employee/widgets/misc/section_title.dart';
-import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/routes/k_routes.dart';
+import 'package:arcopen_employee/constants/color_constants.dart';
+import 'package:arcopen_employee/widgets/misc/section_title.dart';
+import 'package:arcopen_employee/widgets/navigation/k_app_bar.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);

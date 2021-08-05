@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
-import 'package:openarc_employee/widgets/buttons/k_button.dart';
-import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
+import 'package:arcopen_employee/constants/color_constants.dart';
+import 'package:arcopen_employee/widgets/buttons/k_button.dart';
+import 'package:arcopen_employee/widgets/navigation/k_app_bar.dart';
 
 class PayScreen extends StatefulWidget {
   const PayScreen({Key? key}) : super(key: key);

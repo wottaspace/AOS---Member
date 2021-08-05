@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:openarc_employee/widgets/misc/info_field.dart';
-import 'package:openarc_employee/widgets/navigation/k_app_bar.dart';
+import 'package:arcopen_employee/widgets/misc/info_field.dart';
+import 'package:arcopen_employee/widgets/navigation/k_app_bar.dart';
 
 class DisputeDetailsScreen extends StatefulWidget {
   const DisputeDetailsScreen({Key? key}) : super(key: key);

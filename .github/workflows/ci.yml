@@ -1,12 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build APK
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main, develop ]
   pull_request:
     branches: [ main ]
 
@@ -30,8 +27,8 @@ jobs:
       - uses: subosito/flutter-action@v1.5.3
         with:
           flutter-version: '2.2.1'
-      - run: flutter pub get
-      - run: flutter build apk
-      - run: flutter build appbundle
-      - run: flutter build ios --release --no-codesign
 
+      - run: flutter pub get
+      - run: flutter build apk --release
+      - run: flutter build appbundle --release
+      - run: flutter build ios --release --no-codesign

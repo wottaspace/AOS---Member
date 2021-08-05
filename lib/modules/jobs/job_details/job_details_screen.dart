@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
-import 'package:openarc_employee/modules/jobs/job_details/accept_job_screen.dart';
-import 'package:openarc_employee/widgets/buttons/k_button.dart';
-import 'package:openarc_employee/widgets/misc/info_field.dart';
-import 'package:openarc_employee/widgets/misc/section_title.dart';
-import 'package:openarc_employee/widgets/navigation/expanded_app_bar.dart';
+import 'package:arcopen_employee/constants/color_constants.dart';
+import 'package:arcopen_employee/modules/jobs/job_details/accept_job_screen.dart';
+import 'package:arcopen_employee/widgets/buttons/k_button.dart';
+import 'package:arcopen_employee/widgets/misc/info_field.dart';
+import 'package:arcopen_employee/widgets/misc/section_title.dart';
+import 'package:arcopen_employee/widgets/navigation/expanded_app_bar.dart';
 
 class JobDetailsScreen extends StatefulWidget {
   const JobDetailsScreen({Key? key}) : super(key: key);

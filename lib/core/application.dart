@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/config/themes/light_theme.dart';
-import 'package:openarc_employee/constants/app_constants.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/themes/light_theme.dart';
+import 'package:arcopen_employee/constants/app_constants.dart';
 
 class Application extends StatelessWidget {
   @override

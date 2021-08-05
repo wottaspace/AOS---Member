@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:openarc_employee/widgets/navigation/k_bottom_navbar_item.dart';
+import 'package:arcopen_employee/widgets/navigation/k_bottom_navbar_item.dart';
 
 typedef ActionItemTappedCallback = Function(int);
 

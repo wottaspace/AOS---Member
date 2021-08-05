@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
+import 'package:arcopen_employee/constants/color_constants.dart';
 
 class JobCard extends StatelessWidget {
   const JobCard({

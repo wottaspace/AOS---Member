@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/config/routes/k_routes.dart';
-import 'package:openarc_employee/widgets/finances/finance_card.dart';
-import 'package:openarc_employee/widgets/misc/k_chip.dart';
-import 'package:openarc_employee/widgets/misc/section_title.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/routes/k_routes.dart';
+import 'package:arcopen_employee/widgets/finances/finance_card.dart';
+import 'package:arcopen_employee/widgets/misc/k_chip.dart';
+import 'package:arcopen_employee/widgets/misc/section_title.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({Key? key}) : super(key: key);

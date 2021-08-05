@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/config/routes/k_routes.dart';
-import 'package:openarc_employee/widgets/forms/k_text_field.dart';
-import 'package:openarc_employee/widgets/jobs/job_card.dart';
-import 'package:openarc_employee/widgets/jobs/recommended_job_card.dart';
-import 'package:openarc_employee/widgets/misc/k_chip.dart';
-import 'package:openarc_employee/widgets/misc/section_title.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/routes/k_routes.dart';
+import 'package:arcopen_employee/widgets/forms/k_text_field.dart';
+import 'package:arcopen_employee/widgets/jobs/job_card.dart';
+import 'package:arcopen_employee/widgets/jobs/recommended_job_card.dart';
+import 'package:arcopen_employee/widgets/misc/k_chip.dart';
+import 'package:arcopen_employee/widgets/misc/section_title.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({Key? key}) : super(key: key);

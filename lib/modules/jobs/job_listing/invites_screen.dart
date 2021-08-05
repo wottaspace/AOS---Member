@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/config/routes/k_routes.dart';
-import 'package:openarc_employee/widgets/jobs/job_card.dart';
-import 'package:openarc_employee/widgets/misc/section_title.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/routes/k_routes.dart';
+import 'package:arcopen_employee/widgets/jobs/job_card.dart';
+import 'package:arcopen_employee/widgets/misc/section_title.dart';
 
 class InvitesScreen extends StatefulWidget {
   const InvitesScreen({Key? key}) : super(key: key);

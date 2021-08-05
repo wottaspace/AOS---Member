@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:openarc_employee/widgets/misc/section_title.dart';
+import 'package:arcopen_employee/widgets/misc/section_title.dart';
 
 class NotificationsDialog extends StatefulWidget {
   const NotificationsDialog({Key? key}) : super(key: key);

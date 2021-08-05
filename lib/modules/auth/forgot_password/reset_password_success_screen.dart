@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
-import 'package:openarc_employee/widgets/buttons/k_button.dart';
+import 'package:arcopen_employee/constants/color_constants.dart';
+import 'package:arcopen_employee/widgets/buttons/k_button.dart';
 
 class ResetPasswordSuccessScreen extends StatefulWidget {
   const ResetPasswordSuccessScreen({Key? key}) : super(key: key);

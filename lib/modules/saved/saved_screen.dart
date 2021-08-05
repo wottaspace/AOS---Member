@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:openarc_employee/widgets/jobs/job_card.dart';
-import 'package:openarc_employee/widgets/misc/section_title.dart';
+import 'package:arcopen_employee/widgets/jobs/job_card.dart';
+import 'package:arcopen_employee/widgets/misc/section_title.dart';
 
 class SavedScreen extends StatefulWidget {
   const SavedScreen({Key? key}) : super(key: key);

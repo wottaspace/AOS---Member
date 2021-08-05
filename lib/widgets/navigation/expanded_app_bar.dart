@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
 
 class ExpandedAppBar extends StatelessWidget {
   final String jobTitle;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/config/routes/k_router.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
-import 'package:openarc_employee/widgets/dialogs/invoice_details_dialog.dart';
+import 'package:arcopen_employee/config/routes/k_router.dart';
+import 'package:arcopen_employee/constants/color_constants.dart';
+import 'package:arcopen_employee/widgets/dialogs/invoice_details_dialog.dart';
 import 'package:simple_moment/simple_moment.dart';
 
 class FinanceCard extends StatelessWidget {
