@@ -8,22 +8,36 @@ class KTextField extends StatelessWidget {
     required this.controller,
     required this.hintText,
     this.icon,
+    this.color,
+    this.padding,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String hintText;
   final IconData? icon;
+  final Color? color;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 18.0, horizontal: 12.0),
+        contentPadding: padding ?? EdgeInsets.symmetric(vertical: 18.0, horizontal: 12.0),
         hintText: hintText,
-        prefixIcon: icon == null ? null : Icon(icon),
+        hintStyle: TextStyle(color: (color ?? ColorConstants.greyColor)),
+        prefixIcon: icon == null
+            ? null
+            : Icon(
+                icon,
+                color: color ?? ColorConstants.greyColor,
+              ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4.0),
-          borderSide: BorderSide(color: ColorConstants.greyColor),
+          borderSide: BorderSide(color: color ?? ColorConstants.greyColor),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(4.0),
+          borderSide: BorderSide(color: color ?? ColorConstants.greyColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(2.0),
@@ -86,13 +100,15 @@ class KTextField extends StatelessWidget {
         DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4.0),
-            boxShadow: withShadow ? [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.15),
-                blurRadius: 4.0,
-                offset: Offset(1, 2),
-              ),
-            ] : null,
+            boxShadow: withShadow
+                ? [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.15),
+                      blurRadius: 4.0,
+                      offset: Offset(1, 2),
+                    ),
+                  ]
+                : null,
             color: Colors.white,
           ),
           child: TextFormField(

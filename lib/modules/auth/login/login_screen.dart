@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SizedBox(height: 20),
                   Text(
-                    "OR",
+                    "- OR -",
                     style: Okito.theme.textTheme.bodyText2!.copyWith(
                       color: ColorConstants.greyColor,
                     ),

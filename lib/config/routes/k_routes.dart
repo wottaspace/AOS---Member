@@ -10,6 +10,7 @@ import 'package:openarc_employee/modules/disputes/disputes_screen.dart';
 import 'package:openarc_employee/modules/finances/finance_details_screen.dart';
 import 'package:openarc_employee/modules/home_screen.dart';
 import 'package:openarc_employee/modules/inbox/inbox_details_screen.dart';
+import 'package:openarc_employee/modules/invites/invite_friends_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/filter_screen.dart';
 import 'package:openarc_employee/modules/jobs/explore/location_filter_screen.dart';
 import 'package:openarc_employee/modules/jobs/job_details/apply_success_screen.dart';
@@ -61,6 +62,8 @@ class KRoutes {
   static final String disputesRoute = "/disputes";
   static final String createDisputeRoute = "/create-dispute";
 
+  static final String inviteFriendsRoute = "/invite-friends";
+
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
     KRouter().registerRoute(route: KRoute(name: KRoutes.loginRoute, page: LoginScreen()));
@@ -91,5 +94,7 @@ class KRoutes {
 
     KRouter().registerRoute(route: KRoute(name: KRoutes.disputesRoute, page: DisputesScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.createDisputeRoute, page: CreateDisputeScreen()));
+
+    KRouter().registerRoute(route: KRoute(name: KRoutes.inviteFriendsRoute, page: InviteFriendsScreen()));
   }
 }

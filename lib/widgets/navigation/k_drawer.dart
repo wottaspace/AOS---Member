@@ -116,7 +116,9 @@ class KDrawer extends StatelessWidget {
                     "Invite Friends",
                     style: titleStyle,
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    KRouter().push(KRoutes.inviteFriendsRoute);
+                  },
                 ),
                 Divider(),
                 ListTile(

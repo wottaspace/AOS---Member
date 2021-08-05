@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
               isActive: _activeTabIndex == 3,
             ),
             KBottomNavBarItem(
-              title: "DRAFTS",
+              title: "SAVED",
               icon: PhosphorIcons.heart,
               isActive: _activeTabIndex == 4,
             ),

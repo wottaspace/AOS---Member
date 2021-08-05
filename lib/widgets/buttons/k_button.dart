@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
-import 'package:openarc_employee/constants/color_constants.dart';
 
 class KButton extends StatelessWidget {
   const KButton({

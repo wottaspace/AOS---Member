@@ -61,6 +61,7 @@ class FinanceCard extends StatelessWidget {
                         "$status",
                         style: Okito.theme.textTheme.bodyText2!.copyWith(
                           fontSize: 10.0,
+                          letterSpacing: 1.3,
                           fontWeight: FontWeight.w600,
                           color: status == "PAID" ? ColorConstants.greenColor : ColorConstants.red,
                         ),

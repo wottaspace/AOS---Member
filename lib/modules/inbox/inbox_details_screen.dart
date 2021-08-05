@@ -210,8 +210,8 @@ class _MessageBulb extends StatelessWidget {
     return Align(
       alignment: alignment == BulbAlignment.left ? Alignment.centerLeft : Alignment.centerRight,
       child: Container(
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
         padding: const EdgeInsets.all(12.0),
-        width: MediaQuery.of(context).size.width * 0.75,
         decoration: BoxDecoration(
           color: alignment == BulbAlignment.left ? Color(0XFFF5F5F5) : Colors.white,
           borderRadius: BorderRadius.circular(6.0),

@@ -5,6 +5,7 @@ import 'package:okito/okito.dart';
 import 'package:openarc_employee/constants/color_constants.dart';
 import 'package:openarc_employee/widgets/buttons/k_button.dart';
 import 'package:openarc_employee/widgets/forms/k_text_field.dart';
+import 'package:openarc_employee/widgets/misc/section_title.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -116,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("ABOUT", style: titleStyle),
+                    SectionTitle(title: "ABOUT"),
                     SizedBox(height: 10),
                     Card(
                       child: Padding(
@@ -130,7 +131,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    Text("RESUME/CV", style: titleStyle),
+                    SectionTitle(title: "RESUME/CV"),
+                    SizedBox(height: 10),
                     Card(
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
