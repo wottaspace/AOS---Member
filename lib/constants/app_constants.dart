@@ -13,5 +13,6 @@ class AppConstants {
   
   // Storage constants
   static final String firstAppOpeningKey = "opening-for-the-first-time";
+  static final String accessTokenKey = "access-token";
   
 }

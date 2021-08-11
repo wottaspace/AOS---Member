@@ -10,17 +10,24 @@ class KTextField extends StatelessWidget {
     this.icon,
     this.color,
     this.padding,
+    this.validator,
+    this.isPassword = false,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String hintText;
   final IconData? icon;
   final Color? color;
+  final bool isPassword;
   final EdgeInsets? padding;
+  final FormFieldValidator<String>? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
+      obscureText: isPassword,
+      controller: controller,
       decoration: InputDecoration(
         contentPadding: padding ?? EdgeInsets.symmetric(vertical: 18.0, horizontal: 12.0),
         hintText: hintText,
@@ -84,6 +91,7 @@ class KTextField extends StatelessWidget {
     bool readOnly = false,
     VoidCallback? onTap,
     bool withShadow = true,
+    FormFieldValidator<String>? validator,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,6 +120,7 @@ class KTextField extends StatelessWidget {
             color: Colors.white,
           ),
           child: TextFormField(
+            validator: validator,
             controller: controller,
             readOnly: readOnly,
             onTap: onTap,
@@ -155,6 +164,7 @@ class KTextField extends StatelessWidget {
     IconData? leading,
     required String hintText,
     required TextEditingController controller,
+    final FormFieldValidator<String>? validator,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -162,6 +172,7 @@ class KTextField extends StatelessWidget {
         color: Colors.white,
       ),
       child: TextFormField(
+        validator: validator,
         controller: controller,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(12.0),
