@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
 import 'package:arcopen_employee/config/routes/k_router.dart';
@@ -23,7 +24,7 @@ class _StartScreenState extends State<StartScreen> {
       initialPage: 0,
     );
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      OkitoStorage.write(AppConstants.firstAppOpeningKey, true);
+      KStorage().write(key: AppConstants.firstAppOpeningKey, value: true);
     });
     super.initState();
   }

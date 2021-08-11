@@ -9,7 +9,6 @@ class AuthRepository extends BaseRepository {
 
   Future<LoginResponse> login({required LoginRequest request}) async {
     try {
-      print(request.toJson());
       final Response response = await client.post(path: "/login/", args: request.toJson());
       return LoginResponse.fromJson(response.data);
     } on DioError catch (e) {

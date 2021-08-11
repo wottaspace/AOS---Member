@@ -12,7 +12,11 @@ class KStorage {
     OkitoStorage.init(storageName: "arc_open_data");
   }
 
-  void write({required String key, required String value}) {
+  bool contains(String key) {
+    return this.read(key: key) != null;
+  }
+
+  void write<T>({required String key, required T value}) {
     OkitoStorage.write(key, value);
   }
 

@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:okito/okito.dart';
@@ -17,8 +18,12 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       Future.delayed(Duration(seconds: 2)).then((value) {
-        if (OkitoStorage.read(AppConstants.firstAppOpeningKey) == null) {
+        if (!KStorage().contains(AppConstants.firstAppOpeningKey)) {
           KRouter().push(KRoutes.stepperRoute, replace: true);
+          return;
+        }
+        if (KStorage().contains(AppConstants.accessTokenKey)) {
+          KRouter().push(KRoutes.exploreRoute, replace: true);
           return;
         }
         KRouter().push(KRoutes.loginRoute, replace: true);
