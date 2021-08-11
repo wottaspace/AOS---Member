@@ -38,10 +38,15 @@ class LoginController extends OkitoController with ValidationMixin, ToastMixin {
 
         Okito.use<AuthService>().profileExists = value.profileExists;
         Okito.use<AuthService>().user = value.user;
-        KRouter().push(KRoutes.exploreRoute, replace: true);
+
+        if (value.profileExists) {
+          KRouter().push(KRoutes.exploreRoute, replace: true);
+        } else {
+          KRouter().push(KRoutes.profileRoute, replace: true);
+        }
       }).catchError((e) {
         KLoader.hide();
-        this.showToast(e.message);
+        this.showErrorToast(e.message);
       });
     }
   }
