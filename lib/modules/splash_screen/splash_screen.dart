@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/modules/splash_screen/splash_screen_controller.dart';
 import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,20 +14,12 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final SplashScreenController controller = SplashScreenController();
+
   @override
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      Future.delayed(Duration(seconds: 2)).then((value) {
-        if (!KStorage().contains(AppConstants.firstAppOpeningKey)) {
-          KRouter().push(KRoutes.stepperRoute, replace: true);
-          return;
-        }
-        if (KStorage().contains(AppConstants.accessTokenKey)) {
-          KRouter().push(KRoutes.exploreRoute, replace: true);
-          return;
-        }
-        KRouter().push(KRoutes.loginRoute, replace: true);
-      });
+      controller.initialize();
     });
     super.initState();
   }

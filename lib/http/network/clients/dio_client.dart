@@ -1,4 +1,6 @@
+import 'package:arcopen_employee/constants/app_constants.dart';
 import 'package:arcopen_employee/http/network/network_client.dart';
+import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -15,6 +17,18 @@ class DioClient with NetworkClient {
     _dio = Dio(
       BaseOptions(
         baseUrl: baseUrl,
+      ),
+    );
+
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          final String? accessToken = KStorage().read(key: AppConstants.accessTokenKey);
+          if (accessToken != null) {
+            options.headers.addAll({"authorization": "Bearer $accessToken"});
+          }
+          return handler.next(options);
+        },
       ),
     );
   }

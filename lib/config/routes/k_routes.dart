@@ -21,7 +21,7 @@ import 'package:arcopen_employee/modules/jobs/job_listing/history_details_screen
 import 'package:arcopen_employee/modules/settings/bank_details_screen.dart';
 import 'package:arcopen_employee/modules/settings/change_password_screen.dart';
 import 'package:arcopen_employee/modules/settings/settings_screen.dart';
-import 'package:arcopen_employee/modules/splash_screen.dart';
+import 'package:arcopen_employee/modules/splash_screen/splash_screen.dart';
 import 'package:arcopen_employee/modules/start_screen.dart';
 
 import './k_route.dart';

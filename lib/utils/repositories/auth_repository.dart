@@ -30,4 +30,15 @@ class AuthRepository extends BaseRepository {
   Future sendForgotPasswordRequest() async {}
   Future editPassword() async {}
   Future editProfile() async {}
+
+  Future readMemberProfile() async {
+    try {
+      final Response response = await client.get(path: "/memberProfile");
+      // return RegisterResponse.fromJson(response.data);
+      print(response.data);
+      return {};
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
 }
