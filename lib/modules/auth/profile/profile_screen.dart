@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/modules/auth/profile/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -15,14 +16,15 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final TextEditingController _driveController = TextEditingController();
-  final TextEditingController _badgeNumberController = TextEditingController();
-  final TextEditingController _contactController = TextEditingController();
-  final TextEditingController _hourlyRateController = TextEditingController();
-  final TextEditingController _unavailabilityController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
-  final TextEditingController _postalCodeController = TextEditingController();
+  final ProfileController profileController = ProfileController();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      profileController.prefillForm();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
 
     final List<_MenuItem> menuItems = [
-      _MenuItem(onTap: () {}, title: "Edit Profile"),
+      _MenuItem(
+        onTap: () {
+          profileController.createOrUpdateProfile();
+        },
+        title: "Edit Profile",
+      ),
       _MenuItem(onTap: () {}, title: "Logout"),
     ];
 
@@ -175,22 +182,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         childAspectRatio: 2.5,
                       ),
                       children: [
-                        KTextField.soft(label: "DO YOU DRIVE ?", controller: _driveController),
-                        KTextField.soft(label: "BADGE NUMBER", controller: _badgeNumberController),
-                        KTextField.soft(label: "CONTACT*", controller: _contactController),
-                        KTextField.soft(label: "HOURLY RATE", controller: _hourlyRateController),
+                        KTextField.soft(
+                          label: "DO YOU DRIVE ?",
+                          controller: profileController.driveController,
+                          hintText: "Type Yes or No",
+                        ),
+                        KTextField.soft(label: "BADGE NUMBER", controller: profileController.badgeNumberController),
+                        KTextField.soft(label: "CONTACT*", controller: profileController.contactController),
+                        KTextField.soft(label: "HOURLY RATE", controller: profileController.hourlyRateController),
                       ],
                     ),
                     SizedBox(height: 20),
                     KTextField.soft(
                       label: "UNAVAILABILITY",
                       suffixIcon: PhosphorIcons.calendar,
-                      controller: _unavailabilityController,
+                      controller: profileController.unavailabilityController,
                     ),
                     SizedBox(height: 20),
                     KTextField.soft(
                       label: "ADRESS",
-                      controller: _addressController,
+                      controller: profileController.addressController,
                     ),
                     SizedBox(height: 20),
                     GridView(
@@ -205,11 +216,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         KTextField.soft(
                           label: "CITY",
-                          controller: _cityController,
+                          controller: profileController.cityController,
                         ),
                         KTextField.soft(
                           label: "POSTAL CODE",
-                          controller: _postalCodeController,
+                          controller: profileController.postalCodeController,
                         ),
                       ],
                     ),

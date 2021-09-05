@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:okito/okito.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 
@@ -91,7 +92,9 @@ class KTextField extends StatelessWidget {
     bool readOnly = false,
     VoidCallback? onTap,
     bool withShadow = true,
+    TextInputType? keybordType,
     FormFieldValidator<String>? validator,
+    List<TextInputFormatter>? inputFormatters,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,11 +125,13 @@ class KTextField extends StatelessWidget {
           child: TextFormField(
             validator: validator,
             controller: controller,
+            inputFormatters: inputFormatters,
             readOnly: readOnly,
             onTap: onTap,
             minLines: minLines,
             maxLines: maxLines,
             obscureText: isPassword,
+            keyboardType: keybordType,
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: Okito.theme.textTheme.bodyText2!.copyWith(

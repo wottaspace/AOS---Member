@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Okito.isLandscape ? AspectRatio(aspectRatio: 15 / 1) : AspectRatio(aspectRatio: 5 / 3),
+                    Okito.isLandscape ? AspectRatio(aspectRatio: 15 / 1) : AspectRatio(aspectRatio: 10 / 4),
                     Container(
                       width: 200,
                       height: 80,
@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintText: "email",
                       icon: PhosphorIcons.envelope,
                       validator: (String? value) {
-                        return controller.validateRequired(fieldName: "username", value: value);
+                        return controller.validateRequired(fieldName: "email", value: value);
                       },
                     ),
                     SizedBox(height: 20),

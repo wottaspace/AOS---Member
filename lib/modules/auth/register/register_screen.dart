@@ -1,4 +1,5 @@
 import 'package:arcopen_employee/modules/auth/register/register_controller.dart';
+import 'package:arcopen_employee/utils/helpers/badge_input_formatter.dart';
 import 'package:arcopen_employee/utils/helpers/form_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -54,6 +55,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     SizedBox(height: 20),
                     KTextField.soft(
                       label: "EMAIL",
+                      keybordType: TextInputType.emailAddress,
                       controller: controller.emailController,
                     ),
                     SizedBox(height: 20),
@@ -61,6 +63,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       label: "BADGE NUMBER",
                       hintText: "xxxx-xxxx-xxxx-xxxx",
                       controller: controller.badgeNumberController,
+                      inputFormatters: [
+                        BadgeInputFormatter(
+                          mask: 'xxxx-xxxx-xxxx-xxxx',
+                          separator: '-',
+                        ),
+                      ],
                       validator: (String? value) {
                         return controller.validateBadgeNumber(fieldName: "badge number", badgeNumber: value!);
                       },
@@ -102,7 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return null;
                       },
                     ),
-                    Okito.isLandscape ? SizedBox(height: 50) : AspectRatio(aspectRatio: 5 / 1),
+                    Okito.isLandscape ? SizedBox(height: 50) : AspectRatio(aspectRatio: 10 / 1),
                     KButton.outlined(
                       expanded: true,
                       onPressed: () {
@@ -111,6 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       title: "CREATE ACCOUNT",
                       color: Okito.theme.primaryColor,
                     ),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),

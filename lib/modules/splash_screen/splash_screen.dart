@@ -1,10 +1,6 @@
 import 'package:arcopen_employee/modules/splash_screen/splash_screen_controller.dart';
-import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:arcopen_employee/config/routes/k_router.dart';
-import 'package:arcopen_employee/config/routes/k_routes.dart';
-import 'package:arcopen_employee/constants/app_constants.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

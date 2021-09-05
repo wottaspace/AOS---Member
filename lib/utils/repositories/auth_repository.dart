@@ -31,12 +31,10 @@ class AuthRepository extends BaseRepository {
   Future editPassword() async {}
   Future editProfile() async {}
 
-  Future readMemberProfile() async {
+  Future<LoginResponse> getLoggedUser() async {
     try {
-      final Response response = await client.get(path: "/memberProfile");
-      // return RegisterResponse.fromJson(response.data);
-      print(response.data);
-      return {};
+      final Response response = await client.get(path: "/getLoggedInUser/");
+      return LoginResponse.fromJson(response.data);
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }

@@ -5,7 +5,7 @@ class LoginResponse {
     required this.user,
   });
 
-  String accessToken;
+  String? accessToken;
   bool profileExists;
   User user;
 
@@ -39,8 +39,8 @@ class User {
     required this.userType,
   });
 
-  String badgeNumber;
-  DateTime createdAt;
+  String? badgeNumber;
+  DateTime? createdAt;
   String deviceId;
   String deviceType;
   String email;
@@ -71,7 +71,7 @@ class User {
 
   Map<String, dynamic> toJson() => {
         "badge_number": badgeNumber,
-        "created_at": createdAt.toIso8601String(),
+        "created_at": createdAt?.toIso8601String(),
         "device_id": deviceId,
         "device_type": deviceType,
         "email": email,
