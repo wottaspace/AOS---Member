@@ -33,7 +33,7 @@ class _ResetPasswordSuccessScreenState extends State<ResetPasswordSuccessScreen>
                       style: Okito.theme.textTheme.bodyText2,
                       children: [
                         TextSpan(
-                          text: "xxx@domain.com", // replace with email
+                          text: Okito.arguments['email'] ?? "your email address",
                           style: Okito.theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.bold),
                         )
                       ],
@@ -41,7 +41,9 @@ class _ResetPasswordSuccessScreenState extends State<ResetPasswordSuccessScreen>
                   ),
                   SizedBox(height: 20),
                   KButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Okito.pop();
+                    },
                     title: "DONE",
                     color: ColorConstants.greenColor,
                   ),
