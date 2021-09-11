@@ -2,6 +2,7 @@ import 'package:arcopen_employee/http/network/clients/dio_client.dart';
 import 'package:arcopen_employee/http/requests/login_request.dart';
 import 'package:arcopen_employee/http/requests/register_request.dart';
 import 'package:arcopen_employee/http/responses/login_response.dart';
+import 'package:arcopen_employee/http/responses/profile_response.dart';
 import 'package:arcopen_employee/http/responses/register_response.dart';
 import 'package:arcopen_employee/utils/repositories/base_repository.dart';
 import 'package:dio/dio.dart';
@@ -30,6 +31,15 @@ class AuthRepository extends BaseRepository {
   Future sendForgotPasswordRequest() async {}
   Future editPassword() async {}
   Future editProfile() async {}
+
+  Future<ProfileResponse> createProfile({required FormData data}) async {
+    try {
+      final Response response = await client.post(path: "/profile/", args: data);
+      return ProfileResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
 
   Future<LoginResponse> getLoggedUser() async {
     try {

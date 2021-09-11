@@ -34,4 +34,10 @@ mixin ValidationMixin {
     if (value.isNotEmpty && value.length < min) return validationMessage;
     return null;
   }
+
+  String? validateValueEquals({required String fieldName, required String value, required List<String> equalValues}) {
+    final String validationMessage = "$fieldName must correspond to one of ${equalValues.join(" or ")}";
+    if (!equalValues.map((e) => e.toLowerCase()).contains(value.toLowerCase())) return validationMessage;
+    return null;
+  }
 }

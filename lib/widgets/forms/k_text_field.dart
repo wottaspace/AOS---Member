@@ -88,7 +88,7 @@ class KTextField extends StatelessWidget {
     bool isPassword = false,
     Color? titleTextColor,
     IconData? suffixIcon,
-    Icon? prefixIcon,
+    Widget? prefixIcon,
     bool readOnly = false,
     VoidCallback? onTap,
     bool withShadow = true,

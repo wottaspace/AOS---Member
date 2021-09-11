@@ -16,6 +16,10 @@ class KStorage {
     return this.read(key: key) != null;
   }
 
+  void remove(String key) {
+    OkitoStorage.removeKey(key);
+  }
+
   void write<T>({required String key, required T value}) {
     OkitoStorage.write(key, value);
   }

@@ -11,6 +11,7 @@ final ThemeData lightTheme = ThemeData(
     },
   ),
   textTheme: TextTheme(
+    headline1: TextStyle(fontSize: 32.0),
     headline2: TextStyle(
       fontSize: 28.0,
       color: Colors.black,
