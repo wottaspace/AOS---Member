@@ -30,7 +30,6 @@ class _DoubleTapToExitState extends State<DoubleTapToExit> {
       child: widget.child,
       onWillPop: () {
         ++_tappedTimes;
-        print(_tappedTimes);
         if (_tappedTimes == 1) {
           EyroToast.showToast(
             text: "Hit back button again to quit",

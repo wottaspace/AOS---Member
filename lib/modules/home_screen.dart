@@ -100,7 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     KRouter().push(KRoutes.profileRoute);
                   },
-                  child: CircleAvatar(),
+                  child: CircleAvatar(
+                    // child: ClipRRect(child: ),
+                  ),
                 ),
               ),
             ],

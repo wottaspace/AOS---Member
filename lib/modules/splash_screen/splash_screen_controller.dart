@@ -2,6 +2,7 @@ import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/app_constants.dart';
 import 'package:arcopen_employee/http/responses/login_response.dart';
+import 'package:arcopen_employee/http/responses/member_profile_response.dart';
 import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:arcopen_employee/utils/mixins/toast_mixin.dart';
 import 'package:arcopen_employee/utils/repositories/auth_repository.dart';
@@ -42,6 +43,10 @@ class SplashScreenController with ToastMixin {
       final LoginResponse loginResponse = await _repository.getLoggedUser();
       Okito.use<AuthService>().user = loginResponse.user;
       Okito.use<AuthService>().profileExists = loginResponse.profileExists;
+      if (loginResponse.profileExists) {
+        final MemberProfileResponse memberProfileResponse = await _repository.readMemberProfile();
+        Okito.use<AuthService>().profile = memberProfileResponse.profile;
+      }
       _result = loginResponse.profileExists;
     } on Exception catch (e) {
       this.showErrorToast(e.toString().replaceAll("Exception: ", ""));

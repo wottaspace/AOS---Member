@@ -2,6 +2,7 @@ import 'package:arcopen_employee/http/network/clients/dio_client.dart';
 import 'package:arcopen_employee/http/requests/login_request.dart';
 import 'package:arcopen_employee/http/requests/register_request.dart';
 import 'package:arcopen_employee/http/responses/login_response.dart';
+import 'package:arcopen_employee/http/responses/member_profile_response.dart';
 import 'package:arcopen_employee/http/responses/profile_response.dart';
 import 'package:arcopen_employee/http/responses/register_response.dart';
 import 'package:arcopen_employee/utils/repositories/base_repository.dart';
@@ -32,9 +33,27 @@ class AuthRepository extends BaseRepository {
   Future editPassword() async {}
   Future editProfile() async {}
 
+  Future<MemberProfileResponse> readMemberProfile() async {
+    try {
+      final Response response = await client.get(path: "/memberProfile");
+      return MemberProfileResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
   Future<ProfileResponse> createProfile({required FormData data}) async {
     try {
       final Response response = await client.post(path: "/profile/", args: data);
+      return ProfileResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
+  Future<ProfileResponse> updateProfile({required FormData data}) async {
+    try {
+      final Response response = await client.put(path: "/profile/", args: data);
       return ProfileResponse.fromJson(response.data);
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));

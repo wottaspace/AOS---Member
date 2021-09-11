@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:arcopen_employee/constants/app_constants.dart';
 import 'package:arcopen_employee/http/network/network_client.dart';
 import 'package:arcopen_employee/utils/helpers/k_storage.dart';
@@ -25,8 +27,13 @@ class DioClient with NetworkClient {
         onRequest: (options, handler) {
           final String? accessToken = KStorage().read(key: AppConstants.accessTokenKey);
           if (accessToken != null) {
-            options.headers.addAll({"authorization": "Bearer $accessToken"});
+            options.headers.addAll({"Authorization": "Bearer $accessToken"});
           }
+          options.headers.addAll({
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept": "application/json",
+          });
+
           return handler.next(options);
         },
       ),
