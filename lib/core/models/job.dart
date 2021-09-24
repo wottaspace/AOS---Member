@@ -47,6 +47,9 @@ class Job {
   String shiftType;
   String updatedAt;
 
+  String get startDate => shiftStartDate.split(" ").reversed.skip(2).toList().reversed.join(" ");
+  String get endDate => shiftEndDate.split(" ").reversed.skip(2).toList().reversed.join(" ");
+
   factory Job.fromJson(Map<String, dynamic> json) {
     return Job(
       address: json["address"],

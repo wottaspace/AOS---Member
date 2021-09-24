@@ -1,4 +1,3 @@
-import 'package:arcopen_employee/http/network/clients/dio_client.dart';
 import 'package:arcopen_employee/http/requests/login_request.dart';
 import 'package:arcopen_employee/http/requests/register_request.dart';
 import 'package:arcopen_employee/http/responses/login_response.dart';

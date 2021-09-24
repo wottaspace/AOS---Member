@@ -25,7 +25,7 @@ class _InvitesScreenState extends State<InvitesScreen> {
           itemCount: 3,
           itemBuilder: (context, index) {
             return JobCard(
-              applications: 4,
+              applicantCount: 2,
               company: "TG Minto",
               dateRange: "15 JAN - 18 JAN",
               employmentType: "Express employment",

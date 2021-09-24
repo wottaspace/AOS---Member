@@ -19,7 +19,7 @@ class ExploreScreenController extends OkitoController with ToastMixin {
   List<Job> recommendedJobs = [];
 
   // Job loading state
-  JobLoadingState jobLoadingState = JobLoadingState.pending;
+  JobLoadingState jobLoadingState = JobLoadingState.loading;
 
   Future<void> loadJobs() async {
     setState(() {

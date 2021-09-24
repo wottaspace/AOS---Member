@@ -6,7 +6,6 @@ import 'package:arcopen_employee/constants/color_constants.dart';
 class JobCard extends StatelessWidget {
   const JobCard({
     Key? key,
-    required this.applications,
     required this.company,
     required this.dateRange,
     required this.employmentType,
@@ -17,6 +16,7 @@ class JobCard extends StatelessWidget {
     required this.employeePhotoUrl,
     required this.onTap,
     required this.onActionTapped,
+    required this.applicantCount,
     this.liked = false,
     this.status,
   }) : super(key: key);
@@ -25,7 +25,6 @@ class JobCard extends StatelessWidget {
   final bool isNightlyJob;
   final String payRate;
   final String postedAt;
-  final int applications;
   final String company;
   final String location;
   final String employmentType;
@@ -34,6 +33,7 @@ class JobCard extends StatelessWidget {
   final bool liked;
   final VoidCallback onActionTapped;
   final String? status;
+  final int applicantCount;
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +182,7 @@ class JobCard extends StatelessWidget {
                       ),
                       if (status == null)
                         Text(
-                          "$applications people applied",
+                          "$applicantCount people applied",
                           style: Okito.theme.textTheme.bodyText2!.copyWith(
                             fontSize: 12.0,
                             fontWeight: FontWeight.bold,

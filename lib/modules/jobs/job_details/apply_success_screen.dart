@@ -21,7 +21,7 @@ class _ApplySuccessScreenState extends State<ApplySuccessScreen> {
         backgroundColor: Colors.white,
         elevation: 0.5,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: Okito.pop,
           icon: Icon(
             PhosphorIcons.caret_left_bold,
             color: Colors.black,

@@ -1,3 +1,5 @@
+import 'package:arcopen_employee/core/models/job.dart';
+import 'package:arcopen_employee/modules/jobs/job_details/job_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -18,175 +20,183 @@ class JobDetailsScreen extends StatefulWidget {
 
 class _JobDetailsScreenState extends State<JobDetailsScreen> {
   late bool actionsVisible;
+  final JobDetailsController controller = JobDetailsController();
 
   @override
   void initState() {
     actionsVisible = true;
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      print("ok");
+      controller.init();
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(
-        statusBarColor: Okito.theme.primaryColor,
-        statusBarIconBrightness: Brightness.light,
-      ),
-      child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ExpandedAppBar(
-                  jobTitle: "Talwar's Residency",
-                  company: "Express Security",
-                  location: "Kitchener",
-                  timeLeft: "7 Days",
-                ),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SectionTitle(title: "DESCRIPTION"),
-                      SizedBox(height: 10),
-                      Text(
-                        "Looking for a gate security guard. Should have strong build, should be punctual, spontaneous, CRP certificate required. The shift would be from 11PM to 7AM in the morning",
-                        style: Okito.theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w400),
-                      ),
-                      SizedBox(height: 20),
-                      InfoField(
-                        title: "JOB TYPE",
-                        contentTitle: "Contract",
-                        contentSubtitle: "More than 30hrs/week and 1 month",
-                        leading: Icon(
-                          PhosphorIcons.calendar,
-                          color: Okito.theme.primaryColor,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      InfoField(
-                        title: "PAY RATE",
-                        contentTitle: "\$12/hr",
-                        leading: Icon(
-                          PhosphorIcons.calendar,
-                          color: Okito.theme.primaryColor,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: InfoField(
-                              title: "START DATE",
-                              contentTitle: "14/11/2020",
-                              leading: Icon(
-                                PhosphorIcons.calendar,
-                                color: Okito.theme.primaryColor,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: InfoField(
-                              title: "END DATE",
-                              contentTitle: "14/01/2021",
-                              leading: Icon(
-                                PhosphorIcons.calendar,
-                                color: Okito.theme.primaryColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: InfoField(
-                              title: "START TIME",
-                              contentTitle: "07:00 AM",
-                              leading: Icon(
-                                PhosphorIcons.calendar,
-                                color: Okito.theme.primaryColor,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: InfoField(
-                              title: "END TIME",
-                              contentTitle: "03:00 PM",
-                              leading: Icon(
-                                PhosphorIcons.calendar,
-                                color: Okito.theme.primaryColor,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+    return OkitoBuilder(
+      controller: controller,
+      builder: () {
+        if (controller.job == null) return SizedBox();
+        final Job job = controller.job!;
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle(
+            statusBarColor: Okito.theme.primaryColor,
+            statusBarIconBrightness: Brightness.light,
           ),
-        ),
-        bottomNavigationBar: actionsVisible
-            ? Padding(
-                padding: const EdgeInsets.all(16.0),
+          child: Scaffold(
+            body: SafeArea(
+              child: SingleChildScrollView(
                 child: Column(
-                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    KButton(
-                      expanded: true,
-                      onPressed: () {
-                        setState(() {
-                          actionsVisible = false;
-                        });
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AcceptJobScreen();
-                          },
-                        ).then((value) {
-                          setState(() {
-                            actionsVisible = true;
-                          });
-                        });
-                      },
-                      title: "ACCEPT",
-                      color: ColorConstants.greenColor,
+                    ExpandedAppBar(
+                      jobTitle: job.city,
+                      company: job.businessName,
+                      location: job.address,
+                      shiftType: job.shiftType,
                     ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: KButton.outlined(
-                            onPressed: () {},
-                            title: "MESSAGE EMPLOYER",
-                            color: Okito.theme.primaryColor,
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SectionTitle(title: "DESCRIPTION"),
+                          SizedBox(height: 10),
+                          Text(
+                            job.jobDescription,
+                            style: Okito.theme.textTheme.bodyText2!.copyWith(fontWeight: FontWeight.w400),
                           ),
-                        ),
-                        SizedBox(width: 5),
-                        Expanded(
-                          child: KButton.outlined(
-                            onPressed: () {},
-                            title: "DECLINE",
-                            color: ColorConstants.red,
+                          SizedBox(height: 20),
+                          InfoField(
+                            title: "JOB TYPE",
+                            contentTitle: job.jobType,
+                            contentSubtitle: job.jobCategory,
+                            leading: Icon(
+                              PhosphorIcons.calendar,
+                              color: Okito.theme.primaryColor,
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 20),
+                          InfoField(
+                            title: "PAY RATE",
+                            contentTitle: job.budget,
+                            leading: Icon(
+                              PhosphorIcons.calendar,
+                              color: Okito.theme.primaryColor,
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: InfoField(
+                                  title: "START DATE",
+                                  contentTitle: job.startDate,
+                                  leading: Icon(
+                                    PhosphorIcons.calendar,
+                                    color: Okito.theme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: InfoField(
+                                  title: "END DATE",
+                                  contentTitle: job.endDate,
+                                  leading: Icon(
+                                    PhosphorIcons.calendar,
+                                    color: Okito.theme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 20),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: InfoField(
+                                  title: "START TIME",
+                                  contentTitle: job.shiftStartTime,
+                                  leading: Icon(
+                                    PhosphorIcons.calendar,
+                                    color: Okito.theme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 10),
+                              Expanded(
+                                child: InfoField(
+                                  title: "END TIME",
+                                  contentTitle: job.shiftEndTime,
+                                  leading: Icon(
+                                    PhosphorIcons.calendar,
+                                    color: Okito.theme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              )
-            : null,
-      ),
+              ),
+            ),
+            bottomNavigationBar: actionsVisible
+                ? Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        KButton(
+                          expanded: true,
+                          onPressed: () {
+                            setState(() {
+                              actionsVisible = false;
+                            });
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AcceptJobScreen();
+                              },
+                            ).then((value) {
+                              setState(() {
+                                actionsVisible = true;
+                              });
+                            });
+                          },
+                          title: "ACCEPT",
+                          color: ColorConstants.greenColor,
+                        ),
+                        SizedBox(height: 5),
+                        // Row(
+                        //   children: [
+                        //     Expanded(
+                        //       child: KButton.outlined(
+                        //         onPressed: () {},
+                        //         title: "MESSAGE EMPLOYER",
+                        //         color: Okito.theme.primaryColor,
+                        //       ),
+                        //     ),
+                        //     SizedBox(width: 5),
+                        //     Expanded(
+                        //       child: KButton.outlined(
+                        //         onPressed: () {},
+                        //         title: "DECLINE",
+                        //         color: ColorConstants.red,
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
+                      ],
+                    ),
+                  )
+                : null,
+          ),
+        );
+      },
     );
   }
 }

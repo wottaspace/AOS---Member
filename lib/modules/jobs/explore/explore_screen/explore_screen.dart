@@ -1,4 +1,3 @@
-import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/core/models/job.dart';
 import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen_controller.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
@@ -12,7 +11,6 @@ import 'package:arcopen_employee/widgets/jobs/recommended_job_card.dart';
 import 'package:arcopen_employee/widgets/misc/k_chip.dart';
 import 'package:arcopen_employee/widgets/misc/section_title.dart';
 import 'package:okito/okito.dart';
-import 'package:simple_moment/simple_moment.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({Key? key}) : super(key: key);
@@ -91,7 +89,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             onTap: job.applied
                                 ? null
                                 : () {
-                                    KRouter().push(KRoutes.jobDetailsRoute, args: {
+                                    Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
                                       "job": job,
                                     });
                                   },
@@ -118,7 +116,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           final String startRange = job.shiftStartDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
                           final String endRange = job.shiftEndDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
                           return JobCard(
-                            applications: 4,
+                            applicantCount: job.applicantsCount ?? 0,
                             company: job.businessName,
                             dateRange: "$startRange - $endRange",
                             employmentType: job.jobType,
@@ -128,7 +126,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             postedAt: job.createdAt.split(" ").reversed.skip(2).toList().reversed.join(" "),
                             employeePhotoUrl: "adds",
                             onTap: () {
-                              KRouter().push(KRoutes.jobDetailsRoute, args: {
+                              Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
                                 "job": job,
                               });
                             },

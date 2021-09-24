@@ -23,6 +23,8 @@ class KRouter {
     }
   }
 
+  Map<String, dynamic> get args => ModalRoute.of(Okito.context!)?.settings.arguments as Map<String, dynamic>;
+
   Map<String, Widget Function(BuildContext)> getApplicationRoutes() {
     Map<String, Widget Function(BuildContext)> parsedRoutes = {};
     for (final KRoute route in this._routes) {

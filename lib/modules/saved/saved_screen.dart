@@ -25,7 +25,7 @@ class _SavedScreenState extends State<SavedScreen> {
               itemCount: 3,
               itemBuilder: (context, index) {
                 return JobCard(
-                  applications: 4,
+                  applicantCount: 4,
                   company: "TG Minto",
                   dateRange: "15 JAN - 18 JAN",
                   employmentType: "Express employment",
