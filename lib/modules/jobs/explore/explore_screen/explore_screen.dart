@@ -1,5 +1,6 @@
 import 'package:arcopen_employee/core/models/job.dart';
 import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen_controller.dart';
+import 'package:arcopen_employee/utils/helpers/loading_state.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -51,7 +52,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         }
 
         switch (controller.jobLoadingState) {
-          case JobLoadingState.failed:
+          case LoadingState.failed:
             pageContent = pageStateContainer(
               KButton(
                 onPressed: controller.loadJobs,
@@ -60,7 +61,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               ),
             );
             break;
-          case JobLoadingState.loading:
+          case LoadingState.loading:
             pageContent = pageStateContainer(
               Padding(
                 padding: EdgeInsets.all(12.0),
@@ -72,7 +73,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               ),
             );
             break;
-          case JobLoadingState.success:
+          case LoadingState.success:
             pageContent = Column(
               children: [
                 SingleChildScrollView(
@@ -116,6 +117,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           final String startRange = job.shiftStartDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
                           final String endRange = job.shiftEndDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
                           return JobCard(
+                            jobSaved: job.saved,
                             applicantCount: job.applicantsCount ?? 0,
                             company: job.businessName,
                             dateRange: "$startRange - $endRange",
@@ -130,7 +132,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                                 "job": job,
                               });
                             },
-                            onActionTapped: () {},
+                            jobId: job.id,
                           );
                         },
                       ),
@@ -140,7 +142,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               ],
             );
             break;
-          case JobLoadingState.pending:
+          case LoadingState.pending:
             pageContent = SizedBox();
             break;
         }

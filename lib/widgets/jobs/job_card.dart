@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
@@ -15,9 +16,9 @@ class JobCard extends StatelessWidget {
     required this.postedAt,
     required this.employeePhotoUrl,
     required this.onTap,
-    required this.onActionTapped,
+    required this.jobId,
     required this.applicantCount,
-    this.liked = false,
+    required this.jobSaved,
     this.status,
   }) : super(key: key);
 
@@ -30,10 +31,10 @@ class JobCard extends StatelessWidget {
   final String employmentType;
   final String employeePhotoUrl;
   final VoidCallback onTap;
-  final bool liked;
-  final VoidCallback onActionTapped;
+  final int jobId;
   final String? status;
   final int applicantCount;
+  final bool jobSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -144,14 +145,17 @@ class JobCard extends StatelessWidget {
                         width: 30,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: ColorConstants.greyColor),
+                          border: Border.all(color: jobSaved ? ColorConstants.red : ColorConstants.greyColor),
                         ),
                         child: IconButton(
-                          onPressed: onActionTapped,
+                          onPressed: () {
+                            if(!jobSaved) ExploreScreenController().saveJob(jobId: jobId);
+                            else ExploreScreenController().removeSavedJob(jobId: jobId);
+                          },
                           icon: Icon(
-                            liked ? PhosphorIcons.trash_fill : PhosphorIcons.heart,
+                            jobSaved ? PhosphorIcons.trash_fill : PhosphorIcons.heart,
                             size: 12,
-                            color: ColorConstants.greyColor,
+                            color: jobSaved ? ColorConstants.red : ColorConstants.greyColor,
                           ),
                         ),
                       ),

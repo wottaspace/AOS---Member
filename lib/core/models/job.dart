@@ -54,8 +54,8 @@ class Job {
     return Job(
       address: json["address"],
       applicantsCount: json["applicants_count"],
-      applied: json["applied"],
-      biddingStarted: json["bidding_started"],
+      applied: json["applied"] ?? false,
+      biddingStarted: json["bidding_started"] ?? false,
       budget: json["budget"],
       businessName: json["business_name"],
       city: json["city"],
