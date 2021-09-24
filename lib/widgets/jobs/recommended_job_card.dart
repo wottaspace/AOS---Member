@@ -66,7 +66,7 @@ class RecommendedJobCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "$location",
+                            "$title",
                             style: Okito.theme.textTheme.bodyText2!.copyWith(
                               fontSize: 12.0,
                               color: Colors.white,
@@ -75,7 +75,7 @@ class RecommendedJobCard extends StatelessWidget {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            "$title",
+                            "$company",
                             style: Okito.theme.textTheme.bodyText2!.copyWith(
                               fontSize: 16.0,
                               color: Colors.white,

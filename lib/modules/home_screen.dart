@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -7,7 +8,6 @@ import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/modules/finances/finances_screen.dart';
 import 'package:arcopen_employee/modules/inbox/inbox_screen.dart';
-import 'package:arcopen_employee/modules/jobs/explore/explore_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_listing/job_listing_screen.dart';
 import 'package:arcopen_employee/modules/saved/saved_screen.dart';
 import 'package:arcopen_employee/widgets/dialogs/notifications_dialog.dart';

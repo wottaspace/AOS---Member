@@ -39,22 +39,22 @@ class DioClient with NetworkClient {
   }
 
   @override
-  Future<Response> delete<D>({required String path}) {
+  Future<Response> delete({required String path}) {
     return _dio.delete(path);
   }
 
   @override
-  Future get<Q>({required String path, Q? args}) {
+  Future get({required String path, args}) {
     return _dio.get(path);
   }
 
   @override
-  Future post<D>({required String path, D? args}) {
+  Future post({required String path, args}) {
     return _dio.post(path, data: args);
   }
 
   @override
-  Future put<D>({required String path, D? args}) {
+  Future put({required String path, args}) {
     return _dio.put(path, data: args);
   }
 }

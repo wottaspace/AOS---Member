@@ -1,7 +1,7 @@
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/app_constants.dart';
-import 'package:arcopen_employee/http/responses/login_response.dart';
-import 'package:arcopen_employee/http/responses/profile_response.dart';
+import 'package:arcopen_employee/core/models/profile.dart';
+import 'package:arcopen_employee/core/models/user.dart';
 import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:okito/okito.dart';
 

@@ -1,4 +1,4 @@
-import 'package:arcopen_employee/http/responses/profile_response.dart';
+import 'package:arcopen_employee/core/models/profile.dart';
 
 class MemberProfileResponse {
   MemberProfileResponse({
@@ -13,9 +13,4 @@ class MemberProfileResponse {
         profile: Profile.fromJson(json["profile"]),
         reviews: List<dynamic>.from(json["reviews"].map((x) => x)),
       );
-
-  Map<String, dynamic> toJson() => {
-        "profile": profile.toJson(),
-        "reviews": List<dynamic>.from(reviews.map((x) => x)),
-      };
 }

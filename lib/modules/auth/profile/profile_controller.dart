@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:arcopen_employee/config/routes/k_routes.dart';
-import 'package:arcopen_employee/http/responses/login_response.dart';
+import 'package:arcopen_employee/core/models/user.dart';
 import 'package:arcopen_employee/utils/mixins/toast_mixin.dart';
 import 'package:arcopen_employee/utils/repositories/auth_repository.dart';
 import 'package:arcopen_employee/utils/services/auth_service.dart';
@@ -20,7 +20,7 @@ class ProfileController extends OkitoController with ToastMixin {
   factory ProfileController() {
     return _singleton;
   }
-
+  
   final AuthRepository repository = AuthRepository();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   File? resumeFile;
@@ -38,11 +38,26 @@ class ProfileController extends OkitoController with ToastMixin {
 
   String? get getResumeFilename => resumeFile == null ? null : basename(resumeFile!.path);
 
-  prefillForm() {
-    final User user = Okito.use<AuthService>().user;
+  void prefillForm() {
+    final AuthService service = Okito.use<AuthService>();
+    final User user = service.user;
     badgeNumberController.text = user.badgeNumber!;
+    if (service.profileExists) {
+      aboutController.text = service.profile.about;
+      driveController.text = service.profile.drive ? "YES" : "NO";
+      badgeNumberController.text = service.profile.badgeNumber;
+
+      List<String> parts = service.profile.contact.split("-");
+      contactDialCode = parts.first;
+
+      contactController.text = parts.skip(1).join("-");
+      hourlyRateController.text = service.profile.hourlyRate;
+      unavailabilityController.text = service.profile.unavailabilityDates.join(" - ");
+      addressController.text = service.profile.address;
+      cityController.text = service.profile.city;
+      postalCodeController.text = service.profile.postalCode;
+    }
     setState(() {});
-    // TODO: fill profile info
   }
 
   pickResumeFile() async {
@@ -58,8 +73,15 @@ class ProfileController extends OkitoController with ToastMixin {
 
   void selectUnavailabilityRange() async {
     final now = DateTime.now();
+    final fieldValue = unavailabilityController.text;
     final DateTimeRange? range = await showDateRangePicker(
       context: Okito.context!,
+      initialDateRange: fieldValue.isEmpty
+          ? null
+          : DateTimeRange(
+              start: DateTime.parse(fieldValue.split(" - ").first),
+              end: DateTime.parse(fieldValue.split(" - ").last),
+            ),
       firstDate: DateTime(now.year),
       lastDate: DateTime(now.year + 5),
     );
@@ -68,6 +90,16 @@ class ProfileController extends OkitoController with ToastMixin {
       final firstDate = range.start.toString().split(" ").first;
       final lastDate = range.end.toString().split(" ").first;
       unavailabilityController.text = "$firstDate - $lastDate";
+      setState(() {});
+    }
+  }
+
+  Future<void> pickPictureFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+    );
+    if (result != null) {
+      profilePicFile = File(result.files.single.path);
       setState(() {});
     }
   }
@@ -107,16 +139,17 @@ class ProfileController extends OkitoController with ToastMixin {
   }
 
   FormData computeFormData() {
+    print(unavailabilityController.text.split(" - "));
     return FormData.fromMap({
       "about": aboutController.text,
       "drive": driveController.text,
-      "contact": "$contactDialCode${contactController.text}",
+      "contact": "$contactDialCode-${contactController.text}",
       "address": addressController.text,
       "city": cityController.text,
       "postal_code": postalCodeController.text,
       "hourly_rate": hourlyRateController.text,
-      if (resumeFile != null) "cv": MultipartFile.fromFile(resumeFile!.path),
       "unavailable_dates": unavailabilityController.text.split(" - "),
+      if (resumeFile != null) "cv": MultipartFile.fromFile(resumeFile!.path),
       if (profilePicFile != null) "profile_pic": MultipartFile.fromFile(profilePicFile!.path),
     });
   }
@@ -135,6 +168,14 @@ class ProfileController extends OkitoController with ToastMixin {
   }
 
   _updateProfile() {
-    print("Update profile");
+    KLoader().show();
+    repository.updateProfile(data: computeFormData()).then((value) {
+      KLoader.hide();
+      Okito.use<AuthService>().profile = value.profile;
+      this.showSuccessToast("Your changes has been saved successfully.");
+    }).catchError((e) {
+      this.showErrorToast(e.message);
+      KLoader.hide();
+    });
   }
 }

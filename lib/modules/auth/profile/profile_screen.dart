@@ -43,17 +43,28 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
         onTap: () {
           profileController.createOrUpdateProfile();
         },
-        title: "Edit Profile",
+        title: "Save changes",
       ),
-      _MenuItem(onTap: () {}, title: "Logout"),
+      _MenuItem(
+        onTap: () {
+          Okito.use<AuthService>().logout();
+        },
+        title: "Logout",
+      ),
     ];
 
     final user = Okito.use<AuthService>().user;
+
+    ImageProvider profilePicture = AssetImage("assets/images/avatar.png");
+    if (profileController.profilePicFile != null) {
+      profilePicture = FileImage(profileController.profilePicFile!);
+    }
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       child: Scaffold(
         body: SingleChildScrollView(
           child: OkitoBuilder(
+            activateLifecycleForOtherControllers: true,
             controller: profileController,
             builder: () {
               return Form(
@@ -73,15 +84,33 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Okito.pop();
+                                },
                                 icon: Icon(PhosphorIcons.caret_left_bold),
                                 color: Colors.white,
                               ),
                               SizedBox(width: 20),
-                              CircleAvatar(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(60.0),
-                                  child: profileController.profilePicFile == null ? Image.asset("assets/images/avatar.png") : Image.file(profileController.profilePicFile!),
+                              GestureDetector(
+                                onTap: profileController.pickPictureFile,
+                                child: CircleAvatar(
+                                  backgroundImage: profilePicture,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(60.0),
+                                    child: profileController.profilePicFile == null
+                                        ? Image.asset(
+                                            "assets/images/avatar.png",
+                                            fit: BoxFit.cover,
+                                            width: 100,
+                                            height: 100,
+                                          )
+                                        : Image.file(
+                                            profileController.profilePicFile!,
+                                            fit: BoxFit.cover,
+                                            width: 100,
+                                            height: 100,
+                                          ),
+                                  ),
                                 ),
                               ),
                               SizedBox(width: 20),
@@ -97,15 +126,6 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    // SizedBox(height: 5),
-                                    // Text(
-                                    //   "Cambrigde: ON",
-                                    //   style: Okito.theme.textTheme.bodyText2!.copyWith(
-                                    //     color: Colors.white,
-                                    //     fontSize: 12.0,
-                                    //     fontWeight: FontWeight.w300,
-                                    //   ),
-                                    // ),
                                   ],
                                 ),
                               ),
@@ -223,8 +243,11 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                                   prefixIcon: IconButton(
                                     padding: EdgeInsets.zero,
                                     onPressed: profileController.pickPhoneCode,
-                                    icon: Text("${profileController.contactDialCode}"),
+                                    icon: FittedBox(
+                                      child: Text("${profileController.contactDialCode}"),
+                                    ),
                                   ),
+                                  keybordType: TextInputType.number,
                                   controller: profileController.contactController,
                                   validator: (String? value) {
                                     return this.validateRequired(fieldName: "contact", value: value);

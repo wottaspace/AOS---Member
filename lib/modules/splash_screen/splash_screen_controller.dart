@@ -1,12 +1,14 @@
 import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/app_constants.dart';
+import 'package:arcopen_employee/http/exceptions/auth_exception.dart';
 import 'package:arcopen_employee/http/responses/login_response.dart';
 import 'package:arcopen_employee/http/responses/member_profile_response.dart';
 import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:arcopen_employee/utils/mixins/toast_mixin.dart';
 import 'package:arcopen_employee/utils/repositories/auth_repository.dart';
 import 'package:arcopen_employee/utils/services/auth_service.dart';
+import 'package:dio/dio.dart';
 import 'package:okito/okito.dart';
 
 class SplashScreenController with ToastMixin {
@@ -26,11 +28,19 @@ class SplashScreenController with ToastMixin {
         return;
       }
       if (KStorage().contains(AppConstants.accessTokenKey)) {
-        bool result = await _loadMemberProfile();
-        if (result)
-          KRouter().push(KRoutes.exploreRoute, replace: true);
-        else
-          KRouter().push(KRoutes.profileRoute, replace: true);
+        try {
+          bool result = await _loadMemberProfile();
+          if (result)
+            KRouter().push(KRoutes.exploreRoute, replace: true);
+          else
+            KRouter().push(KRoutes.profileRoute, replace: true);
+        } catch (e) {
+          if (e.toString().contains("422")) {
+            KRouter().push(KRoutes.loginRoute, replace: true);
+          } else {
+            this.showErrorToast("Failed to load data. Please try again later.");
+          }
+        }
         return;
       }
       KRouter().push(KRoutes.loginRoute, replace: true);
@@ -48,8 +58,8 @@ class SplashScreenController with ToastMixin {
         Okito.use<AuthService>().profile = memberProfileResponse.profile;
       }
       _result = loginResponse.profileExists;
-    } on Exception catch (e) {
-      this.showErrorToast(e.toString().replaceAll("Exception: ", ""));
+    } on DioError catch (e) {
+      throw new AuthException(message: "Auth failed", code: e.response?.statusCode);
     }
     return _result;
   }

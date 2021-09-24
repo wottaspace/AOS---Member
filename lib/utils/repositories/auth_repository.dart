@@ -9,8 +9,6 @@ import 'package:arcopen_employee/utils/repositories/base_repository.dart';
 import 'package:dio/dio.dart';
 
 class AuthRepository extends BaseRepository {
-  final DioClient client = DioClient();
-
   Future<LoginResponse> login({required LoginRequest request}) async {
     try {
       final Response response = await client.post(path: "/login/", args: request.toJson());

@@ -22,6 +22,9 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
   @override
   void initState() {
     actionsVisible = true;
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      print("ok");
+    });
     super.initState();
   }
 

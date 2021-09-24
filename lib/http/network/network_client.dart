@@ -1,6 +1,6 @@
 abstract class NetworkClient {
-  Future get<Q>({required String path, Q? args});
-  Future post<D>({required String path, D? args});
-  Future put<D>({required String path, D? args});
-  Future delete<D>({required String path});
+  Future get({required String path, dynamic args});
+  Future post({required String path, dynamic args});
+  Future put({required String path, dynamic args});
+  Future delete({required String path});
 }
