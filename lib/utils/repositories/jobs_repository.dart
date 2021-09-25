@@ -1,4 +1,5 @@
 import 'package:arcopen_employee/http/requests/job_apply_request.dart';
+import 'package:arcopen_employee/http/responses/invited_jobs_response.dart';
 import 'package:arcopen_employee/http/responses/jobs_response.dart';
 import 'package:arcopen_employee/http/responses/save_job_response.dart';
 import 'package:arcopen_employee/http/responses/saved_jobs_response.dart';
@@ -21,7 +22,7 @@ class JobsRepository extends BaseRepository {
     try {
       final Response response = await client.post(path: "$basePath/applyJob/", args: request.toJson());
       print(response.data);
-      return "ok";
+      return "lo";
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }
@@ -51,7 +52,27 @@ class JobsRepository extends BaseRepository {
     try {
       final Response response = await client.delete(path: "$basePath/removeSavedJob/$jobId");
       print(response.data);
-      return "ok";
+      return "lo";
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
+  Future<InvitedJobsResponse> getInvites() async {
+    try {
+      final Response response = await client.get(path: "$basePath/getInvites/");
+      return InvitedJobsResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
+  Future<String> inviteFriend({required String email}) async {
+    try {
+      final Response response = await client.post(path: "$basePath/inviteFriends/", args: {
+        "email": email,
+      });
+      return response.data["success"];
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }

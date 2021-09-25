@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/modules/invites/invite_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
@@ -14,7 +15,7 @@ class InviteFriendsScreen extends StatefulWidget {
 }
 
 class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
-  final TextEditingController _emailController = TextEditingController();
+  final InviteController controller = InviteController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +52,23 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
                   ),
                 ),
                 SizedBox(height: 20),
-                KTextField(
-                  padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
-                  controller: _emailController,
-                  hintText: "Email",
-                  icon: PhosphorIcons.envelope_fill,
-                  color: ColorConstants.lightBlue.withOpacity(0.8),
+                OkitoBuilder(
+                  controller: controller,
+                  activateLifecycleForOtherControllers: true,
+                  builder: () {
+                    return KTextField(
+                      padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                      controller: controller.emailController,
+                      hintText: "Email",
+                      keyboardType: TextInputType.emailAddress,
+                      icon: PhosphorIcons.envelope_fill,
+                      color: ColorConstants.lightBlue.withOpacity(0.8),
+                    );
+                  },
                 ),
                 SizedBox(height: 20),
                 KButton(
-                  onPressed: () {},
+                  onPressed: controller.sendInvite,
                   title: "SEND INVITE",
                   color: Okito.theme.primaryColor,
                 ),

@@ -13,6 +13,7 @@ class KTextField extends StatelessWidget {
     this.padding,
     this.validator,
     this.isPassword = false,
+    this.keyboardType,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -20,6 +21,7 @@ class KTextField extends StatelessWidget {
   final IconData? icon;
   final Color? color;
   final bool isPassword;
+  final TextInputType? keyboardType;
   final EdgeInsets? padding;
   final FormFieldValidator<String>? validator;
 
@@ -29,6 +31,7 @@ class KTextField extends StatelessWidget {
       validator: validator,
       obscureText: isPassword,
       controller: controller,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         contentPadding: padding ?? EdgeInsets.symmetric(vertical: 18.0, horizontal: 12.0),
         hintText: hintText,

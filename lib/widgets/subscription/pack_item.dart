@@ -77,10 +77,6 @@ class PackItem extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 20),
-                    Text(
-                      "$durationValue",
-                      style: Okito.theme.textTheme.bodyText2!.copyWith(fontSize: 16.0),
-                    ),
                     SizedBox(height: 5),
                     Text("$durationUnit", style: Okito.theme.textTheme.bodyText2),
                     SizedBox(height: 5),
@@ -96,7 +92,9 @@ class PackItem extends StatelessWidget {
                       ),
                     ),
                     Divider(),
-                    Text("$frequency"),
+                    FittedBox(
+                      child: Text("$frequency"),
+                    ),
                     SizedBox(height: 10),
                   ],
                 ),

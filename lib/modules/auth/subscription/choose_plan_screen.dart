@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/modules/auth/subscription/subscription_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -17,6 +18,8 @@ class ChoosePlanScreen extends StatefulWidget {
 }
 
 class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
+  final SubscriptionController controller = SubscriptionController();
+
   late PageController _pageController;
   late int _selectedIndex;
 
@@ -27,6 +30,9 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
       initialPage: 1,
     );
     _selectedIndex = 0;
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      controller.getSubscriptionPlans();
+    });
     super.initState();
   }
 
@@ -39,105 +45,85 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Divider(),
-                Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 20),
-                      Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: ColorConstants.purple.withOpacity(0.15),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Icon(
-                            PhosphorIcons.link_simple,
-                            color: ColorConstants.purple,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Charge on link up",
-                        style: Okito.theme.textTheme.bodyText1,
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "Gold inquirer has a little charge like 27p on linkup",
-                        style: Okito.theme.textTheme.bodyText2!.copyWith(color: ColorConstants.greyColor),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+            child: OkitoBuilder(
+              controller: controller,
+              builder: () {
+                return Column(
                   children: [
-                    CircleAvatar(maxRadius: 4, backgroundColor: ColorConstants.lightBlue),
-                    SizedBox(width: 5),
-                    CircleAvatar(maxRadius: 4.5),
-                    SizedBox(width: 5),
-                    CircleAvatar(maxRadius: 4, backgroundColor: ColorConstants.lightBlue),
-                    SizedBox(width: 5),
-                    CircleAvatar(maxRadius: 4, backgroundColor: ColorConstants.lightBlue),
-                    SizedBox(width: 5),
+                    Divider(),
+                    Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 20),
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: ColorConstants.purple.withOpacity(0.15),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Icon(
+                                PhosphorIcons.link_simple,
+                                color: ColorConstants.purple,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "Charge on link up",
+                            style: Okito.theme.textTheme.bodyText1,
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            "Gold inquirer has a little charge like 27p on linkup",
+                            style: Okito.theme.textTheme.bodyText2!.copyWith(color: ColorConstants.greyColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ...controller.subscriptionPlans.map((e) {
+                          final bool isActive = _selectedIndex == controller.subscriptionPlans.indexOf(e);
+                          return Row(
+                            children: [
+                              CircleAvatar(maxRadius: 4, backgroundColor: isActive ? Okito.theme.primaryColor : ColorConstants.lightBlue),
+                              SizedBox(width: 5),
+                            ],
+                          );
+                        }),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      height: 200,
+                      child: PageView(
+                        scrollDirection: Axis.horizontal,
+                        controller: _pageController,
+                        children: [
+                          ...controller.subscriptionPlans.map((e) {
+                            return PackItem(
+                              label: e.name.toUpperCase(),
+                              durationUnit: e.planType,
+                              durationValue: "",
+                              discount: e.discount,
+                              frequency: e.yearlyPrice,
+                              price: e.monthlyPrice ?? "\$0.00flat",
+                              highlightTitle: _selectedIndex == controller.subscriptionPlans.indexOf(e),
+                              onTap: () {
+                                setState(() {
+                                  _selectedIndex = controller.subscriptionPlans.indexOf(e);
+                                });
+                              },
+                            );
+                          }),
+                        ],
+                      ),
+                    )
                   ],
-                ),
-                SizedBox(height: 20),
-                Container(
-                  height: 200,
-                  child: PageView(
-                    scrollDirection: Axis.horizontal,
-                    controller: _pageController,
-                    children: [
-                      PackItem(
-                        label: "FREE",
-                        durationUnit: "month",
-                        durationValue: "3",
-                        discount: "FREE TRIAL",
-                        frequency: "first 3 mos",
-                        price: "\$0.00flat",
-                        highlightTitle: _selectedIndex == 0,
-                        onTap: () {
-                          setState(() {
-                            _selectedIndex = 0;
-                          });
-                        },
-                      ),
-                      PackItem(
-                        label: "MEMBER",
-                        discount: "SAVE 54%",
-                        durationUnit: "month",
-                        durationValue: "1",
-                        frequency: "\$150/yearly",
-                        price: "\$12.5 flat",
-                        highlightTitle: _selectedIndex == 1,
-                        onTap: () {
-                          setState(() {
-                            _selectedIndex = 1;
-                          });
-                        },
-                      ),
-                      PackItem(
-                        label: "DOVE MEMBERS",
-                        highlightTitle: _selectedIndex == 2,
-                        discount: "SAVE 42%",
-                        durationUnit: "month",
-                        durationValue: "1",
-                        frequency: "\$105/yearly",
-                        price: "\$15 flat",
-                        onTap: () {
-                          setState(() {
-                            _selectedIndex = 2;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                );
+              },
             ),
           ),
         ),
@@ -145,7 +131,9 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
           padding: EdgeInsets.all(12.0),
           child: KButton.outlined(
             onPressed: () {
-              KRouter().push(KRoutes.upgradePlanRoute);
+              Okito.pushNamed(KRoutes.upgradePlanRoute, arguments: {
+                "plan": controller.subscriptionPlans[_selectedIndex],
+              });
             },
             title: "CONTINUE",
             color: Okito.theme.primaryColor,
