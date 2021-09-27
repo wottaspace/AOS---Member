@@ -1,6 +1,8 @@
+import 'package:arcopen_employee/http/requests/create_dispute_request.dart';
 import 'package:arcopen_employee/http/requests/job_apply_request.dart';
 import 'package:arcopen_employee/http/responses/invited_jobs_response.dart';
 import 'package:arcopen_employee/http/responses/jobs_response.dart';
+import 'package:arcopen_employee/http/responses/member_disputes_response.dart';
 import 'package:arcopen_employee/http/responses/save_job_response.dart';
 import 'package:arcopen_employee/http/responses/saved_jobs_response.dart';
 import 'package:arcopen_employee/utils/repositories/base_repository.dart';
@@ -74,6 +76,25 @@ class JobsRepository extends BaseRepository {
       });
       return response.data["success"];
     } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
+  Future<MemberDisputesResponse> getMemberDisputes() async {
+    try {
+      final Response response = await client.get(path: "$basePath/getMemberDisputes");
+      return MemberDisputesResponse.fromJson(response.data);
+    } on DioError catch(e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
+  Future createDispute({required CreateDisputeRequest request}) async {
+    try {
+      final Response response = await client.post(path: "$basePath/memberAddDispute/", args: request.toJson());
+      print(response.data);
+      return "ok";
+    } on DioError catch(e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }
   }

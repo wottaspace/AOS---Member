@@ -91,7 +91,7 @@ class _SavedScreenState extends State<SavedScreen> {
                         location: job.address,
                         payRate: job.budget,
                         postedAt: job.createdAt.split(" ").reversed.skip(2).toList().reversed.join(" "),
-                        employeePhotoUrl: "adds",
+                        employeePhotoUrl: job.profilePic,
                         onTap: () {
                           Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
                             "job": job,

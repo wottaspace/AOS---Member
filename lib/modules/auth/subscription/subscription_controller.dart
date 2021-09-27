@@ -18,7 +18,6 @@ class SubscriptionController extends OkitoController with ToastMixin {
   LoadingState loadingState = LoadingState.loading;
 
   void getSubscriptionPlans() {
-    if (subscriptionPlans.isNotEmpty) return;
     setState(() {
       loadingState = LoadingState.loading;
     });

@@ -10,15 +10,13 @@ class RecommendedJobCard extends StatelessWidget {
     required this.company,
     required this.title,
     required this.location,
-    this.onApply,
-    this.onTap,
+    required this.onTap,
   }) : super(key: key);
 
   final String company;
   final String title;
   final String location;
-  final VoidCallback? onApply;
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -109,9 +107,7 @@ class RecommendedJobCard extends StatelessWidget {
                               height: 30,
                               child: KButton(
                                 padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 0),
-                                onPressed: () {
-                                  if (onApply != null) onApply!();
-                                },
+                                onPressed: onTap,
                                 title: "APPLY",
                                 color: Colors.white.withOpacity(0.25),
                               ),

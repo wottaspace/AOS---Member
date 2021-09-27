@@ -1,4 +1,5 @@
 import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen_controller.dart';
+import 'package:arcopen_employee/utils/helpers/asset_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
@@ -29,7 +30,7 @@ class JobCard extends StatelessWidget {
   final String company;
   final String location;
   final String employmentType;
-  final String employeePhotoUrl;
+  final String? employeePhotoUrl;
   final VoidCallback onTap;
   final int jobId;
   final String? status;
@@ -38,6 +39,11 @@ class JobCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ImageProvider profilePicture = AssetImage(AssetHelper().getAsset(name: "avatar.png", assetType: AssetType.image));
+
+    if (employeePhotoUrl != null && employeePhotoUrl!.isNotEmpty) {
+      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: employeePhotoUrl!));
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Container(
@@ -110,7 +116,10 @@ class JobCard extends StatelessWidget {
                   Spacer(),
                   Row(
                     children: [
-                      CircleAvatar(maxRadius: 20),
+                      CircleAvatar(
+                        maxRadius: 20,
+                        backgroundImage: profilePicture,
+                      ),
                       SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,8 +158,10 @@ class JobCard extends StatelessWidget {
                         ),
                         child: IconButton(
                           onPressed: () {
-                            if(!jobSaved) ExploreScreenController().saveJob(jobId: jobId);
-                            else ExploreScreenController().removeSavedJob(jobId: jobId);
+                            if (!jobSaved)
+                              ExploreScreenController().saveJob(jobId: jobId);
+                            else
+                              ExploreScreenController().removeSavedJob(jobId: jobId);
                           },
                           icon: Icon(
                             jobSaved ? PhosphorIcons.trash_fill : PhosphorIcons.heart,

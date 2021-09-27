@@ -1,4 +1,6 @@
 import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen.dart';
+import 'package:arcopen_employee/utils/helpers/asset_helper.dart';
+import 'package:arcopen_employee/utils/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -39,6 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ImageProvider profilePicture = AssetImage(AssetHelper().getAsset(name: "avatar.png", assetType: AssetType.image));
+
+    final authService = Okito.use<AuthService>();
+    if (authService.profileExists && authService.profile.profilePic.isNotEmpty) {
+      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: authService.profile.profilePic));
+    }
+
     return DoubleTapToExit(
       child: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle(
@@ -101,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     KRouter().push(KRoutes.profileRoute);
                   },
                   child: CircleAvatar(
-                    // child: ClipRRect(child: ),
+                    backgroundImage: profilePicture,
                   ),
                 ),
               ),

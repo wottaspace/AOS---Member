@@ -87,13 +87,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             company: job.businessName,
                             title: "Posted by ${job.enquirerCompany}",
                             location: job.address,
-                            onTap: job.applied
-                                ? null
-                                : () {
-                                    Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
-                                      "job": job,
-                                    });
-                                  },
+                            onTap: () {
+                              if (job.applied) {
+                                Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
+                                  "job": job,
+                                });
+                              } else {
+                                controller.showErrorToast("Sorry, you've already applied for this job.");
+                              }
+                            },
                           ),
                         ),
                       ),
@@ -126,7 +128,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             location: job.address,
                             payRate: job.budget,
                             postedAt: job.createdAt.split(" ").reversed.skip(2).toList().reversed.join(" "),
-                            employeePhotoUrl: "adds",
+                            employeePhotoUrl: job.profilePic,
                             onTap: () {
                               Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
                                 "job": job,

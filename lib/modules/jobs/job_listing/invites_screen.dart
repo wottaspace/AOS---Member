@@ -34,7 +34,7 @@ class _InvitesScreenState extends State<InvitesScreen> {
               location: "KITCHENER",
               payRate: "\$25",
               postedAt: "Jan 05th, 2021",
-              employeePhotoUrl: "adds",
+              employeePhotoUrl: null,
               onTap: () {
                 // TODO: go to job details
                 KRouter().push(KRoutes.jobDetailsRoute);
