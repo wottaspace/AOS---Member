@@ -39,7 +39,7 @@ class _DisputesScreenState extends State<DisputesScreen> {
                 child: Row(
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: Okito.pop,
                       color: Colors.black,
                       icon: Icon(PhosphorIcons.caret_left_bold, size: 20),
                     ),
