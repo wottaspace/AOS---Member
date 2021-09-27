@@ -2,7 +2,6 @@ import 'package:arcopen_employee/core/models/job.dart';
 import 'package:arcopen_employee/modules/jobs/job_listing/timesheets/job_timesheets_controller.dart';
 import 'package:arcopen_employee/utils/helpers/loading_state.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
-import 'package:arcopen_employee/widgets/states/empty_state.dart';
 import 'package:flutter/material.dart';
 import 'package:arcopen_employee/widgets/jobs/timesheet_card.dart';
 import 'package:arcopen_employee/widgets/misc/section_title.dart';

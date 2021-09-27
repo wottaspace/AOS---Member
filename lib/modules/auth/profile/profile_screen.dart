@@ -1,7 +1,7 @@
 import 'package:arcopen_employee/modules/auth/profile/profile_controller.dart';
 import 'package:arcopen_employee/utils/helpers/badge_input_formatter.dart';
 import 'package:arcopen_employee/utils/mixins/validation_mixin.dart';
-import 'package:arcopen_employee/utils/services/auth_service.dart';
+import 'package:arcopen_employee/widgets/navigation/kp_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -38,28 +38,6 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
       color: ColorConstants.greyColor,
     );
 
-    final List<_MenuItem> menuItems = [
-      _MenuItem(
-        onTap: () {
-          profileController.createOrUpdateProfile();
-        },
-        title: "Save changes",
-      ),
-      _MenuItem(
-        onTap: () {
-          Okito.use<AuthService>().logout();
-        },
-        title: "Logout",
-      ),
-    ];
-
-    final user = Okito.use<AuthService>().user;
-
-    ImageProvider profilePicture = AssetImage("assets/images/avatar.png");
-    if (profileController.profilePicFile != null) {
-      profilePicture = FileImage(profileController.profilePicFile!);
-    }
-
     return AnnotatedRegion<SystemUiOverlayStyle>(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -71,89 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                 key: profileController.formKey,
                 child: Column(
                   children: [
-                    Container(
-                      height: 100,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        color: Okito.theme.primaryColor,
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 40),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  Okito.pop();
-                                },
-                                icon: Icon(PhosphorIcons.caret_left_bold),
-                                color: Colors.white,
-                              ),
-                              SizedBox(width: 20),
-                              GestureDetector(
-                                onTap: profileController.pickPictureFile,
-                                child: CircleAvatar(
-                                  backgroundImage: profilePicture,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(60.0),
-                                    child: profileController.profilePicFile == null
-                                        ? Image.asset(
-                                            "assets/images/avatar.png",
-                                            fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
-                                          )
-                                        : Image.file(
-                                            profileController.profilePicFile!,
-                                            fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
-                                          ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 20),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      user.name,
-                                      style: Okito.theme.textTheme.bodyText2!.copyWith(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              PopupMenuButton<int>(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    PhosphorIcons.dots_three_vertical_bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onSelected: (int index) {
-                                  menuItems[index].onTap();
-                                },
-                                itemBuilder: (context) {
-                                  return List.generate(menuItems.length, (index) {
-                                    return PopupMenuItem(
-                                      value: index,
-                                      child: Text(menuItems[index].title),
-                                    );
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                    KPAppBar(),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
@@ -311,14 +207,4 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
       ),
     );
   }
-}
-
-class _MenuItem {
-  final String title;
-  final VoidCallback onTap;
-
-  _MenuItem({
-    required this.onTap,
-    required this.title,
-  });
 }

@@ -185,7 +185,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         ],
                       ),
                       SizedBox(height: 20),
-                      SectionTitle(title: "RECOMMENDED JOBS"),
+                      if (controller.recommendedJobs.isNotEmpty) SectionTitle(title: "RECOMMENDED JOBS"),
                     ],
                   ),
                 ),

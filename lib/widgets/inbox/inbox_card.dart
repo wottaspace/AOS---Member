@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
-import 'package:simple_moment/simple_moment.dart';
 
 class InboxCard extends StatelessWidget {
   const InboxCard({
@@ -10,14 +9,14 @@ class InboxCard extends StatelessWidget {
     required this.description,
     required this.sentAt,
     required this.title,
-    required this.userPictureUrl,
+    required this.userPicture,
     required this.onTap,
   }) : super(key: key);
 
   final String title;
   final String description;
-  final String userPictureUrl;
-  final DateTime sentAt;
+  final ImageProvider userPicture;
+  final String sentAt;
   final VoidCallback onTap;
 
   @override
@@ -45,7 +44,10 @@ class InboxCard extends StatelessWidget {
               padding: EdgeInsets.all(12.0) + EdgeInsets.symmetric(vertical: 6.0),
               child: Row(
                 children: [
-                  CircleAvatar(maxRadius: 25),
+                  CircleAvatar(
+                    maxRadius: 25,
+                    backgroundImage: userPicture,
+                  ),
                   SizedBox(width: 10),
                   Expanded(
                     child: Column(
@@ -77,7 +79,7 @@ class InboxCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        "${Moment.fromDate(sentAt).format("HH:mm a")}",
+                        "$sentAt",
                         style: Okito.theme.textTheme.bodyText2!.copyWith(
                           fontSize: 10.0,
                           fontWeight: FontWeight.w600,

@@ -23,7 +23,7 @@ class JobDetailsController extends OkitoController with ToastMixin {
   void init() {
     job = Okito.arguments["job"];
     Future.delayed(Duration(milliseconds: 500)).then((value) {
-      setState(() { });
+      setState(() {});
     });
   }
 
@@ -39,6 +39,26 @@ class JobDetailsController extends OkitoController with ToastMixin {
         message: messageController.text,
         jobId: job!.id.toString(),
         memberStatus: "Accept",
+      );
+
+      KLoader().show();
+      repository.applyForJob(request: request).then((value) {
+        KLoader.hide();
+        KRouter().push(KRoutes.applySuccessRoute);
+      }).catchError((e) {
+        this.showErrorToast(e.toString());
+        KLoader.hide();
+      });
+    }
+  }
+
+  Future declineJob() async {
+    if (applyFormKey.currentState!.validate()) {
+      final JobApplyRequest request = JobApplyRequest(
+        payExpected: payRateController.text.isEmpty ? job!.budget.split(" ").first : payRateController.text,
+        message: messageController.text,
+        jobId: job!.id.toString(),
+        memberStatus: "Decline",
       );
 
       KLoader().show();

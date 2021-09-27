@@ -171,25 +171,12 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                           color: ColorConstants.greenColor,
                         ),
                         SizedBox(height: 5),
-                        // Row(
-                        //   children: [
-                        //     Expanded(
-                        //       child: KButton.outlined(
-                        //         onPressed: () {},
-                        //         title: "MESSAGE EMPLOYER",
-                        //         color: Okito.theme.primaryColor,
-                        //       ),
-                        //     ),
-                        //     SizedBox(width: 5),
-                        //     Expanded(
-                        //       child: KButton.outlined(
-                        //         onPressed: () {},
-                        //         title: "DECLINE",
-                        //         color: ColorConstants.red,
-                        //       ),
-                        //     ),
-                        //   ],
-                        // ),
+                        if (Okito.arguments["canDecline"] != null)
+                          KButton.outlined(
+                            onPressed: controller.declineJob,
+                            title: "DECLINE",
+                            color: ColorConstants.red,
+                          ),
                       ],
                     ),
                   )
