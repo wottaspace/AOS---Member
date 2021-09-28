@@ -29,7 +29,6 @@ class PackItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 90,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -92,8 +91,13 @@ class PackItem extends StatelessWidget {
                       ),
                     ),
                     Divider(),
-                    FittedBox(
-                      child: Text("$frequency"),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Text(
+                        "$frequency",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 10.0),
+                      ),
                     ),
                     SizedBox(height: 10),
                   ],

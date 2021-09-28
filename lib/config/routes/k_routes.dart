@@ -4,7 +4,7 @@ import 'package:arcopen_employee/modules/auth/login/login_screen.dart';
 import 'package:arcopen_employee/modules/auth/profile/profile_screen.dart';
 import 'package:arcopen_employee/modules/auth/register/register_screen.dart';
 import 'package:arcopen_employee/modules/auth/subscription/choose_plan_screen.dart';
-import 'package:arcopen_employee/modules/auth/subscription/pay_screen.dart';
+import 'package:arcopen_employee/modules/auth/subscription/payment/pay_screen.dart';
 import 'package:arcopen_employee/modules/auth/subscription/upgrade_plan_screen.dart';
 import 'package:arcopen_employee/modules/disputes/create_dispute/create_dispute_screen.dart';
 import 'package:arcopen_employee/modules/disputes/dispute_details_screen.dart';
@@ -18,7 +18,7 @@ import 'package:arcopen_employee/modules/jobs/explore/location_filter_screen.dar
 import 'package:arcopen_employee/modules/jobs/job_details/apply_success_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_details/job_details_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_listing/history_details/history_details_screen.dart';
-import 'package:arcopen_employee/modules/settings/bank_details_screen.dart';
+import 'package:arcopen_employee/modules/settings/bank_details/bank_details_screen.dart';
 import 'package:arcopen_employee/modules/settings/change_password_screen.dart';
 import 'package:arcopen_employee/modules/settings/settings_screen.dart';
 import 'package:arcopen_employee/modules/splash_screen/splash_screen.dart';

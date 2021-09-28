@@ -1,8 +1,8 @@
+import 'package:arcopen_employee/core/models/plan.dart';
 import 'package:arcopen_employee/modules/auth/subscription/subscription_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
@@ -18,11 +18,14 @@ class UpgradePlanScreen extends StatefulWidget {
 
 class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
   final SubscriptionController controller = SubscriptionController();
+  Plan? plan;
 
   @override
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      print("fuck");
+      setState(() {
+        plan = Okito.arguments["plan"];
+      });
     });
     super.initState();
   }
@@ -96,18 +99,20 @@ class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
                               "Gold inquirer has a little charge like 27p on linkup",
                               style: Okito.theme.textTheme.bodyText2!.copyWith(color: ColorConstants.greyColor),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.3,
-                              child: PackItem(
-                                label: "FREE",
-                                durationUnit: "month",
-                                durationValue: "3",
-                                discount: "FREE TRIAL",
-                                frequency: "first 3 mos",
-                                price: "\$0.00flat",
-                                highlightTitle: true,
+                            if (plan != null)
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                child: PackItem(
+                                  label: plan!.name.toUpperCase(),
+                                  durationUnit: plan!.planType,
+                                  durationValue: "",
+                                  discount: plan!.discount,
+                                  frequency: plan!.yearlyPrice,
+                                  price: plan!.monthlyPrice ?? "\$0.00flat",
+                                  highlightTitle: true,
+                                  onTap: () {},
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),
@@ -123,7 +128,10 @@ class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
         padding: EdgeInsets.all(12.0),
         child: KButton(
           onPressed: () {
-            KRouter().push(KRoutes.payRoute);
+            if (plan != null)
+              Okito.pushNamed(KRoutes.payRoute, arguments: {
+                "plan": plan,
+              });
           },
           title: "UPGRADE NOW",
           color: ColorConstants.greenColor,
