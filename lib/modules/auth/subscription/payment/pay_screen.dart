@@ -81,6 +81,7 @@ class _PayScreenState extends State<PayScreen> {
                                           },
                                         ),
                                       ).then((value) {
+                                        _selectedItem = null;
                                         setState(() {});
                                       });
                                     },
@@ -182,7 +183,9 @@ class _PayScreenState extends State<PayScreen> {
             padding: EdgeInsets.all(16.0),
             child: KButton(
               color: ColorConstants.greenColor,
-              onPressed: () {},
+              onPressed: () {
+                controller.paySubscription(_selectedItem);
+              },
               title: "PAY NOW",
             ),
           ),

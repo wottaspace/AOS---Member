@@ -11,7 +11,7 @@ import 'package:arcopen_employee/utils/services/auth_service.dart';
 import 'package:dio/dio.dart';
 import 'package:okito/okito.dart';
 
-class SplashScreenController with ToastMixin {
+class SplashScreenController extends OkitoController with ToastMixin {
   SplashScreenController._internal();
   static final SplashScreenController _singleton = SplashScreenController._internal();
 
@@ -20,8 +20,12 @@ class SplashScreenController with ToastMixin {
   }
 
   final AuthRepository _repository = AuthRepository();
+  bool initDataFailed = false;
 
   Future<void> initialize() async {
+    setState(() {
+      initDataFailed = false;
+    });
     Future.delayed(Duration(seconds: 2)).then((value) async {
       if (!KStorage().contains(AppConstants.firstAppOpeningKey)) {
         KRouter().push(KRoutes.stepperRoute, replace: true);
@@ -38,6 +42,9 @@ class SplashScreenController with ToastMixin {
           if (e.toString().contains("422")) {
             KRouter().push(KRoutes.loginRoute, replace: true);
           } else {
+            setState(() {
+              initDataFailed = true;
+            });
             this.showErrorToast("Failed to load data. Please try again later.");
           }
         }
