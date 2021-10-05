@@ -18,6 +18,7 @@ import 'package:arcopen_employee/modules/jobs/explore/location_filter_screen.dar
 import 'package:arcopen_employee/modules/jobs/job_details/apply_success_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_details/job_details_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_listing/history_details/history_details_screen.dart';
+import 'package:arcopen_employee/modules/settings/add_card/add_card_screen.dart';
 import 'package:arcopen_employee/modules/settings/bank_details/bank_details_screen.dart';
 import 'package:arcopen_employee/modules/settings/change_password_screen.dart';
 import 'package:arcopen_employee/modules/settings/settings_screen.dart';
@@ -71,6 +72,7 @@ class KRoutes {
   static final String inviteFriendsRoute = "/invite-friends";
 
   static final String payRoute = "/pay";
+  static final String addPaymentMethodRoute = "/add-payment-method-route";
 
   static registerRoutes() {
     KRouter().registerRoute(route: KRoute(name: KRoutes.splashRoute, page: SplashScreen(), isInitial: true));
@@ -107,5 +109,6 @@ class KRoutes {
 
     KRouter().registerRoute(route: KRoute(name: KRoutes.inviteFriendsRoute, page: InviteFriendsScreen()));
     KRouter().registerRoute(route: KRoute(name: KRoutes.payRoute, page: PayScreen()));
+    KRouter().registerRoute(route: KRoute(name: KRoutes.addPaymentMethodRoute, page: AddCardScreen()));
   }
 }

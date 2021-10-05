@@ -1,11 +1,12 @@
 import 'package:arcopen_employee/constants/app_constants.dart';
 import 'package:arcopen_employee/http/network/network_client.dart';
 import 'package:arcopen_employee/utils/helpers/k_storage.dart';
+import 'package:arcopen_employee/utils/mixins/loggin_mixin.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-class DioClient with NetworkClient {
+class DioClient with LoggingMixin implements NetworkClient {
   static final DioClient _singleton = DioClient._internal(dotenv.env["ENDPOINT"]!);
   final String baseUrl;
 
@@ -34,6 +35,10 @@ class DioClient with NetworkClient {
           });
 
           return handler.next(options);
+        },
+        onError: (e, handler) {
+          logger.e(e.message, e);
+          return handler.next(e);
         },
       ),
     );

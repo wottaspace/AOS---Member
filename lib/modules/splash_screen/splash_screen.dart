@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       return KButton(
                         onPressed: controller.initialize,
                         title: "Try again",
-                        color: Okito.theme.primaryColor,
+                        color: ColorConstants.greyColor.withOpacity(0.8),
                       );
                     return Padding(
                       padding: const EdgeInsets.all(32.0),

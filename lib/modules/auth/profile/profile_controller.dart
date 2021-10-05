@@ -139,7 +139,6 @@ class ProfileController extends OkitoController with ToastMixin {
   }
 
   FormData computeFormData() {
-    print(unavailabilityController.text.split(" - "));
     return FormData.fromMap({
       "about": aboutController.text,
       "drive": driveController.text,

@@ -32,7 +32,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
     );
     _selectedIndex = 0;
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      controller.getSubscriptionPlans();
+      controller.loadData();
     });
     super.initState();
   }
@@ -182,8 +182,13 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
           padding: EdgeInsets.all(12.0),
           child: KButton.outlined(
             onPressed: () {
+              final choosenPlan = controller.subscriptionPlans[_selectedIndex];
+              if (controller.activePlan?.planId == choosenPlan.planId) {
+                controller.showWarningToast("The selected plan is the active plan.");
+                return;
+              }
               Okito.pushNamed(KRoutes.upgradePlanRoute, arguments: {
-                "plan": controller.subscriptionPlans[_selectedIndex],
+                "plan": choosenPlan,
               });
             },
             title: "CONTINUE",

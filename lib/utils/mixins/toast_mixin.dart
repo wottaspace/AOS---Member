@@ -14,6 +14,17 @@ mixin ToastMixin {
     Okito.showSnackBar(snackBar: snackBar);
   }
 
+  showWarningToast(String content) {
+    final SnackBar snackBar = SnackBar(
+      content: Text(
+        "$content",
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: ColorConstants.orangeColor,
+    );
+    Okito.showSnackBar(snackBar: snackBar);
+  }
+
   showSuccessToast(String content) {
     final SnackBar snackBar = SnackBar(
       content: Text(

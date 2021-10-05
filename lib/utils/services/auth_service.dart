@@ -13,6 +13,7 @@ class AuthService {
   void logout() {
     this.profileExists = false;
     KStorage().remove(AppConstants.accessTokenKey);
+    KStorage().remove(AppConstants.paymentMethodsKey);
     Okito.pushNamedAndRemoveUntil(KRoutes.loginRoute, predicate: (route) => route.isFirst);
   }
 }
