@@ -61,7 +61,7 @@ class Job {
       city: json["city"],
       createdAt: json["created_at"],
       enquirerCompany: json["enquirer_company"],
-      id: json["id"],
+      id: json["id"] ?? json["job_id"],
       jobCategory: json["job_category"],
       jobDescription: json["job_description"],
       jobType: json["job_type"],

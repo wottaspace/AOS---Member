@@ -125,7 +125,7 @@ class JobCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "$employmentType",
+                            "${employmentType.capitalize}",
                             style: Okito.theme.textTheme.bodyText2,
                           ),
                           SizedBox(height: 5),

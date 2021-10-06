@@ -6,7 +6,12 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 
 class KPAppBar extends StatelessWidget with PreferredSizeWidget {
-  const KPAppBar({Key? key}) : super(key: key);
+  const KPAppBar({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+
+  final ProfileController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +25,7 @@ class KPAppBar extends StatelessWidget with PreferredSizeWidget {
     final List<_MenuItem> menuItems = [
       _MenuItem(
         onTap: () {
-          ProfileController().createOrUpdateProfile();
+          controller.createOrUpdateProfile();
         },
         title: "Save changes",
       ),

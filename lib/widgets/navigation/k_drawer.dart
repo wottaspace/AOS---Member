@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/constants/app_constants.dart';
 import 'package:arcopen_employee/utils/helpers/asset_helper.dart';
 import 'package:arcopen_employee/utils/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:okito/okito.dart';
 import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class KDrawer extends StatelessWidget {
   const KDrawer({Key? key}) : super(key: key);
@@ -111,7 +113,11 @@ class KDrawer extends StatelessWidget {
                     "Support",
                     style: titleStyle,
                   ),
-                  onTap: () {},
+                  onTap: () async {
+                    if (await canLaunch(AppConstants.supportUrl)) {
+                      launch(AppConstants.supportUrl);
+                    }
+                  },
                 ),
                 Divider(),
                 ListTile(

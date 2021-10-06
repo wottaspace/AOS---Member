@@ -38,6 +38,7 @@ dependencies:
   file_picker: ^4.0.2
   adaptive_action_sheet: ^2.0.0
   credit_card_input_form: ^2.3.0
+  url_launcher:
   phone_code_picker:
     git:
       url: https://github.com/stevenosse/phone_code_picker

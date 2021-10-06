@@ -80,15 +80,15 @@ class _InvitesScreenState extends State<InvitesScreen> {
                       final Job job = controller.jobs[index];
                       return JobCard(
                         jobSaved: false,
-                        applicantCount: 2,
-                        company: "TG Minto",
-                        dateRange: "15 JAN - 18 JAN",
-                        employmentType: "Express employment",
-                        isNightlyJob: index.isEven,
-                        location: "KITCHENER",
-                        payRate: "\$25",
-                        postedAt: "Jan 05th, 2021",
-                        employeePhotoUrl: null,
+                        applicantCount: job.applicantsCount ?? 0,
+                        company: job.businessName,
+                        dateRange: "${job.startDate.split(", ").last} - ${job.endDate.split(", ").last}",
+                        employmentType: job.jobType,
+                        isNightlyJob: job.shiftType != "Day",
+                        location: job.address,
+                        payRate: job.budget.isEmpty ? "unknown" : job.budget,
+                        postedAt: job.createdAt.split(" ").reversed.skip(2).toList().reversed.join(" "),
+                        employeePhotoUrl: job.profilePic,
                         onTap: () {
                           KRouter().push(KRoutes.jobDetailsRoute, args: {
                             "canDecline": true,

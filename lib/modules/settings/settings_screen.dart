@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
@@ -6,6 +7,7 @@ import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/widgets/misc/section_title.dart';
 import 'package:arcopen_employee/widgets/navigation/k_app_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -59,7 +61,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               ListTile(
                 dense: true,
-                onTap: () {},
+                onTap: () async {
+                  if (await canLaunch(AppConstants.privacyPolicyUrl)) {
+                    launch(AppConstants.privacyPolicyUrl);
+                  }
+                },
                 title: Text(
                   "Privacy Policy",
                   style: titleStyle,
@@ -69,7 +75,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Divider(),
               ListTile(
                 dense: true,
-                onTap: () {},
+                onTap: () async {
+                  if (await canLaunch(AppConstants.accessibilityUrl)) {
+                    launch(AppConstants.accessibilityUrl);
+                  }
+                },
                 title: Text(
                   "Accessibility",
                   style: titleStyle,
@@ -79,7 +89,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Divider(),
               ListTile(
                 dense: true,
-                onTap: () {},
+                onTap: () async {
+                  if (await canLaunch(AppConstants.tosUrl)) {
+                    launch(AppConstants.tosUrl);
+                  }
+                },
                 title: Text(
                   "Terms of service",
                   style: titleStyle,

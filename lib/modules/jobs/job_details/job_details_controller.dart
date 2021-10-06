@@ -53,22 +53,20 @@ class JobDetailsController extends OkitoController with ToastMixin {
   }
 
   Future declineJob() async {
-    if (applyFormKey.currentState!.validate()) {
-      final JobApplyRequest request = JobApplyRequest(
-        payExpected: payRateController.text.isEmpty ? job!.budget.split(" ").first : payRateController.text,
-        message: messageController.text,
-        jobId: job!.id.toString(),
-        memberStatus: "Decline",
-      );
+    final JobApplyRequest request = JobApplyRequest(
+      payExpected: payRateController.text.isEmpty ? job!.budget.split(" ").first : payRateController.text,
+      message: messageController.text,
+      jobId: job!.id.toString(),
+      memberStatus: "Decline",
+    );
 
-      KLoader().show();
-      repository.applyForJob(request: request).then((value) {
-        KLoader.hide();
-        KRouter().push(KRoutes.applySuccessRoute);
-      }).catchError((e) {
-        this.showErrorToast(e.toString());
-        KLoader.hide();
-      });
-    }
+    KLoader().show();
+    repository.applyForJob(request: request).then((value) {
+      KLoader.hide();
+      KRouter().push(KRoutes.applySuccessRoute);
+    }).catchError((e) {
+      this.showErrorToast(e.toString());
+      KLoader.hide();
+    });
   }
 }

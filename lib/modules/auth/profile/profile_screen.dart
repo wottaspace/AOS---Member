@@ -49,7 +49,9 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                 key: profileController.formKey,
                 child: Column(
                   children: [
-                    KPAppBar(),
+                    KPAppBar(
+                      controller: profileController,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(

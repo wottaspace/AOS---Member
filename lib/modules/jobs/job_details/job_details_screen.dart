@@ -172,10 +172,16 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                         ),
                         SizedBox(height: 5),
                         if (Okito.arguments["canDecline"] != null)
-                          KButton.outlined(
-                            onPressed: controller.declineJob,
-                            title: "DECLINE",
-                            color: ColorConstants.red,
+                          Row(
+                            children: [
+                              Expanded(
+                                child: KButton.outlined(
+                                  onPressed: controller.declineJob,
+                                  title: "DECLINE",
+                                  color: ColorConstants.red,
+                                ),
+                              )
+                            ],
                           ),
                       ],
                     ),
