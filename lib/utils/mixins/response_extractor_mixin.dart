@@ -8,6 +8,9 @@ mixin ResponseExtractorMixin {
       if (responseData["error"] != null) {
         return responseData["error"];
       }
+      if (responseData["error_message"] != null) {
+        return responseData["error_message"].toString().split(":").last;
+      }
     } else {
       return error.message;
     }

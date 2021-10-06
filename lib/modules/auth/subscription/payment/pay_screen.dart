@@ -1,4 +1,3 @@
-import 'package:arcopen_employee/core/models/payment_card.dart';
 import 'package:arcopen_employee/modules/auth/subscription/payment/payment_controller.dart';
 import 'package:arcopen_employee/modules/partials/pay_body.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +16,10 @@ class PayScreen extends StatefulWidget {
 class _PayScreenState extends State<PayScreen> {
   final PaymentController controller = PaymentController();
 
-  PaymentCard? _selectedItem;
-
   @override
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      controller.getPaymentMethods();
+      controller.initialize();
     });
     super.initState();
   }
@@ -51,6 +48,36 @@ class _PayScreenState extends State<PayScreen> {
                             Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Text(
+                                "Select a billing cycle",
+                                style: Okito.theme.textTheme.headline2!.copyWith(
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                            ),
+                            Divider(),
+                            ...controller.billingCycles.map<Widget>((cycle) {
+                              return RadioListTile(
+                                groupValue: controller.billingCycle,
+                                value: cycle,
+                                title: Text(cycle.capitalize),
+                                onChanged: (String? cycle) {
+                                  controller.setSelectedBillingCycle = cycle!;
+                                },
+                              );
+                            }).toList()
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Card(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Text(
                                 "Select your payment method",
                                 style: Okito.theme.textTheme.headline2!.copyWith(
                                   fontSize: 16.0,
@@ -63,15 +90,13 @@ class _PayScreenState extends State<PayScreen> {
                                 setState(() {});
                               },
                               onCvvChanged: (cvv) {
-                                print(cvv);
+                                controller.cvv = cvv;
                               },
                               onItemAdded: () {
                                 setState(() {});
                               },
                               onItemSelected: (e) {
-                                setState(() {
-                                  _selectedItem = e;
-                                });
+                                controller.setSelectedPaymentMethod = e!;
                               },
                             ),
                           ],
@@ -88,7 +113,7 @@ class _PayScreenState extends State<PayScreen> {
             child: KButton(
               color: ColorConstants.greenColor,
               onPressed: () {
-                controller.paySubscription(_selectedItem);
+                controller.paySubscription();
               },
               title: "PAY NOW",
             ),

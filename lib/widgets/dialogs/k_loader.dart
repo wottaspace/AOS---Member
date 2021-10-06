@@ -9,6 +9,7 @@ class KLoader {
   Future show() async {
     showDialog(
       context: Okito.context!,
+      barrierDismissible: false,
       builder: (context) {
         return AlertDialog(
           content: Row(
