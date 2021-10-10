@@ -42,6 +42,20 @@ class ExploreScreenController extends OkitoController with ToastMixin {
     });
   }
 
+  Future<void> filterJobs({required Map<String, dynamic> filters}) async {
+    KLoader().show();
+    _repository.filterJobs(filters: filters).then((value) {
+      setState(() {
+        jobList = value.jobs;
+        recommendedJobs = value.recommendedJobs;
+      });
+      KLoader.hide();
+    }).catchError((e) {
+      KLoader.hide();
+      this.showErrorToast("Sorry, we are not able to apply your filters. Please try again later.");
+    });
+  }
+
   Future<void> saveJob({required int jobId}) async {
     KLoader().show();
     _repository.saveJob(jobId: jobId).then((value) {

@@ -34,6 +34,7 @@ dependencies:
   eyro_toast: ^1.0.0
   dio: ^4.0.0
   device_info: ^2.0.2
+  syncfusion_flutter_sliders: ^19.3.44
   dio_http_cache: ^0.3.0
   file_picker: ^4.0.2
   adaptive_action_sheet: ^2.0.0

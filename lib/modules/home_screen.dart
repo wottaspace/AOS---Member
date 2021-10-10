@@ -8,7 +8,7 @@ import 'package:okito/okito.dart';
 import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
-import 'package:arcopen_employee/modules/finances/finances_screen.dart';
+import 'package:arcopen_employee/modules/finances/finance_list/finances_screen.dart';
 import 'package:arcopen_employee/modules/inbox/inbox_list/inbox_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_listing/job_listing_screen.dart';
 import 'package:arcopen_employee/modules/saved/saved_screen.dart';

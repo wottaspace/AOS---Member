@@ -2,11 +2,10 @@ import 'package:arcopen_employee/core/models/job.dart';
 import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen_controller.dart';
 import 'package:arcopen_employee/utils/helpers/loading_state.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
+import 'package:arcopen_employee/widgets/states/empty_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
-import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
-import 'package:arcopen_employee/widgets/forms/k_text_field.dart';
 import 'package:arcopen_employee/widgets/jobs/job_card.dart';
 import 'package:arcopen_employee/widgets/jobs/recommended_job_card.dart';
 import 'package:arcopen_employee/widgets/misc/k_chip.dart';
@@ -76,64 +75,69 @@ class _ExploreScreenState extends State<ExploreScreen> {
           case LoadingState.success:
             pageContent = Column(
               children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      ...controller.recommendedJobs.map(
-                        (job) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: RecommendedJobCard(
-                            company: job.businessName,
-                            title: "Posted by ${job.enquirerCompany}",
-                            location: job.address,
-                            onTap: () {
-                              Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
-                                "job": job,
-                              });
-                            },
+                if (controller.recommendedJobs.isNotEmpty) ...[
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ...controller.recommendedJobs.map(
+                          (job) => Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: RecommendedJobCard(
+                              company: job.businessName,
+                              title: "Posted by ${job.enquirerCompany}",
+                              location: job.address,
+                              onTap: () {
+                                Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
+                                  "job": job,
+                                });
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
+                  SizedBox(height: 20),
+                ],
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SectionTitle(title: "JOBS"),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: controller.jobList.length,
-                        itemBuilder: (context, index) {
-                          final Job job = controller.jobList[index];
+                      if (controller.jobList.isEmpty)
+                        EmptyState()
+                      else
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: controller.jobList.length,
+                          itemBuilder: (context, index) {
+                            final Job job = controller.jobList[index];
 
-                          final String startRange = job.shiftStartDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
-                          final String endRange = job.shiftEndDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
-                          return JobCard(
-                            jobSaved: job.saved,
-                            applicantCount: job.applicantsCount ?? 0,
-                            company: job.businessName,
-                            dateRange: "$startRange - $endRange",
-                            employmentType: job.jobType,
-                            isNightlyJob: job.shiftType != "Day",
-                            location: job.address,
-                            payRate: job.budget,
-                            postedAt: job.createdAt.split(" ").reversed.skip(2).toList().reversed.join(" "),
-                            employeePhotoUrl: job.profilePic,
-                            onTap: () {
-                              Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
-                                "job": job,
-                              });
-                            },
-                            jobId: job.id,
-                          );
-                        },
-                      ),
+                            final String startRange = job.shiftStartDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
+                            final String endRange = job.shiftEndDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
+                            return JobCard(
+                              jobSaved: job.saved,
+                              applicantCount: job.applicantsCount ?? 0,
+                              company: job.businessName,
+                              dateRange: "$startRange - $endRange",
+                              employmentType: job.jobType,
+                              isNightlyJob: job.shiftType != "Day",
+                              location: job.address,
+                              payRate: job.budget,
+                              postedAt: job.createdAt.split(" ").reversed.skip(2).toList().reversed.join(" "),
+                              employeePhotoUrl: job.profilePic,
+                              onTap: () {
+                                Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
+                                  "job": job,
+                                });
+                              },
+                              jobId: job.id,
+                            );
+                          },
+                        ),
                     ],
                   ),
                 )
@@ -144,50 +148,57 @@ class _ExploreScreenState extends State<ExploreScreen> {
             pageContent = SizedBox();
             break;
         }
-        return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 24.0, bottom: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      KTextField.circular(
-                        hintText: "Search",
-                        controller: controller.searchController,
-                        leading: PhosphorIcons.magnifying_glass,
-                      ),
-                      SizedBox(height: 15),
-                      Wrap(
-                        children: [
-                          KChip(
-                            title: "Location",
-                            icon: PhosphorIcons.map_pin_fill,
-                            onTap: () {
-                              KRouter().push(KRoutes.locationFilterRoute);
-                            },
-                          ),
-                          SizedBox(width: 10),
-                          KChip(
-                            title: "Filter",
-                            icon: PhosphorIcons.funnel_fill,
-                            onTap: () {
-                              KRouter().push(KRoutes.filterRoute);
-                            },
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      if (controller.recommendedJobs.isNotEmpty) SectionTitle(title: "RECOMMENDED JOBS"),
-                    ],
+        return RefreshIndicator(
+          onRefresh: controller.loadJobs,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 24.0, bottom: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // KTextField.circular(
+                        //   hintText: "Search",
+                        //   controller: controller.searchController,
+                        //   leading: PhosphorIcons.magnifying_glass,
+                        // ),
+                        // SizedBox(height: 15),
+                        Wrap(
+                          children: [
+                            // KChip(
+                            //   title: "Location",
+                            //   icon: PhosphorIcons.map_pin_fill,
+                            //   onTap: () {
+                            //     KRouter().push(KRoutes.locationFilterRoute);
+                            //   },
+                            // ),
+                            // SizedBox(width: 10),
+                            KChip(
+                              title: "Filter",
+                              icon: PhosphorIcons.funnel_fill,
+                              onTap: () {
+                                Okito.pushNamed(KRoutes.filterRoute).then((value) {
+                                  WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+                                    if (value != null) controller.filterJobs(filters: value);
+                                  });
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20),
+                        if (controller.recommendedJobs.isNotEmpty) SectionTitle(title: "RECOMMENDED JOBS"),
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(height: 20),
-                pageContent,
-              ],
+                  SizedBox(height: 20),
+                  pageContent,
+                ],
+              ),
             ),
           ),
         );

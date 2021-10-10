@@ -13,7 +13,7 @@ import 'package:arcopen_employee/modules/finances/finance_details_screen.dart';
 import 'package:arcopen_employee/modules/home_screen.dart';
 import 'package:arcopen_employee/modules/inbox/inbox_details_screen.dart';
 import 'package:arcopen_employee/modules/invites/invite_friends_screen.dart';
-import 'package:arcopen_employee/modules/jobs/explore/filter_screen.dart';
+import 'package:arcopen_employee/modules/jobs/explore/filter/filter_screen.dart';
 import 'package:arcopen_employee/modules/jobs/explore/location_filter_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_details/apply_success_screen.dart';
 import 'package:arcopen_employee/modules/jobs/job_details/job_details_screen.dart';

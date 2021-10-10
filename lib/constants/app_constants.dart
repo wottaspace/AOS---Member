@@ -21,12 +21,4 @@ class AppConstants {
   static final String privacyPolicyUrl = "https://arcopenspace.com/privacy-policy";
   static final String accessibilityUrl = "https://arcopenspace.com/accessibility";
   static final String tosUrl = "https://arcopenspace.com/terms-services";
-
-  static final List<String> availableCategories = [
-    "Warehouse",
-    "Industrial Complex",
-    "Retail Store",
-    "Corporate Events",
-    "NightClub",
-  ];
 }

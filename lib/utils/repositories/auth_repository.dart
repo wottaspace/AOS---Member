@@ -36,9 +36,6 @@ class AuthRepository extends BaseRepository {
     }
   }
 
-  Future editPassword() async {}
-  Future editProfile() async {}
-
   Future<MemberProfileResponse> readMemberProfile() async {
     try {
       final Response response = await client.get(path: "/memberProfile");

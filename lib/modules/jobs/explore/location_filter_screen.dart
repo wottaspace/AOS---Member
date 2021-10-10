@@ -1,9 +1,9 @@
+import 'package:arcopen_employee/constants/job_contants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
-import 'package:arcopen_employee/widgets/forms/k_text_field.dart';
+
 import 'package:arcopen_employee/widgets/misc/section_title.dart';
 import 'package:arcopen_employee/widgets/navigation/k_app_bar.dart';
 
@@ -15,7 +15,7 @@ class LocationFilterScreen extends StatefulWidget {
 }
 
 class _LocationFilterScreenState extends State<LocationFilterScreen> {
-  final TextEditingController _searchController = TextEditingController();
+  String? selectedProximity;
 
   @override
   Widget build(BuildContext context) {
@@ -31,34 +31,34 @@ class _LocationFilterScreenState extends State<LocationFilterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 20),
-                  KTextField.circular(
-                    hintText: "Search",
-                    leading: PhosphorIcons.magnifying_glass,
-                    controller: _searchController,
-                  ),
-                  SizedBox(height: 20),
                   SectionTitle(title: "LOCATION"),
                   ListView.builder(
-                    itemCount: 3,
+                    itemCount: JobConstants.proximityValues.length,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
+                      final String proximity = JobConstants.proximityValues[index];
                       return CheckboxListTile(
-                        value: index.isEven,
+                        value: selectedProximity == proximity,
                         contentPadding: EdgeInsets.zero,
                         controlAffinity: ListTileControlAffinity.leading,
                         title: Text(
-                          "London (Greater London)",
+                          proximity,
                           style: Okito.theme.textTheme.bodyText2!.copyWith(
                             color: Colors.black,
                           ),
                         ),
+                        dense: true,
                         onChanged: (value) {
-                          print(value);
+                          if (value!) {
+                            setState(() {
+                              selectedProximity = proximity;
+                            });
+                          }
                         },
                       );
                     },
-                  )
+                  ),
                 ],
               ),
             ),
@@ -68,7 +68,11 @@ class _LocationFilterScreenState extends State<LocationFilterScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(horizontal: 12.0),
         child: KButton.outlined(
-          onPressed: () {},
+          onPressed: () {
+            Okito.pop(result: {
+              "proximity": selectedProximity,
+            });
+          },
           title: "DONE",
           color: Okito.theme.primaryColor,
         ),

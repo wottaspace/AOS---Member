@@ -22,6 +22,16 @@ class JobsRepository extends BaseRepository {
     }
   }
 
+  Future<JobsResponse> filterJobs({required Map<String, dynamic> filters}) async {
+    try {
+      final Response response = await client.post(path: "$basePath/filterJobs/", args: filters);
+      print(response.data);
+      return JobsResponse.fromJson(response.data);
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
   Future applyForJob({required JobApplyRequest request}) async {
     try {
       final Response response = await client.post(path: "$basePath/applyJob/", args: request.toJson());
