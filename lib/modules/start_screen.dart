@@ -4,6 +4,7 @@ import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/app_constants.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
+import 'package:okito/okito.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -66,32 +67,34 @@ class _StartScreenState extends State<StartScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
-                    child: Center(
-                      child: Text(
-                        "SKIP",
-                        style: TextStyle(
-                          color: ColorConstants.greyColor,
-                          fontSize: 12.0,
-                          fontWeight: FontWeight.normal,
+                  _currentPage == 2
+                      ? SizedBox()
+                      : GestureDetector(
+                          child: Center(
+                            child: Text(
+                              "SKIP",
+                              style: TextStyle(
+                                color: ColorConstants.greyColor,
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          onTap: () {
+                            _pageController.animateToPage(
+                              2,
+                              duration: Duration(milliseconds: 520),
+                              curve: Curves.easeInOut,
+                            );
+                          },
                         ),
-                      ),
-                    ),
-                    onTap: () {
-                      _pageController.animateToPage(
-                        2,
-                        duration: Duration(milliseconds: 520),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
                   TextButton(
                     child: Text(
-                      "NEXT",
+                      _currentPage == 2 ? "GET STARTED" : "NEXT",
                       style: TextStyle(
-                        color: ColorConstants.greenColor,
+                        color: _currentPage == 2 ? Okito.theme.primaryColor : ColorConstants.greenColor,
                         fontSize: 12.0,
-                        fontWeight: FontWeight.normal,
+                        fontWeight: _currentPage == 2 ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
                     onPressed: () {

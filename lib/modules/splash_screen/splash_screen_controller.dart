@@ -26,32 +26,31 @@ class SplashScreenController extends OkitoController with ToastMixin {
     setState(() {
       initDataFailed = false;
     });
-    Future.delayed(Duration(seconds: 2)).then((value) async {
-      if (!KStorage().contains(AppConstants.firstAppOpeningKey)) {
-        KRouter().push(KRoutes.stepperRoute, replace: true);
-        return;
-      }
-      if (KStorage().contains(AppConstants.accessTokenKey)) {
-        try {
-          bool result = await _loadMemberProfile();
-          if (result)
-            KRouter().push(KRoutes.exploreRoute, replace: true);
-          else
-            KRouter().push(KRoutes.profileRoute, replace: true);
-        } catch (e) {
-          if (e.toString().contains("422")) {
-            KRouter().push(KRoutes.loginRoute, replace: true);
-          } else {
-            setState(() {
-              initDataFailed = true;
-            });
-            this.showErrorToast("Failed to load data. Please try again later.");
-          }
+
+    if (!KStorage().contains(AppConstants.firstAppOpeningKey)) {
+      KRouter().push(KRoutes.stepperRoute, replace: true);
+      return;
+    }
+    if (KStorage().contains(AppConstants.accessTokenKey)) {
+      try {
+        bool result = await _loadMemberProfile();
+        if (result)
+          KRouter().push(KRoutes.exploreRoute, replace: true);
+        else
+          KRouter().push(KRoutes.profileRoute, replace: true);
+      } catch (e) {
+        if (e.toString().contains("422")) {
+          KRouter().push(KRoutes.loginRoute, replace: true);
+        } else {
+          setState(() {
+            initDataFailed = true;
+          });
+          this.showErrorToast("Failed to load data. Please try again later.");
         }
-        return;
       }
-      KRouter().push(KRoutes.loginRoute, replace: true);
-    });
+      return;
+    }
+    KRouter().push(KRoutes.loginRoute, replace: true);
   }
 
   Future<bool> _loadMemberProfile() async {

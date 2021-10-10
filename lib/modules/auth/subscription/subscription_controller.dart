@@ -1,6 +1,6 @@
 import 'package:arcopen_employee/core/models/plan.dart';
 import 'package:arcopen_employee/utils/helpers/loading_state.dart';
-import 'package:arcopen_employee/utils/mixins/loggin_mixin.dart';
+import 'package:arcopen_employee/utils/mixins/logging_mixin.dart';
 import 'package:arcopen_employee/utils/mixins/toast_mixin.dart';
 import 'package:arcopen_employee/utils/repositories/subscriptions_repository.dart';
 import 'package:okito/okito.dart';
