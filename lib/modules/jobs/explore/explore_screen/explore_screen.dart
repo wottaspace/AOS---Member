@@ -88,13 +88,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
                             title: "Posted by ${job.enquirerCompany}",
                             location: job.address,
                             onTap: () {
-                              if (job.applied) {
-                                Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
-                                  "job": job,
-                                });
-                              } else {
-                                controller.showErrorToast("Sorry, you've already applied for this job.");
-                              }
+                              Okito.pushNamed(KRoutes.jobDetailsRoute, arguments: {
+                                "job": job,
+                              });
                             },
                           ),
                         ),

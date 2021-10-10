@@ -153,6 +153,10 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                         KButton(
                           expanded: true,
                           onPressed: () {
+                            if (job.applied) {
+                              controller.showErrorToast("Sorry, you've already applied for this job.");
+                              return;
+                            }
                             setState(() {
                               actionsVisible = false;
                             });

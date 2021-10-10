@@ -60,7 +60,9 @@ class KTextField extends StatelessWidget {
 
   static Widget exposed({
     String? hintText,
+    bool isPassword = false,
     required TextEditingController controller,
+    FormFieldValidator<String>? validator,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -68,6 +70,9 @@ class KTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: TextFormField(
+        obscureText: isPassword,
+        validator: validator,
+        controller: controller,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 12.0),
           hintText: hintText,

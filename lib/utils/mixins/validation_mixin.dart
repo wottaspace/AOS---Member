@@ -31,7 +31,7 @@ mixin ValidationMixin {
 
   String? validateMinlength({required String fieldName, required String value, int min = 1}) {
     final String validationMessage = "$fieldName must be at least $min characters";
-    if (value.isNotEmpty && value.length < min) return validationMessage;
+    if (value.isEmpty || value.length < min) return validationMessage;
     return null;
   }
 

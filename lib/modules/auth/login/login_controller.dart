@@ -28,15 +28,12 @@ class LoginController extends OkitoController with ValidationMixin, ToastMixin {
   void login() {
     if (formKey.currentState!.validate()) {
       KLoader().show();
-      _repository
-          .login(
-        request: LoginRequest(
-          email: emailController.text,
-          password: passwordController.text,
-        ),
-      )
-          .then((value) async {
+      _repository.login(request: LoginRequest(email: emailController.text, password: passwordController.text)).then((value) async {
         KLoader.hide();
+        if (value.user.userType != "member") {
+          this.showErrorToast("This app is reserved to users with member profile. Consider using the enquirer app instead.");
+          return;
+        }
         KStorage().write(key: AppConstants.accessTokenKey, value: value.accessToken);
 
         Okito.use<AuthService>().profileExists = value.profileExists;

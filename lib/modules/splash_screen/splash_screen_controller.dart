@@ -27,6 +27,7 @@ class SplashScreenController extends OkitoController with ToastMixin {
       initDataFailed = false;
     });
 
+    await Future.delayed(Duration(seconds: 1));
     if (!KStorage().contains(AppConstants.firstAppOpeningKey)) {
       KRouter().push(KRoutes.stepperRoute, replace: true);
       return;
