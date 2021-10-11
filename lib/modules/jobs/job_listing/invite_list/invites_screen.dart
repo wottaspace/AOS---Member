@@ -32,7 +32,7 @@ class _InvitesScreenState extends State<InvitesScreen> {
     return OkitoBuilder(
       controller: controller,
       builder: () {
-        Widget pageContent = SizedBox();
+        Widget pageContent = const SizedBox();
 
         Widget pageStateContainer(Widget child) {
           return Container(
@@ -101,7 +101,7 @@ class _InvitesScreenState extends State<InvitesScreen> {
                   );
             break;
           case LoadingState.pending:
-            pageContent = SizedBox();
+            pageContent = const SizedBox();
             break;
         }
         return Column(

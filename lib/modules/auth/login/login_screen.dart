@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Image.asset("assets/images/logo.png"),
                       ),
                       Text("Log In and get things done"),
-                      SizedBox(height: 50),
+                      const SizedBox(height: 50),
                       KTextField(
                         controller: controller.emailController,
                         hintText: "email",
@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return controller.validateRequired(fieldName: "email", value: value);
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       KTextField(
                         controller: controller.passwordController,
                         hintText: "password",
@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           return controller.validateRequired(fieldName: "password", value: value);
                         },
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       KButton(
                         onPressed: () {
                           controller.login();
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         title: "LOG IN",
                         color: ColorConstants.greenColor,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       TextButton(
                         onPressed: () {
                           KRouter().push(KRoutes.resetPasswordRoute);
@@ -81,14 +81,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
                         "- OR -",
                         style: Okito.theme.textTheme.bodyText2!.copyWith(
                           color: ColorConstants.greyColor,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       KButton.outlined(
                         expanded: true,
                         onPressed: () {
@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         title: "+ CREATE ACCOUNT",
                         color: Okito.theme.primaryColor,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),

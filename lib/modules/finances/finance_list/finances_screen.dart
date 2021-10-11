@@ -44,7 +44,7 @@ class _FinancesScreenState extends State<FinancesScreen> {
         child: OkitoBuilder(
           controller: controller,
           builder: () {
-            Widget pageContent = SizedBox();
+            Widget pageContent = const SizedBox();
 
             Widget pageStateContainer(Widget child) {
               return Container(
@@ -96,18 +96,18 @@ class _FinancesScreenState extends State<FinancesScreen> {
                 );
                 break;
               case LoadingState.pending:
-                pageContent = SizedBox();
+                pageContent = const SizedBox();
                 break;
             }
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _BalanceCard(
                   totalJobsLabel: controller.totalJobs,
                   totalPaid: controller.totalPaid,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
@@ -149,7 +149,7 @@ class _FinancesScreenState extends State<FinancesScreen> {
                     isSelected: [_selectedIndex == 0, _selectedIndex == 1],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   children: [
                     Expanded(
@@ -165,7 +165,7 @@ class _FinancesScreenState extends State<FinancesScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 pageContent
               ],
             );
@@ -205,7 +205,7 @@ class _BalanceCard extends StatelessWidget {
                 fontSize: 12.0,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               totalPaid.isEmpty ? "\$0" : totalPaid,
               style: Okito.theme.textTheme.bodyText2!.copyWith(
@@ -214,7 +214,7 @@ class _BalanceCard extends StatelessWidget {
                 color: ColorConstants.greenColor,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               totalJobsLabel,
               style: Okito.theme.textTheme.bodyText2!.copyWith(

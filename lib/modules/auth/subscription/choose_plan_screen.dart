@@ -49,7 +49,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
             child: OkitoBuilder(
               controller: controller,
               builder: () {
-                Widget pageContent = SizedBox();
+                Widget pageContent = const SizedBox();
 
                 Widget pageStateContainer(Widget child) {
                   return Container(
@@ -100,7 +100,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
                                 padding: EdgeInsets.all(16.0),
                                 child: Column(
                                   children: [
-                                    SizedBox(height: 20),
+                                   const  SizedBox(height: 20),
                                     Container(
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
@@ -118,7 +118,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
                                       "Charge on link up",
                                       style: Okito.theme.textTheme.bodyText1,
                                     ),
-                                    SizedBox(height: 5),
+                                    const SizedBox(height: 5),
                                     Text(
                                       "Gold inquirer has a little charge like 27p on linkup",
                                       style: Okito.theme.textTheme.bodyText2!.copyWith(color: ColorConstants.greyColor),
@@ -134,13 +134,13 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
                                     return Row(
                                       children: [
                                         CircleAvatar(maxRadius: 4, backgroundColor: isActive ? Okito.theme.primaryColor : ColorConstants.lightBlue),
-                                        SizedBox(width: 5),
+                                        const SizedBox(width: 5),
                                       ],
                                     );
                                   }),
                                 ],
                               ),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               Container(
                                 height: 200,
                                 child: PageView(
@@ -170,7 +170,7 @@ class _ChoosePlanScreenState extends State<ChoosePlanScreen> {
                           );
                     break;
                   case LoadingState.pending:
-                    pageContent = SizedBox();
+                    pageContent = const SizedBox();
                     break;
                 }
                 return pageContent;

@@ -29,7 +29,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
     return OkitoBuilder(
       controller: controller,
       builder: () {
-        Widget pageContent = SizedBox();
+        Widget pageContent = const SizedBox();
 
         Widget pageStateContainer(Widget child) {
           return Container(
@@ -124,7 +124,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
             );
             break;
           case LoadingState.pending:
-            pageContent = SizedBox();
+            pageContent = const SizedBox();
             break;
         }
         return pageContent;

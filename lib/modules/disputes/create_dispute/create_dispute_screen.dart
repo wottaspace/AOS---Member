@@ -59,7 +59,7 @@ class _CreateDisputeScreenState extends State<CreateDisputeScreen> {
                           // TODO: Save dispute
                         },
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                     ],
                   ),
                 ),
@@ -68,16 +68,16 @@ class _CreateDisputeScreenState extends State<CreateDisputeScreen> {
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     KTextField.soft(label: "TITLE", controller: _titleController, withShadow: false),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     KTextField.soft(
                       label: "SELECT JOB",
                       controller: _jobController,
                       withShadow: false,
                       suffixIcon: PhosphorIcons.caret_down_bold,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     KTextField.soft(
                       label: "DETAILS",
                       controller: _detailsController,
@@ -85,7 +85,7 @@ class _CreateDisputeScreenState extends State<CreateDisputeScreen> {
                       minLines: 5,
                       maxLines: 5,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       children: [
                         Expanded(
@@ -102,17 +102,17 @@ class _CreateDisputeScreenState extends State<CreateDisputeScreen> {
                           onPressed: () {},
                           iconSize: 15,
                           color: ColorConstants.greyColor,
-                          icon: Icon(PhosphorIcons.paperclip),
+                          icon: const Icon(PhosphorIcons.paperclip),
                         ),
                         IconButton(
                           onPressed: () {},
                           iconSize: 15,
                           color: ColorConstants.greyColor,
-                          icon: Icon(PhosphorIcons.camera_bold),
+                          icon: const Icon(PhosphorIcons.camera_bold),
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,

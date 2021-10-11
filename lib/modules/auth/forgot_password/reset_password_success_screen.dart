@@ -25,7 +25,7 @@ class _ResetPasswordSuccessScreenState extends State<ResetPasswordSuccessScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset("assets/images/send.png"),
-                  SizedBox(height: 50),
+                  const SizedBox(height: 50),
                   RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
@@ -39,7 +39,7 @@ class _ResetPasswordSuccessScreenState extends State<ResetPasswordSuccessScreen>
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   KButton(
                     onPressed: () {
                       Okito.pop();
@@ -47,7 +47,7 @@ class _ResetPasswordSuccessScreenState extends State<ResetPasswordSuccessScreen>
                     title: "DONE",
                     color: ColorConstants.greenColor,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),

@@ -61,14 +61,14 @@ class _StartScreenState extends State<StartScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: _buildIndicator(),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _currentPage == 2
-                      ? SizedBox()
+                      ? const SizedBox()
                       : GestureDetector(
                           child: Center(
                             child: Text(
@@ -112,7 +112,7 @@ class _StartScreenState extends State<StartScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
@@ -183,7 +183,7 @@ class _IntroPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Image.asset(image),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
             ],
           ),
           Text(
@@ -191,7 +191,7 @@ class _IntroPage extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             content,
             textAlign: TextAlign.center,

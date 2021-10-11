@@ -55,7 +55,7 @@ class _DisputesScreenState extends State<DisputesScreen> {
                         KRouter().push(KRoutes.createDisputeRoute);
                       },
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                   ],
                 ),
               ),
@@ -65,9 +65,9 @@ class _DisputesScreenState extends State<DisputesScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   SectionTitle(title: "OPEN"),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   DisputeCard(
                     onTap: () {
                       KRouter().push(KRoutes.disputeDetailsRoute);
@@ -77,7 +77,7 @@ class _DisputesScreenState extends State<DisputesScreen> {
                     isClosed: false,
                     name: "Punctuality",
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   DisputeCard(
                     onTap: () {
                       KRouter().push(KRoutes.disputeDetailsRoute);
@@ -87,9 +87,9 @@ class _DisputesScreenState extends State<DisputesScreen> {
                     isClosed: false,
                     name: "Damage property",
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   SectionTitle(title: "CLOSED"),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   DisputeCard(
                     onTap: () {
                       KRouter().push(KRoutes.disputeDetailsRoute);
@@ -99,7 +99,7 @@ class _DisputesScreenState extends State<DisputesScreen> {
                     isClosed: true,
                     name: "Damage property",
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),

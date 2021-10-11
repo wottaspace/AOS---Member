@@ -35,7 +35,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     return OkitoBuilder(
       controller: controller,
       builder: () {
-        Widget pageContent = SizedBox();
+        Widget pageContent = const SizedBox();
 
         Widget pageStateContainer(Widget child) {
           return Container(
@@ -98,7 +98,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -145,7 +145,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             );
             break;
           case LoadingState.pending:
-            pageContent = SizedBox();
+            pageContent = const SizedBox();
             break;
         }
         return RefreshIndicator(

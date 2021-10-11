@@ -35,7 +35,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return OkitoBuilder(
       controller: controller,
       builder: () {
-        Widget pageContent = SizedBox();
+        Widget pageContent = const SizedBox();
 
         Widget pageStateContainer(Widget child) {
           return Container(
@@ -94,7 +94,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   );
             break;
           case LoadingState.pending:
-            pageContent = SizedBox();
+            pageContent = const SizedBox();
             break;
         }
         return Column(

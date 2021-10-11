@@ -33,12 +33,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> with Validati
                   Container(
                     child: Image.asset("assets/images/keys.png"),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     "Enter your email and we'll send you instructions to set new password",
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   KTextField(
                     controller: passwordController.resetPasswordEmailController,
                     hintText: "email",
@@ -47,13 +47,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> with Validati
                       return this.validateEmail(fieldName: "email", email: email!);
                     },
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   KButton(
                     onPressed: passwordController.sendResetPasswordRequest,
                     title: "RESET PASSWORD",
                     color: ColorConstants.greenColor,
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),

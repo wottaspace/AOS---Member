@@ -33,14 +33,14 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
               children: [
                 AspectRatio(aspectRatio: 10 / 2),
                 Image.asset("assets/images/1028.png"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   "Invite Your Friends",
                   style: Okito.theme.textTheme.headline2!.copyWith(
                     fontSize: 16.0,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Text(
@@ -51,7 +51,7 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 OkitoBuilder(
                   controller: controller,
                   activateLifecycleForOtherControllers: true,
@@ -66,7 +66,7 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
                     );
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 KButton(
                   onPressed: controller.sendInvite,
                   title: "SEND INVITE",

@@ -36,7 +36,7 @@ class _InboxScreenState extends State<InboxScreen> {
     return OkitoBuilder(
       controller: controller,
       builder: () {
-        Widget pageContent = SizedBox();
+        Widget pageContent = const SizedBox();
 
         Widget pageStateContainer(Widget child) {
           return Container(
@@ -109,7 +109,7 @@ class _InboxScreenState extends State<InboxScreen> {
                   );
             break;
           case LoadingState.pending:
-            pageContent = SizedBox();
+            pageContent = const SizedBox();
             break;
         }
         return SingleChildScrollView(
@@ -118,13 +118,13 @@ class _InboxScreenState extends State<InboxScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 KTextField.circular(
                   hintText: "Search",
                   leading: PhosphorIcons.magnifying_glass,
                   controller: controller.searchController,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   "ALL MESSAGES",
                   style: Okito.theme.textTheme.bodyText2!.copyWith(

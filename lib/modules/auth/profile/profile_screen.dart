@@ -57,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           KTextField.soft(
                             label: "ABOUT",
                             controller: profileController.aboutController,
@@ -65,21 +65,21 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                             maxLines: 4,
                             hintText: "Lorem ipsum dolor sit atmet, consectur adipiscing elit, sed do eiusmod tempor incicident ut labore et dolore magna aliqua",
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           SectionTitle(title: "RESUME/CV"),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Card(
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 children: [
                                   Image.asset("assets/images/portfolio.png"),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Text(
                                     profileController.getResumeFilename ?? "Add resume",
                                     style: titleStyle.copyWith(fontSize: 12.0),
                                   ),
-                                  SizedBox(height: 5),
+                                  const SizedBox(height: 5),
                                   Text(
                                     "Add summary to make your profile look good. Add summary to make your profile look good. Add summary to make your profile look good.",
                                     textAlign: TextAlign.center,
@@ -88,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                                       fontWeight: FontWeight.normal,
                                     ),
                                   ),
-                                  SizedBox(height: 20),
+                                  const SizedBox(height: 20),
                                   KButton.outlined(
                                     expanded: true,
                                     onPressed: () {
@@ -101,7 +101,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                               ),
                             ),
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Row(
                             children: [
                               Expanded(
@@ -114,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                                   },
                                 ),
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               Expanded(
                                 child: KTextField.soft(
                                   label: "BADGE NUMBER",
@@ -132,7 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Row(
                             children: [
                               Expanded(
@@ -152,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                                   },
                                 ),
                               ),
-                              SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               Expanded(
                                 child: KTextField.soft(
                                   label: "HOURLY RATE",
@@ -162,7 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           KTextField.soft(
                             label: "UNAVAILABILITY",
                             suffixIcon: PhosphorIcons.calendar,
@@ -170,12 +170,12 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                             onTap: profileController.selectUnavailabilityRange,
                             controller: profileController.unavailabilityController,
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           KTextField.soft(
                             label: "ADRESS",
                             controller: profileController.addressController,
                           ),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Row(
                             children: [
                               Expanded(
@@ -184,7 +184,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                                   controller: profileController.cityController,
                                 ),
                               ),
-                              SizedBox(width: 20),
+                             const  SizedBox(width: 20),
                               Expanded(
                                 child: KTextField.soft(
                                   label: "POSTAL CODE",

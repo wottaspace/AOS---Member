@@ -33,32 +33,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     IconButton(
                       onPressed: () {
                         KRouter().pop();
                       },
                       icon: Icon(PhosphorIcons.arrow_left_bold),
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Text(
                       "Sign Up",
                       style: Okito.theme.textTheme.headline2,
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     KTextField.soft(
                         label: "NAME",
                         controller: controller.nameController,
                         validator: (String? value) {
                           return controller.validateRequired(fieldName: "name", value: value);
                         }),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     KTextField.soft(
                       label: "EMAIL",
                       keybordType: TextInputType.emailAddress,
                       controller: controller.emailController,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     KTextField.soft(
                       label: "BADGE NUMBER",
                       hintText: "xxxx-xxxx-xxxx-xxxx",
@@ -73,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return controller.validateBadgeNumber(fieldName: "badge number", badgeNumber: value!);
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     KTextField.soft(
                       label: "EXPIRY DATE",
                       readOnly: true,
@@ -89,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     KTextField.soft(
                       label: "PASSWORD",
                       isPassword: true,
@@ -98,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return controller.validateMinlength(fieldName: "password", value: value!, min: 8);
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     KTextField.soft(
                       label: "CONFIRM PASSWORD",
                       isPassword: true,
@@ -119,7 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       title: "CREATE ACCOUNT",
                       color: Okito.theme.primaryColor,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),

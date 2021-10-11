@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/widgets/misc/rating_stars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
@@ -35,7 +36,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
           padding: EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 padding: EdgeInsets.all(12.0),
                 decoration: BoxDecoration(
@@ -55,7 +56,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                         )
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
                       children: [
                         Text(
@@ -63,7 +64,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                           style: _titleStyle,
                         ),
                         CircleAvatar(),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,22 +77,14 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                                   color: Colors.black,
                                 ),
                               ),
-                              SizedBox(height: 5),
-                              Row(
-                                children: [
-                                  Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                                  Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                                  Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                                  Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                                  Icon(PhosphorIcons.star, color: ColorConstants.yellow, size: 10),
-                                ],
-                              ),
+                              const SizedBox(height: 5),
+                              RatingStars(score: 3.5),
                             ],
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Row(
                       children: [
                         Text(
@@ -104,11 +97,11 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                         )
                       ],
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 "Details",
                 style: Okito.theme.textTheme.bodyText2!.copyWith(
@@ -117,7 +110,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                   color: Colors.black,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               DetailItem(
                 title: "Agreed Pay per hour",
                 value: "\$12/hr",
@@ -145,7 +138,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                 boldValue: true,
                 boldTitle: true,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -157,7 +150,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               DetailItem(
                 title: "*AOS Acccound Refunds",
                 value: "\$0",
@@ -179,7 +172,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: KButton(
           color: Okito.theme.primaryColor,
           onPressed: () {},

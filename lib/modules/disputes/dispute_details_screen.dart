@@ -21,11 +21,11 @@ class _DisputeDetailsScreenState extends State<DisputeDetailsScreen> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               InfoField(title: "TITLE", contentTitle: "Damage Property"),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               InfoField(title: "SELECT JOB", contentTitle: "Tesco's Cambridge"),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               InfoField(
                 title: "DETAILS",
                 contentTitle:

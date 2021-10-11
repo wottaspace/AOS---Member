@@ -23,13 +23,13 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Container(
                 color: Colors.white,
                 child: Row(
                   children: [
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         PhosphorIcons.caret_left,
                         color: Colors.black,
                       ),
@@ -38,7 +38,7 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                       },
                     ),
                     CircleAvatar(),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +51,7 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Row(
                             children: [
                               Icon(
@@ -59,7 +59,7 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                                 size: 12,
                                 color: ColorConstants.greyColor,
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               Text(
                                 "KITCHENER",
                                 style: Okito.theme.textTheme.bodyText2!.copyWith(
@@ -84,11 +84,11 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                         color: Okito.theme.primaryColor,
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                   ],
                 ),
               ),
-              _Line(),
+              const _Line(),
               Container(
                 color: Colors.white,
                 child: Padding(
@@ -127,11 +127,11 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                             textColor: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         _MessageBulb(
                           message: "Hi, How you doing",
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Align(
                           alignment: Alignment.center,
                           child: SectionTitle(
@@ -139,12 +139,12 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                             textColor: Colors.black,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         _MessageBulb(
                           message:
                               "Dear Sir/Mam,\nI am writing to apply for the part time position advertised on www.indeed.ca. As requested, i enclose a completed my resume.\nI am confident about providing top quality customer service by phone and in person at the counter.\nThank you for your time and consideration. I look forward to speaking with you about this employment opportunity.\n\nReferred by: Akshay Grover.\n\nSincerely,\nHarry Tahir.",
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         _MessageBulb(
                           message: "Hi i looked your resume and i would like to call you on Monday 9 PM.",
                           alignment: BulbAlignment.left,
@@ -167,14 +167,14 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                   child: TextField(
                     decoration: InputDecoration(
                       prefixIcon: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           PhosphorIcons.plus_circle_fill,
                           color: Colors.black,
                         ),
                         onPressed: () {},
                       ),
                       suffixIcon: IconButton(
-                        icon: Icon(PhosphorIcons.paper_plane_right_fill),
+                        icon: const Icon(PhosphorIcons.paper_plane_right_fill),
                         onPressed: () {},
                       ),
                       hintText: "Write something",
@@ -190,7 +190,7 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
           ),
         ),
       ),
-      backgroundColor: Color(0XFFF5F7FD),
+      backgroundColor: const Color(0XFFF5F7FD),
     );
   }
 }

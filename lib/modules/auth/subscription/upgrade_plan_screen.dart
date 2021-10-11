@@ -65,12 +65,12 @@ class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         "You are currently subscribed to our enquirer plan but you can upgrade anytime.",
                         style: Okito.theme.textTheme.bodyText2,
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Container(
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -85,7 +85,7 @@ class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Align(
                         alignment: Alignment.center,
                         child: Column(
@@ -94,7 +94,7 @@ class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
                               "Charge on link up",
                               style: Okito.theme.textTheme.bodyText1,
                             ),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             Text(
                               "Gold inquirer has a little charge like 27p on linkup",
                               style: Okito.theme.textTheme.bodyText2!.copyWith(color: ColorConstants.greyColor),
