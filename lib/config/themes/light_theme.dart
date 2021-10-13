@@ -7,7 +7,7 @@ final ThemeData lightTheme = ThemeData(
   pageTransitionsTheme: PageTransitionsTheme(
     builders: {
       TargetPlatform.android: ZoomPageTransitionsBuilder(),
-      TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+      TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
     },
   ),
   textTheme: TextTheme(

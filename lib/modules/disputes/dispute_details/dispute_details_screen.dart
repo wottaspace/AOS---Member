@@ -1,6 +1,9 @@
+import 'package:arcopen_employee/core/models/complaint.dart';
+import 'package:arcopen_employee/modules/disputes/dispute_details/dispute_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:arcopen_employee/widgets/misc/info_field.dart';
 import 'package:arcopen_employee/widgets/navigation/k_app_bar.dart';
+import 'package:okito/okito.dart';
 
 class DisputeDetailsScreen extends StatefulWidget {
   const DisputeDetailsScreen({Key? key}) : super(key: key);
@@ -11,6 +14,14 @@ class DisputeDetailsScreen extends StatefulWidget {
 
 class _DisputeDetailsScreenState extends State<DisputeDetailsScreen> {
   @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      DisputeDetailsController.shared.loadJobDetails();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KAppBar(
@@ -18,22 +29,29 @@ class _DisputeDetailsScreenState extends State<DisputeDetailsScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
-              InfoField(title: "TITLE", contentTitle: "Damage Property"),
-              const SizedBox(height: 20),
-              InfoField(title: "SELECT JOB", contentTitle: "Tesco's Cambridge"),
-              const SizedBox(height: 20),
-              InfoField(
-                title: "DETAILS",
-                contentTitle:
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-              ),
-            ],
-          ),
-        ),
+            padding: const EdgeInsets.all(16.0),
+            child: OkitoBuilder(
+              controller: DisputeDetailsController.shared,
+              builder: () {
+                final Complaint dispute = Okito.arguments["dispute"];
+
+                return Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    InfoField(title: "TITLE", contentTitle: dispute.title),
+                    if (DisputeDetailsController.shared.jobDetails != null) ...[
+                      const SizedBox(height: 20),
+                      InfoField(title: "SELECT JOB", contentTitle: DisputeDetailsController.shared.jobDetails!.businessName),
+                    ],
+                    const SizedBox(height: 20),
+                    InfoField(
+                      title: "DETAILS",
+                      contentTitle: dispute.details,
+                    ),
+                  ],
+                );
+              },
+            )),
       ),
     );
   }

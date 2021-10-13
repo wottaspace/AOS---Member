@@ -1,6 +1,7 @@
 import 'package:arcopen_employee/http/requests/create_dispute_request.dart';
 import 'package:arcopen_employee/http/requests/job_apply_request.dart';
 import 'package:arcopen_employee/http/responses/invited_jobs_response.dart';
+import 'package:arcopen_employee/http/responses/job_details_response.dart';
 import 'package:arcopen_employee/http/responses/job_timesheets_response.dart';
 import 'package:arcopen_employee/http/responses/jobs_response.dart';
 import 'package:arcopen_employee/http/responses/member_disputes_response.dart';
@@ -106,6 +107,15 @@ class JobsRepository extends BaseRepository {
       final Response response = await client.post(path: "$basePath/memberAddDispute/", args: request.toJson());
       print(response.data);
       return "ok";
+    } on DioError catch (e) {
+      throw new Exception(this.extractErrorMessageFromDioError(e));
+    }
+  }
+
+  Future<JobDetailsResponse> getJobDetails({required String jobId}) async {
+    try {
+      final Response response = await client.get(path: "$basePath/job/$jobId");
+      return JobDetailsResponse.fromJson(response.data);
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }
