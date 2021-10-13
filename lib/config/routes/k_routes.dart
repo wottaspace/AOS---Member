@@ -11,7 +11,7 @@ import 'package:arcopen_employee/modules/disputes/dispute_details_screen.dart';
 import 'package:arcopen_employee/modules/disputes/disputes_screen.dart';
 import 'package:arcopen_employee/modules/finances/finance_details_screen.dart';
 import 'package:arcopen_employee/modules/home_screen.dart';
-import 'package:arcopen_employee/modules/inbox/inbox_details_screen.dart';
+import 'package:arcopen_employee/modules/inbox/inbox_details/inbox_details_screen.dart';
 import 'package:arcopen_employee/modules/invites/invite_friends_screen.dart';
 import 'package:arcopen_employee/modules/jobs/explore/filter/filter_screen.dart';
 import 'package:arcopen_employee/modules/jobs/explore/location_filter_screen.dart';

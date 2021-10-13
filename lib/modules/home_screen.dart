@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Text(
                                 "Notifications",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 14.0),
+                                style: const TextStyle(fontSize: 14.0),
                               ),
                             ),
                             IconButton(
@@ -85,13 +85,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                 KRouter().pop();
                               },
                               iconSize: 15,
-                              icon: Icon(PhosphorIcons.x_bold),
+                              icon: const Icon(PhosphorIcons.x_bold),
                             ),
                           ],
                         ),
                         content: Container(
                           width: MediaQuery.of(context).size.width * 0.9,
-                          child: NotificationsDialog(),
+                          child: const NotificationsDialog(),
                         ),
                       );
                     },
@@ -126,11 +126,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
               children: [
-                ExploreScreen(),
-                InboxScreen(),
-                JobListingScreen(),
-                FinancesScreen(),
-                SavedScreen(),
+                const ExploreScreen(),
+                const InboxScreen(),
+                const JobListingScreen(),
+                const FinancesScreen(),
+                const SavedScreen(),
               ],
             ),
           ),

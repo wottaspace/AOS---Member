@@ -1,7 +1,7 @@
 class Job {
   Job({
     required this.address,
-    required this.applicantsCount,
+    this.applicantsCount,
     required this.applied,
     required this.biddingStarted,
     required this.budget,
@@ -14,7 +14,7 @@ class Job {
     required this.jobDescription,
     required this.jobType,
     required this.postedBy,
-    required this.profilePic,
+    this.profilePic,
     required this.saved,
     required this.shiftEndDate,
     required this.shiftEndTime,
@@ -22,6 +22,7 @@ class Job {
     required this.shiftStartTime,
     required this.shiftType,
     required this.updatedAt,
+    this.instanceId,
   });
 
   String address;
@@ -46,6 +47,7 @@ class Job {
   String shiftStartTime;
   String shiftType;
   String updatedAt;
+  int? instanceId;
 
   String get startDate => shiftStartDate.split(" ").reversed.skip(2).toList().reversed.join(" ");
   String get endDate => shiftEndDate.split(" ").reversed.skip(2).toList().reversed.join(" ");
@@ -66,6 +68,7 @@ class Job {
       jobDescription: json["job_description"],
       jobType: json["job_type"],
       postedBy: json["posted_by"],
+      instanceId: json["instance_id"],
       profilePic: json["profile_pic"],
       saved: json["saved"] ?? false,
       shiftEndDate: json["shift_end_date"],

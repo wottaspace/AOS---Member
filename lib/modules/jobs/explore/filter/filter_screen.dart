@@ -129,8 +129,8 @@ class _FilterScreenState extends State<FilterScreen> {
         child: KButton.outlined(
           onPressed: () {
             Okito.pop(result: {
-              if (controller.selectedProximity != null) "proximity": controller.selectedProximity,
-              if (controller.hourlyRate != null) "hourly_rate": controller.hourlyRate,
+              "proximity": controller.selectedProximity,
+              "hourly_rate": controller.hourlyRate,
               "category": controller.selectedCategories.toString(),
             });
           },

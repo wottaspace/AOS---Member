@@ -37,8 +37,7 @@ class DioClient with LoggingMixin implements NetworkClient {
           return handler.next(options);
         },
         onError: (e, handler) {
-          logger.e(e.message, {
-            "response": e.response,
+          logger.w(e.response, {
             "error": e.error,
           });
           return handler.next(e);

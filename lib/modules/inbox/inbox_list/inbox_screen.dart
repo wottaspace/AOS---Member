@@ -86,11 +86,10 @@ class _InboxScreenState extends State<InboxScreen> {
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       final Message message = controller.messages[index];
-                      final service = Okito.use<AuthService>();
                       late ImageProvider userProfilePicture;
 
                       if (message.profilePic.isNotEmpty) {
-                        userProfilePicture = NetworkImage(service.profile.profilePic);
+                        userProfilePicture = NetworkImage(AssetHelper().getEmployerProfilePic(name: message.profilePic));
                       } else {
                         userProfilePicture = AssetImage(AssetHelper().getAsset(name: "avatar.png"));
                       }

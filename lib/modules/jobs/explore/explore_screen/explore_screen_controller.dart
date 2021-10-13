@@ -66,17 +66,4 @@ class ExploreScreenController extends OkitoController with ToastMixin {
       this.showErrorToast(e.message);
     });
   }
-
-  Future<void> removeSavedJob({required int jobId}) async {
-    KLoader().show();
-    _repository.removeSavedJob(jobId: jobId).then((value) {
-      KLoader.hide();
-      SavedScreenController().jobs.removeWhere((element) => element.id == jobId);
-      SavedScreenController().setState(() {});
-      this.showSuccessToast("Job successfully removed from saved list.");
-    }).catchError((e) {
-      KLoader.hide();
-      this.showErrorToast(e.message);
-    });
-  }
 }

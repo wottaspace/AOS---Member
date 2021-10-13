@@ -1,4 +1,5 @@
 import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen_controller.dart';
+import 'package:arcopen_employee/modules/saved/saved_screen_controller.dart';
 import 'package:arcopen_employee/utils/helpers/asset_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -20,6 +21,7 @@ class JobCard extends StatelessWidget {
     required this.jobId,
     required this.applicantCount,
     required this.jobSaved,
+    this.instanceId,
     this.status,
   }) : super(key: key);
 
@@ -36,6 +38,7 @@ class JobCard extends StatelessWidget {
   final String? status;
   final int applicantCount;
   final bool jobSaved;
+  final int? instanceId;
 
   @override
   Widget build(BuildContext context) {
@@ -154,19 +157,18 @@ class JobCard extends StatelessWidget {
                         width: 30,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: jobSaved ? ColorConstants.red : ColorConstants.greyColor),
+                          border: Border.all(color: (jobSaved && instanceId != null) ? ColorConstants.red : ColorConstants.greyColor),
                         ),
                         child: IconButton(
                           onPressed: () {
                             if (!jobSaved)
                               ExploreScreenController().saveJob(jobId: jobId);
-                            else
-                              ExploreScreenController().removeSavedJob(jobId: jobId);
+                            else if (instanceId != null) SavedScreenController.shared.removeSavedJob(jobId: instanceId!);
                           },
                           icon: Icon(
-                            jobSaved ? PhosphorIcons.trash_fill : PhosphorIcons.heart,
+                            (jobSaved && instanceId != null) ? PhosphorIcons.trash_fill : PhosphorIcons.heart,
                             size: 12,
-                            color: jobSaved ? ColorConstants.red : ColorConstants.greyColor,
+                            color: (jobSaved && instanceId != null) ? ColorConstants.red : ColorConstants.greyColor,
                           ),
                         ),
                       ),

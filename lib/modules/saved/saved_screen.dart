@@ -17,12 +17,10 @@ class SavedScreen extends StatefulWidget {
 }
 
 class _SavedScreenState extends State<SavedScreen> {
-  final SavedScreenController controller = SavedScreenController();
-
   @override
   void initState() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      controller.getSavedJobs();
+      SavedScreenController.shared.getSavedJobs();
     });
     super.initState();
   }
@@ -30,7 +28,7 @@ class _SavedScreenState extends State<SavedScreen> {
   @override
   Widget build(BuildContext context) {
     return OkitoBuilder(
-      controller: controller,
+      controller: SavedScreenController.shared,
       builder: () {
         Widget pageContent = const SizedBox();
 
@@ -47,11 +45,11 @@ class _SavedScreenState extends State<SavedScreen> {
           );
         }
 
-        switch (controller.jobLoadingState) {
+        switch (SavedScreenController.shared.jobLoadingState) {
           case LoadingState.failed:
             pageContent = pageStateContainer(
               KButton(
-                onPressed: controller.getSavedJobs,
+                onPressed: SavedScreenController.shared.getSavedJobs,
                 title: "Try again",
                 color: Okito.theme.primaryColor,
               ),
@@ -70,14 +68,14 @@ class _SavedScreenState extends State<SavedScreen> {
             );
             break;
           case LoadingState.success:
-            pageContent = controller.jobs.isEmpty
+            pageContent = SavedScreenController.shared.jobs.isEmpty
                 ? pageStateContainer(EmptyState())
                 : ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: controller.jobs.length,
+                    itemCount: SavedScreenController.shared.jobs.length,
                     itemBuilder: (context, index) {
-                      final Job job = controller.jobs[index];
+                      final Job job = SavedScreenController.shared.jobs[index];
 
                       final String startRange = job.shiftStartDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
                       final String endRange = job.shiftEndDate.split(" ").reversed.skip(3).toList().reversed.join(" ").split(", ").last;
@@ -98,6 +96,7 @@ class _SavedScreenState extends State<SavedScreen> {
                           });
                         },
                         jobId: job.id,
+                        instanceId: job.instanceId,
                       );
                     },
                   );
