@@ -18,6 +18,8 @@ class EmptyState extends StatelessWidget {
         return Image.asset("assets/images/inbox.png");
       case StateType.finance:
         return Image.asset("assets/images/11136-1.png");
+      case StateType.dispute:
+        return Image.asset("assets/images/11136.png");
     }
   }
 
@@ -39,6 +41,11 @@ class EmptyState extends StatelessWidget {
       case StateType.finance:
         return Text(
           "No Transactions found",
+          style: style,
+        );
+      case StateType.dispute:
+        return Text(
+          "No disputes found",
           style: style,
         );
     }
@@ -74,4 +81,5 @@ enum StateType {
   job,
   message,
   finance,
+  dispute,
 }

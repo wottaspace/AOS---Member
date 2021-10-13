@@ -150,32 +150,29 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        KButton(
-                          expanded: true,
-                          onPressed: () {
-                            if (job.applied) {
-                              controller.showErrorToast("Sorry, you've already applied for this job.");
-                              return;
-                            }
-                            setState(() {
-                              actionsVisible = false;
-                            });
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AcceptJobScreen();
-                              },
-                            ).then((value) {
+                        if (job.applied)
+                          KButton(
+                            expanded: true,
+                            onPressed: () {
                               setState(() {
-                                actionsVisible = true;
+                                actionsVisible = false;
                               });
-                            });
-                          },
-                          title: "ACCEPT",
-                          color: ColorConstants.greenColor,
-                        ),
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AcceptJobScreen();
+                                },
+                              ).then((value) {
+                                setState(() {
+                                  actionsVisible = true;
+                                });
+                              });
+                            },
+                            title: "ACCEPT",
+                            color: ColorConstants.greenColor,
+                          ),
                         SizedBox(height: 5),
-                        if (Okito.arguments["canDecline"] != null)
+                        if (job.applied && Okito.arguments["canDecline"] != null)
                           Row(
                             children: [
                               Expanded(

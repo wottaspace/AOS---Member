@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
-import 'package:simple_moment/simple_moment.dart';
 
 class DisputeCard extends StatelessWidget {
   const DisputeCard({
@@ -15,13 +14,14 @@ class DisputeCard extends StatelessWidget {
 
   final String name;
   final String description;
-  final DateTime createdAt;
+  final String createdAt;
   final bool isClosed;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
         color: isClosed ? Color(0XFF57D095) : Colors.white,
         borderRadius: BorderRadius.circular(8.0),
@@ -54,7 +54,7 @@ class DisputeCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      Moment.fromDate(createdAt).format("dd/MM/yyyy"),
+                      createdAt,
                       style: Okito.theme.textTheme.bodyText2!.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 10.0,

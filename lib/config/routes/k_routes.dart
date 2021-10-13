@@ -7,8 +7,8 @@ import 'package:arcopen_employee/modules/auth/subscription/choose_plan_screen.da
 import 'package:arcopen_employee/modules/auth/subscription/payment/pay_screen.dart';
 import 'package:arcopen_employee/modules/auth/subscription/upgrade_plan_screen.dart';
 import 'package:arcopen_employee/modules/disputes/create_dispute/create_dispute_screen.dart';
-import 'package:arcopen_employee/modules/disputes/dispute_details_screen.dart';
-import 'package:arcopen_employee/modules/disputes/disputes_screen.dart';
+import 'package:arcopen_employee/modules/disputes/dispute_details/dispute_details_screen.dart';
+import 'package:arcopen_employee/modules/disputes/dispute_list/disputes_screen.dart';
 import 'package:arcopen_employee/modules/finances/finance_details_screen.dart';
 import 'package:arcopen_employee/modules/home_screen.dart';
 import 'package:arcopen_employee/modules/inbox/inbox_details/inbox_details_screen.dart';

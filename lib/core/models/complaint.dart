@@ -17,6 +17,8 @@ class Complaint {
   int submittedBy;
   String title;
 
+  String get createdAt => createdOn.split(" ").reversed.skip(2).toList().reversed.join(" ");
+
   factory Complaint.fromJson(Map<String, dynamic> json) {
     return Complaint(
       createdOn: json["created_on"],
