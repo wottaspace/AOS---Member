@@ -35,4 +35,18 @@ class InboxListController extends OkitoController with ToastMixin {
       this.showErrorToast("Failed to load chats. Please try again later.");
     });
   }
+
+  filterData(String value) {
+    if (value.isEmpty)
+      getInboxList();
+    else
+      setState(() {
+        messages = messages.where((element) {
+          return element.message.toLowerCase().contains(value.toLowerCase()) || 
+                  element.sentTo.toLowerCase().contains(value.toLowerCase()) ||
+                  element.sentBy.toLowerCase().contains(value.toLowerCase()) ||
+                  element.time.toLowerCase().contains(value.toLowerCase());
+        }).toList();
+      });
+  }
 }

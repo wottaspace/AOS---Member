@@ -1,4 +1,5 @@
 import 'package:arcopen_employee/core/models/profile.dart';
+import 'package:arcopen_employee/core/models/review.dart';
 
 class MemberProfileResponse {
   MemberProfileResponse({
@@ -7,10 +8,12 @@ class MemberProfileResponse {
   });
 
   Profile profile;
-  List<dynamic> reviews;
+  List<Review> reviews;
 
-  factory MemberProfileResponse.fromJson(Map<String, dynamic> json) => MemberProfileResponse(
-        profile: Profile.fromJson(json["profile"]),
-        reviews: List<dynamic>.from(json["reviews"].map((x) => x)),
-      );
+  factory MemberProfileResponse.fromJson(Map<String, dynamic> json) {
+    return MemberProfileResponse(
+      profile: Profile.fromJson(json["profile"]),
+      reviews: List<Review>.from(json["reviews"].map((x) => Review.fromJson(x))),
+    );
+  }
 }

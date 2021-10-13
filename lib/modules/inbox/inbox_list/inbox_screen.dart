@@ -121,6 +121,9 @@ class _InboxScreenState extends State<InboxScreen> {
                   hintText: "Search",
                   leading: PhosphorIcons.magnifying_glass,
                   controller: controller.searchController,
+                  onChanged: (value) {
+                    controller.filterData(value);
+                  }
                 ),
                 const SizedBox(height: 20),
                 Text(

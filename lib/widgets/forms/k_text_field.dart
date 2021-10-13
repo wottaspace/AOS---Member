@@ -177,7 +177,8 @@ class KTextField extends StatelessWidget {
     IconData? leading,
     required String hintText,
     required TextEditingController controller,
-    final FormFieldValidator<String>? validator,
+    FormFieldValidator<String>? validator,
+    ValueChanged<String>? onChanged,
   }) {
     return Container(
       decoration: BoxDecoration(
@@ -187,6 +188,7 @@ class KTextField extends StatelessWidget {
       child: TextFormField(
         validator: validator,
         controller: controller,
+        onChanged: onChanged,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.all(12.0),
           border: OutlineInputBorder(
