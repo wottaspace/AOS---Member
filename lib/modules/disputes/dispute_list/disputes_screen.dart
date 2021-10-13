@@ -63,7 +63,9 @@ class _DisputesScreenState extends State<DisputesScreen> {
                     KButton.regular(
                       title: "+ ADD DISPUTE",
                       onTap: () {
-                        KRouter().push(KRoutes.createDisputeRoute);
+                        Okito.pushNamed(KRoutes.createDisputeRoute).then((value) {
+                          DisputeListController.shared.loadDisputes();
+                        });
                       },
                     ),
                     const SizedBox(width: 5),
