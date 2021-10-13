@@ -4,11 +4,9 @@ import 'package:arcopen_employee/utils/helpers/loading_state.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
 import 'package:arcopen_employee/widgets/states/empty_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/widgets/finances/finance_card.dart';
-import 'package:arcopen_employee/widgets/misc/k_chip.dart';
 import 'package:arcopen_employee/widgets/misc/section_title.dart';
 import 'package:okito/okito.dart';
 
@@ -104,13 +102,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SectionTitle(title: "PAST JOBS"),
-                KChip(
-                  title: "January",
-                  icon: PhosphorIcons.caret_down_bold,
-                  circularCorners: true,
-                  iconAlignedLeading: false,
-                  onTap: () {},
-                ),
               ],
             ),
             SizedBox(height: 10),

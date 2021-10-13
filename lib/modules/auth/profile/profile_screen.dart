@@ -184,7 +184,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                                   controller: profileController.cityController,
                                 ),
                               ),
-                             const  SizedBox(width: 20),
+                              const SizedBox(width: 20),
                               Expanded(
                                 child: KTextField.soft(
                                   label: "POSTAL CODE",
@@ -200,6 +200,15 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                 ),
               );
             },
+          ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 12.0),
+          child: KButton.outlined(
+            expanded: true,
+            title: "SAVE CHANGES",
+            color: Okito.theme.primaryColor,
+            onPressed: profileController.createOrUpdateProfile,
           ),
         ),
       ),

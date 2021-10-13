@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:arcopen_employee/config/routes/k_routes.dart';
@@ -50,9 +51,9 @@ class ProfileController extends OkitoController with ToastMixin {
       List<String> parts = service.profile.contact.split("-");
       contactDialCode = parts.first;
 
-      contactController.text = parts.skip(1).join("-");
+      contactController.text = parts.last;
       hourlyRateController.text = service.profile.hourlyRate;
-      unavailabilityController.text = service.profile.unavailabilityDates.join(" - ");
+      unavailabilityController.text = "from ${service.profile.unavailabilityDates.join(" to ")}";
       addressController.text = service.profile.address;
       cityController.text = service.profile.city;
       postalCodeController.text = service.profile.postalCode;
@@ -73,14 +74,14 @@ class ProfileController extends OkitoController with ToastMixin {
 
   void selectUnavailabilityRange() async {
     final now = DateTime.now();
-    final fieldValue = unavailabilityController.text;
+    final fieldValue = unavailabilityController.text.replaceAll("from", "").replaceAll(" to", "").trim();
     final DateTimeRange? range = await showDateRangePicker(
       context: Okito.context!,
       initialDateRange: fieldValue.isEmpty
           ? null
           : DateTimeRange(
-              start: DateTime.parse(fieldValue.split(" - ").first),
-              end: DateTime.parse(fieldValue.split(" - ").last),
+              start: DateTime.parse(fieldValue.split(" ").first),
+              end: DateTime.parse(fieldValue.split(" ").last),
             ),
       firstDate: DateTime(now.year),
       lastDate: DateTime(now.year + 5),
@@ -89,7 +90,7 @@ class ProfileController extends OkitoController with ToastMixin {
     if (range != null) {
       final firstDate = range.start.toString().split(" ").first;
       final lastDate = range.end.toString().split(" ").first;
-      unavailabilityController.text = "$firstDate - $lastDate";
+      unavailabilityController.text = "from $firstDate to $lastDate";
       setState(() {});
     }
   }
@@ -139,15 +140,17 @@ class ProfileController extends OkitoController with ToastMixin {
   }
 
   FormData computeFormData() {
+    final unavailabilityDates = unavailabilityController.text.replaceAll("from", "").replaceAll(" to", "").trim().split(" ");
+
     return FormData.fromMap({
       "about": aboutController.text,
-      "drive": driveController.text,
+      "drive": driveController.text.toLowerCase(),
       "contact": "$contactDialCode-${contactController.text}",
       "address": addressController.text,
       "city": cityController.text,
       "postal_code": postalCodeController.text,
       "hourly_rate": hourlyRateController.text,
-      "unavailable_dates": unavailabilityController.text.split(" - "),
+      "unavailable_dates": jsonEncode([unavailabilityDates.first, unavailabilityDates.last]),
       if (resumeFile != null) "cv": MultipartFile.fromFile(resumeFile!.path),
       if (profilePicFile != null) "profile_pic": MultipartFile.fromFile(profilePicFile!.path),
     });
