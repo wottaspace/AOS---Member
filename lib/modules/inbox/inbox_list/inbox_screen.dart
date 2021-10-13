@@ -2,7 +2,6 @@ import 'package:arcopen_employee/core/models/message.dart';
 import 'package:arcopen_employee/modules/inbox/inbox_list/inbox_list_controller.dart';
 import 'package:arcopen_employee/utils/helpers/asset_helper.dart';
 import 'package:arcopen_employee/utils/helpers/loading_state.dart';
-import 'package:arcopen_employee/utils/services/auth_service.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
 import 'package:arcopen_employee/widgets/states/empty_state.dart';
 import 'package:flutter/material.dart';

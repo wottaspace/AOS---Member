@@ -1,5 +1,4 @@
 import 'package:arcopen_employee/core/models/job.dart';
-import 'package:arcopen_employee/modules/saved/saved_screen_controller.dart';
 import 'package:arcopen_employee/utils/helpers/loading_state.dart';
 import 'package:arcopen_employee/utils/mixins/toast_mixin.dart';
 import 'package:arcopen_employee/utils/repositories/jobs_repository.dart';

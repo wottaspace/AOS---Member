@@ -89,7 +89,7 @@ class KTextField extends StatelessWidget {
 
   static Widget soft({
     required String label,
-    required TextEditingController controller,
+    TextEditingController? controller,
     String? hintText,
     int minLines = 1,
     int maxLines = 1,

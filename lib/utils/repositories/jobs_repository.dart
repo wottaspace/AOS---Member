@@ -102,11 +102,10 @@ class JobsRepository extends BaseRepository {
     }
   }
 
-  Future createDispute({required CreateDisputeRequest request}) async {
+  Future<String> createDispute({required CreateDisputeRequest request}) async {
     try {
       final Response response = await client.post(path: "$basePath/memberAddDispute/", args: request.toJson());
-      print(response.data);
-      return "ok";
+      return response.data["success"];
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }
@@ -138,4 +137,6 @@ class JobsRepository extends BaseRepository {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }
   }
+
+
 }
