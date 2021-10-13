@@ -4,7 +4,6 @@ import 'package:arcopen_employee/utils/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -37,14 +36,14 @@ class KDrawer extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-                        KRouter().pop();
+                        Okito.pop();
                       },
-                      icon: Icon(PhosphorIcons.x_bold, size: 25),
+                      icon: const Icon(PhosphorIcons.x_bold, size: 25),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     GestureDetector(
                       onTap: () {
-                        KRouter().push(KRoutes.profileRoute);
+                        Okito.pushNamed(KRoutes.profileRoute);
                       },
                       child: CircleAvatar(
                         maxRadius: 20,
@@ -53,11 +52,11 @@ class KDrawer extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ListTile(
                   dense: true,
                   onTap: () {
-                    KRouter().push(KRoutes.choosePlanRoute);
+                    Okito.pushNamed(KRoutes.choosePlanRoute);
                   },
                   leading: Icon(
                     PhosphorIcons.buildings_fill,
@@ -69,11 +68,11 @@ class KDrawer extends StatelessWidget {
                     style: titleStyle,
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   dense: true,
                   onTap: () {
-                    KRouter().push(KRoutes.settingsRoute);
+                    Okito.pushNamed(KRoutes.settingsRoute);
                   },
                   leading: Icon(
                     PhosphorIcons.gear_fill,
@@ -98,7 +97,7 @@ class KDrawer extends StatelessWidget {
                     style: titleStyle,
                   ),
                   onTap: () {
-                    KRouter().push(KRoutes.disputesRoute);
+                    Okito.pushNamed(KRoutes.disputesRoute);
                   },
                 ),
                 Divider(),
@@ -119,7 +118,7 @@ class KDrawer extends StatelessWidget {
                     }
                   },
                 ),
-                Divider(),
+                const Divider(),
                 ListTile(
                   dense: true,
                   leading: Icon(
@@ -132,7 +131,7 @@ class KDrawer extends StatelessWidget {
                     style: titleStyle,
                   ),
                   onTap: () {
-                    KRouter().push(KRoutes.inviteFriendsRoute);
+                    Okito.pushNamed(KRoutes.inviteFriendsRoute);
                   },
                 ),
                 Divider(),
@@ -151,7 +150,7 @@ class KDrawer extends StatelessWidget {
                     Okito.use<AuthService>().logout();
                   },
                 ),
-                Divider(),
+                const Divider(),
               ],
             ),
           ),
