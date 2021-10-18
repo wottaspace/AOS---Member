@@ -150,7 +150,7 @@ class _JobDetailsScreenState extends State<JobDetailsScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (job.applied)
+                        if (!job.applied)
                           KButton(
                             expanded: true,
                             onPressed: () {

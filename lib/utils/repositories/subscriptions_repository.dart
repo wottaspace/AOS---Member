@@ -39,8 +39,5 @@ class SubscriptionsRepository extends BaseRepository {
 // TODO: get finances
 // TODO: invoice details
 // TODO: download invoice
-// TODO: get jobs by category
-// TODO: filter jobs (hourly rate, proximity, city)
 // TODO: add device FCM Token
-// TODO: fix profile edition
 // TODO: disputes management
