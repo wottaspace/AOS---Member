@@ -82,8 +82,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       return FinanceCard(
                         company: job.businessName,
                         jobTitle: job.address,
-                        status: index.isEven ? "UNPAID" : "PAID",
-                        createdAt: DateTime.now(),
+                        status: job.applied ? "UNPAID" : "PAID", // TODO: fix
+                        createdAt: job.creationDate,
                         onTap: () {
                           KRouter().push(KRoutes.historyDetailsRoute);
                         },

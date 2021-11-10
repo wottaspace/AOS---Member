@@ -4,7 +4,6 @@ import 'package:okito/okito.dart';
 import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/widgets/dialogs/invoice_details_dialog.dart';
-import 'package:simple_moment/simple_moment.dart';
 
 class FinanceCard extends StatelessWidget {
   const FinanceCard({
@@ -18,7 +17,7 @@ class FinanceCard extends StatelessWidget {
 
   final String company;
   final String jobTitle;
-  final DateTime createdAt;
+  final String createdAt;
   final VoidCallback onTap;
   final String? status;
 
@@ -50,7 +49,7 @@ class FinanceCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "${Moment.fromDate(createdAt).format("dd MMM, yyyy")}",
+                      "$createdAt",
                       style: Okito.theme.textTheme.bodyText2!.copyWith(
                         fontSize: 10.0,
                         fontWeight: FontWeight.w600,

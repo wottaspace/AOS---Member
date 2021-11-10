@@ -5,7 +5,6 @@ import 'package:arcopen_employee/widgets/buttons/k_button.dart';
 import 'package:arcopen_employee/widgets/states/empty_state.dart';
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
-import 'package:arcopen_employee/config/routes/k_router.dart';
 import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/widgets/finances/finance_card.dart';
@@ -251,7 +250,7 @@ class _PaidTab extends StatelessWidget {
         return FinanceCard(
           company: transaction.companyName,
           jobTitle: transaction.businessName,
-          createdAt: DateTime.now(),
+          createdAt: transaction.creationDate,
           onTap: () {
             Okito.pushNamed(KRoutes.financeDetailsRoute, arguments: {
               "transaction": transaction,
@@ -285,7 +284,7 @@ class _UnPaidTab extends StatelessWidget {
         return FinanceCard(
           company: transaction.companyName,
           jobTitle: transaction.businessName,
-          createdAt: DateTime.now(),
+          createdAt: transaction.creationDate,
           onTap: () {
             Okito.pushNamed(KRoutes.financeDetailsRoute, arguments: {
               "transaction": transaction,
