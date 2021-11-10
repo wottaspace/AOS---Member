@@ -65,44 +65,44 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             elevation: 0,
             actions: [
-              IconButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                "Notifications",
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(fontSize: 14.0),
-                              ),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                KRouter().pop();
-                              },
-                              iconSize: 15,
-                              icon: const Icon(PhosphorIcons.x_bold),
-                            ),
-                          ],
-                        ),
-                        content: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          child: const NotificationsDialog(),
-                        ),
-                      );
-                    },
-                  );
-                },
-                icon: Icon(
-                  PhosphorIcons.bell_fill,
-                  size: 25,
-                  color: ColorConstants.darkBlue.withOpacity(0.3),
-                ),
-              ),
+              // IconButton(
+              //   onPressed: () {
+              //     showDialog(
+              //       context: context,
+              //       builder: (context) {
+              //         return AlertDialog(
+              //           title: Row(
+              //             children: [
+              //               Expanded(
+              //                 child: Text(
+              //                   "Notifications",
+              //                   textAlign: TextAlign.center,
+              //                   style: const TextStyle(fontSize: 14.0),
+              //                 ),
+              //               ),
+              //               IconButton(
+              //                 onPressed: () {
+              //                   KRouter().pop();
+              //                 },
+              //                 iconSize: 15,
+              //                 icon: const Icon(PhosphorIcons.x_bold),
+              //               ),
+              //             ],
+              //           ),
+              //           content: Container(
+              //             width: MediaQuery.of(context).size.width * 0.9,
+              //             child: const NotificationsDialog(),
+              //           ),
+              //         );
+              //       },
+              //     );
+              //   },
+              //   icon: Icon(
+              //     PhosphorIcons.bell_fill,
+              //     size: 25,
+              //     color: ColorConstants.darkBlue.withOpacity(0.3),
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: GestureDetector(
