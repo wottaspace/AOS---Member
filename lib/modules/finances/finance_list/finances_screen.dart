@@ -247,12 +247,15 @@ class _PaidTab extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       itemCount: transactions.length,
       itemBuilder: (context, index) {
+        final Transaction transaction = transactions[index];
         return FinanceCard(
-          company: "Express Employment",
-          jobTitle: "Talwar's Residency",
+          company: transaction.companyName,
+          jobTitle: transaction.businessName,
           createdAt: DateTime.now(),
           onTap: () {
-            KRouter().push(KRoutes.financeDetailsRoute);
+            Okito.pushNamed(KRoutes.financeDetailsRoute, arguments: {
+              "transaction": transaction,
+            });
           },
         );
       },
@@ -278,12 +281,15 @@ class _UnPaidTab extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       itemCount: transactions.length,
       itemBuilder: (context, index) {
+        final Transaction transaction = transactions[index];
         return FinanceCard(
-          company: "Express Employment",
-          jobTitle: "Talwar's Residency",
+          company: transaction.companyName,
+          jobTitle: transaction.businessName,
           createdAt: DateTime.now(),
           onTap: () {
-            KRouter().push(KRoutes.financeDetailsRoute);
+            Okito.pushNamed(KRoutes.financeDetailsRoute, arguments: {
+              "transaction": transaction,
+            });
           },
         );
       },

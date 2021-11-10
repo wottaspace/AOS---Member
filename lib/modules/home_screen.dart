@@ -120,6 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
           body: SafeArea(
             child: PageView(
               controller: _pageController,
+              physics: NeverScrollableScrollPhysics(),
               onPageChanged: (index) {
                 setState(() {
                   _activeTabIndex = index;
