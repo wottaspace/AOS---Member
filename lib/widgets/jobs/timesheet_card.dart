@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/utils/helpers/asset_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
@@ -14,24 +15,31 @@ class TimesheetCard extends StatelessWidget {
     this.extraHours,
     this.startTime,
     this.totalHours,
+    this.companyLogo,
     required this.createdAt,
     required this.jobTitle,
     required this.company,
-    required this.location,
+    required this.companyName,
   }) : super(key: key);
 
   final DateTime createdAt;
   final String jobTitle;
   final String company;
-  final String location;
+  final String companyName;
   final bool isActive;
   final String? startTime;
+  final String? companyLogo;
   final String? endTime;
   final String? totalHours;
   final String? extraHours;
 
   @override
   Widget build(BuildContext context) {
+    ImageProvider profilePicture = AssetImage(AssetHelper().getAsset(name: "avatar.png", assetType: AssetType.image));
+
+    if (companyLogo != null && companyLogo!.isNotEmpty) {
+      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: companyLogo!));
+    }
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -84,7 +92,9 @@ class TimesheetCard extends StatelessWidget {
             SizedBox(height: 10),
             Row(
               children: [
-                CircleAvatar(),
+                CircleAvatar(
+                  backgroundImage: profilePicture,
+                ),
                 SizedBox(width: 10),
                 Expanded(
                   child: Column(
@@ -101,10 +111,10 @@ class TimesheetCard extends StatelessWidget {
                       SizedBox(height: 5),
                       Row(
                         children: [
-                          Icon(PhosphorIcons.map_pin, color: ColorConstants.greyColor, size: 10),
+                          Icon(PhosphorIcons.user, color: ColorConstants.greyColor, size: 10),
                           SizedBox(width: 5),
                           Text(
-                            "$location",
+                            "$companyName",
                             style: Okito.theme.textTheme.bodyText2!.copyWith(
                               fontSize: 10.0,
                               fontWeight: FontWeight.bold,
@@ -175,4 +185,3 @@ class TimesheetCard extends StatelessWidget {
     );
   }
 }
-

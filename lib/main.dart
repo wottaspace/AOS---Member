@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/utils/helpers/functions.dart';
 import 'package:arcopen_employee/utils/helpers/k_storage.dart';
 import 'package:arcopen_employee/utils/services/k_service.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:arcopen_employee/core/application.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  disableSslVerification();
   // Loading DotEnv from .env file
   await dotenv.load();
 

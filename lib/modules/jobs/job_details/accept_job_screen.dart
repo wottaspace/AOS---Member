@@ -37,6 +37,7 @@ class _AcceptJobScreenState extends State<AcceptJobScreen> with ValidationMixin 
                   label: "EXPECTED PAY RATE",
                   controller: controller.payRateController,
                   titleTextColor: Colors.white,
+                  keybordType: TextInputType.number,
                 ),
                 SizedBox(height: 20),
                 KTextField.soft(

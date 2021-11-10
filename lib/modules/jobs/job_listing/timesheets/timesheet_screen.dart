@@ -1,4 +1,5 @@
 import 'package:arcopen_employee/core/models/job.dart';
+import 'package:arcopen_employee/http/responses/timesheet_job_response.dart';
 import 'package:arcopen_employee/modules/jobs/job_listing/timesheets/job_timesheets_controller.dart';
 import 'package:arcopen_employee/utils/helpers/loading_state.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
@@ -91,31 +92,32 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                               createdAt: DateTime.now(),
                               jobTitle: job.jobType,
                               company: job.businessName,
-                              location: job.address,
+                              companyName: job.enquirerCompany,
                             );
                           },
                         ),
                   SizedBox(height: 20),
                   SectionTitle(title: "UPCOMING JOBS"),
                   SizedBox(height: 10),
-                  controller.activeJobs.isEmpty
+                  controller.upcomingJobs.isEmpty
                       ? Text("No upcoming job found.")
                       : ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: controller.upcomingJobs.length,
                           itemBuilder: (context, index) {
-                            final Job job = controller.upcomingJobs[index];
+                            final UpcomingJob job = controller.upcomingJobs[index];
                             return TimesheetCard(
-                              isActive: job.biddingStarted,
-                              startTime: job.shiftStartTime,
-                              endTime: job.shiftEndTime,
+                              isActive: job.daysRemaining > 0,
+                              startTime: "-",
+                              endTime: "-",
                               extraHours: "-",
                               totalHours: "-",
                               createdAt: DateTime.now(),
-                              jobTitle: job.jobType,
+                              jobTitle: "",
                               company: job.businessName,
-                              location: job.address,
+                              companyName: job.companyName,
+                              companyLogo: job.companyLogo,
                             );
                           },
                         ),

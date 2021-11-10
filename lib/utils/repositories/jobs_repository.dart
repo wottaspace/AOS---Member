@@ -2,12 +2,12 @@ import 'package:arcopen_employee/http/requests/create_dispute_request.dart';
 import 'package:arcopen_employee/http/requests/job_apply_request.dart';
 import 'package:arcopen_employee/http/responses/invited_jobs_response.dart';
 import 'package:arcopen_employee/http/responses/job_details_response.dart';
-import 'package:arcopen_employee/http/responses/job_timesheets_response.dart';
 import 'package:arcopen_employee/http/responses/jobs_response.dart';
 import 'package:arcopen_employee/http/responses/member_disputes_response.dart';
 import 'package:arcopen_employee/http/responses/past_jobs_response.dart';
 import 'package:arcopen_employee/http/responses/save_job_response.dart';
 import 'package:arcopen_employee/http/responses/saved_jobs_response.dart';
+import 'package:arcopen_employee/http/responses/timesheet_job_response.dart';
 import 'package:arcopen_employee/utils/repositories/base_repository.dart';
 import 'package:dio/dio.dart';
 
@@ -33,11 +33,10 @@ class JobsRepository extends BaseRepository {
     }
   }
 
-  Future applyForJob({required JobApplyRequest request}) async {
+  Future<bool> applyForJob({required JobApplyRequest request}) async {
     try {
-      final Response response = await client.post(path: "$basePath/applyJob/", args: request.toJson());
-      print(response.data);
-      return "lo";
+      await client.post(path: "$basePath/applyJob/", args: request.toJson());
+      return true;
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }
@@ -129,14 +128,12 @@ class JobsRepository extends BaseRepository {
     }
   }
 
-  Future<JobTimesheetsResponse> getTimesheetJobs() async {
+  Future<TimesheetJobResponse> getTimesheetJobs() async {
     try {
       final Response response = await client.get(path: "$basePath/timesheetJobs/");
-      return JobTimesheetsResponse.fromJson(response.data);
+      return TimesheetJobResponse.fromJson(response.data);
     } on DioError catch (e) {
       throw new Exception(this.extractErrorMessageFromDioError(e));
     }
   }
-
-
 }

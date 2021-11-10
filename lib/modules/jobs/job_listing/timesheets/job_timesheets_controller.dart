@@ -1,4 +1,5 @@
 import 'package:arcopen_employee/core/models/job.dart';
+import 'package:arcopen_employee/http/responses/timesheet_job_response.dart';
 import 'package:arcopen_employee/utils/helpers/loading_state.dart';
 import 'package:arcopen_employee/utils/mixins/toast_mixin.dart';
 import 'package:arcopen_employee/utils/repositories/jobs_repository.dart';
@@ -15,7 +16,7 @@ class JobTimesheetsController extends OkitoController with ToastMixin {
   final JobsRepository jobsRepository = JobsRepository();
   LoadingState loadingState = LoadingState.loading;
   List<Job> activeJobs = [];
-  List<Job> upcomingJobs = [];
+  List<UpcomingJob> upcomingJobs = [];
 
   void loadJobs() {
     setState(() {
