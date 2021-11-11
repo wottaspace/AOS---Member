@@ -7,11 +7,12 @@ import 'package:okito/okito.dart';
 
 class AuthService {
   late User user;
-  late Profile profile;
+  Profile? profile;
   late bool profileExists;
 
   void logout() {
     this.profileExists = false;
+
     KStorage().remove(AppConstants.accessTokenKey);
     KStorage().remove(AppConstants.paymentMethodsKey);
     Okito.pushNamedAndRemoveUntil(KRoutes.loginRoute, predicate: (route) => route.isFirst);

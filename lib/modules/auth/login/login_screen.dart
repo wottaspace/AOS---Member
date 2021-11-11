@@ -45,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       KTextField(
                         controller: controller.emailController,
                         hintText: "email",
+                        keyboardType: TextInputType.emailAddress,
                         icon: PhosphorIcons.envelope,
                         validator: (String? value) {
                           return controller.validateRequired(fieldName: "email", value: value);

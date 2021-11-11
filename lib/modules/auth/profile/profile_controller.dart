@@ -21,7 +21,7 @@ class ProfileController extends OkitoController with ToastMixin {
   factory ProfileController() {
     return _singleton;
   }
-  
+
   final AuthRepository repository = AuthRepository();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   File? resumeFile;
@@ -43,20 +43,20 @@ class ProfileController extends OkitoController with ToastMixin {
     final AuthService service = Okito.use<AuthService>();
     final User user = service.user;
     badgeNumberController.text = user.badgeNumber!;
-    if (service.profileExists) {
-      aboutController.text = service.profile.about;
-      driveController.text = service.profile.drive ? "YES" : "NO";
-      badgeNumberController.text = service.profile.badgeNumber;
+    if (service.profileExists && service.profile != null) {
+      aboutController.text = service.profile!.about;
+      driveController.text = service.profile!.drive ? "YES" : "NO";
+      badgeNumberController.text = service.profile!.badgeNumber;
 
-      List<String> parts = service.profile.contact.split("-");
+      List<String> parts = service.profile!.contact.split("-");
       contactDialCode = parts.first;
 
       contactController.text = parts.last;
-      hourlyRateController.text = service.profile.hourlyRate;
-      unavailabilityController.text = "from ${service.profile.unavailabilityDates.join(" to ")}";
-      addressController.text = service.profile.address;
-      cityController.text = service.profile.city;
-      postalCodeController.text = service.profile.postalCode;
+      hourlyRateController.text = service.profile!.hourlyRate;
+      unavailabilityController.text = "from ${service.profile!.unavailabilityDates.join(" to ")}";
+      addressController.text = service.profile!.address;
+      cityController.text = service.profile!.city;
+      postalCodeController.text = service.profile!.postalCode;
     }
     setState(() {});
   }

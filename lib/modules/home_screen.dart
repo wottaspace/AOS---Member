@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
     ImageProvider profilePicture = AssetImage(AssetHelper().getAsset(name: "avatar.png", assetType: AssetType.image));
 
     final authService = Okito.use<AuthService>();
-    if (authService.profileExists && authService.profile.profilePic.isNotEmpty) {
-      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: authService.profile.profilePic));
+    if (authService.profileExists && authService.profile!.profilePic.isNotEmpty) {
+      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: authService.profile!.profilePic));
     }
 
     return DoubleTapToExit(

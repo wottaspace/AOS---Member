@@ -19,8 +19,8 @@ class KPAppBar extends StatelessWidget with PreferredSizeWidget {
 
     final authService = Okito.use<AuthService>();
     final user = authService.user;
-    if (authService.profileExists && authService.profile.profilePic.isNotEmpty) {
-      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: authService.profile.profilePic));
+    if (authService.profileExists && authService.profile!.profilePic.isNotEmpty) {
+      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: authService.profile!.profilePic));
     }
     final List<_MenuItem> menuItems = [
       _MenuItem(

@@ -17,8 +17,8 @@ class KDrawer extends StatelessWidget {
     ImageProvider profilePicture = AssetImage(AssetHelper().getAsset(name: "avatar.png", assetType: AssetType.image));
 
     final authService = Okito.use<AuthService>();
-    if (authService.profileExists && authService.profile.profilePic.isNotEmpty) {
-      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: authService.profile.profilePic));
+    if (authService.profileExists && authService.profile!.profilePic.isNotEmpty) {
+      profilePicture = NetworkImage(AssetHelper().getMemberProfilePic(name: authService.profile!.profilePic));
     }
     return Container(
       width: MediaQuery.of(context).size.width,
