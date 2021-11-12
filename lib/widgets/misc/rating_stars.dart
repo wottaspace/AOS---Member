@@ -16,8 +16,7 @@ class RatingStars extends StatelessWidget {
   Widget build(BuildContext context) {
     final int intPart = score.floor();
     final double decimalPart = score - score.truncate();
-
-    int emptyStarsCount = (5 - score).abs().floor();
+    final int emptyStarsCount = (5 - score).abs().floor();
 
     return Row(
       mainAxisSize: MainAxisSize.min,

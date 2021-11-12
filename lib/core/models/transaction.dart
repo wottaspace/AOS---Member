@@ -1,24 +1,46 @@
 class Transaction {
   Transaction({
-    required this.id,
+    required this.amountPaid,
+    required this.applicationId,
     required this.businessName,
-    required this.companyName,
-    required this.createdAt,
+    required this.jobId,
+    required this.jobType,
+    required this.memberName,
+    required this.month,
+    required this.paymentDate,
+    required this.paymentStatus,
+    required this.profilePic,
+    required this.stars,
+    required this.transactionId,
   });
 
-  int id;
-  String companyName;
+  String amountPaid;
+  int applicationId;
   String businessName;
-  String createdAt;
-
-  String get creationDate => createdAt.split(" ").reversed.skip(2).toList().reversed.join(" ");
+  int jobId;
+  String jobType;
+  String memberName;
+  String month;
+  String? paymentDate;
+  String? paymentStatus;
+  String profilePic;
+  double stars;
+  int transactionId;
 
   factory Transaction.fromJson(Map<String, dynamic> json) {
     return Transaction(
-      id: json["id"],
+      amountPaid: json["amount_paid"],
+      applicationId: json["application_id"],
       businessName: json["business_name"],
-      companyName: json["company_name"],
-      createdAt: json["created_at"],
+      jobId: json["job_id"],
+      jobType: json["job_type"],
+      memberName: json["member_name"],
+      month: json["month"],
+      paymentDate: json["payment_date"],
+      paymentStatus: json["payment_status"],
+      profilePic: json["profile_pic"],
+      stars: double.parse(json["stars"].toString()),
+      transactionId: json["transaction_id"],
     );
   }
 }

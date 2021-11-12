@@ -1,3 +1,4 @@
+import 'package:arcopen_employee/widgets/misc/rating_stars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
@@ -56,18 +57,6 @@ class FinanceCard extends StatelessWidget {
                         color: ColorConstants.greyColor,
                       ),
                     ),
-                    if (status != null) ...[
-                      Spacer(),
-                      Text(
-                        "$status",
-                        style: Okito.theme.textTheme.bodyText2!.copyWith(
-                          fontSize: 10.0,
-                          letterSpacing: 1.3,
-                          fontWeight: FontWeight.w600,
-                          color: status == "PAID" ? ColorConstants.greenColor : ColorConstants.red,
-                        ),
-                      )
-                    ]
                   ],
                 ),
                 SizedBox(height: 5),
@@ -111,15 +100,7 @@ class FinanceCard extends StatelessWidget {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Row(
-                            children: [
-                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                              Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                              Icon(PhosphorIcons.star, color: ColorConstants.yellow, size: 10),
-                            ],
-                          ),
+                          RatingStars(score: 4.5),
                         ],
                       ),
                     ),

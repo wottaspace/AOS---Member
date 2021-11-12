@@ -248,9 +248,9 @@ class _PaidTab extends StatelessWidget {
       itemBuilder: (context, index) {
         final Transaction transaction = transactions[index];
         return FinanceCard(
-          company: transaction.companyName,
+          company: transaction.memberName,
           jobTitle: transaction.businessName,
-          createdAt: transaction.creationDate,
+          createdAt: transaction.paymentDate ?? "Pending payment",
           onTap: () {
             Okito.pushNamed(KRoutes.financeDetailsRoute, arguments: {
               "transaction": transaction,
@@ -282,9 +282,9 @@ class _UnPaidTab extends StatelessWidget {
       itemBuilder: (context, index) {
         final Transaction transaction = transactions[index];
         return FinanceCard(
-          company: transaction.companyName,
+          company: transaction.memberName,
           jobTitle: transaction.businessName,
-          createdAt: transaction.creationDate,
+          createdAt: transaction.paymentDate ?? "Pending payment",
           onTap: () {
             Okito.pushNamed(KRoutes.financeDetailsRoute, arguments: {
               "transaction": transaction,

@@ -1,3 +1,6 @@
+import 'package:arcopen_employee/core/models/transaction.dart';
+import 'package:arcopen_employee/modules/finances/finance_details_controller.dart';
+import 'package:arcopen_employee/utils/services/auth_service.dart';
 import 'package:arcopen_employee/widgets/misc/rating_stars.dart';
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
@@ -18,6 +21,7 @@ class FinanceDetailsScreen extends StatefulWidget {
 class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    final Transaction transaction = Okito.arguments["transaction"];
     final TextStyle _titleStyle = Okito.theme.textTheme.bodyText2!.copyWith(
       fontSize: 12.0,
       fontWeight: FontWeight.bold,
@@ -27,7 +31,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
     return Scaffold(
       backgroundColor: ColorConstants.lightBlue,
       appBar: KAppBar(
-        title: "Talwar's Residency",
+        title: transaction.businessName,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -50,7 +54,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                           style: _titleStyle,
                         ),
                         Text(
-                          "Jan 15, 2021",
+                          transaction.paymentDate ?? "Pending payment",
                           style: _titleStyle,
                         )
                       ],
@@ -69,7 +73,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Express Employment",
+                                transaction.memberName,
                                 style: Okito.theme.textTheme.bodyText2!.copyWith(
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.bold,
@@ -77,7 +81,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              RatingStars(score: 3.5),
+                              RatingStars(score: transaction.stars),
                             ],
                           ),
                         ),
@@ -91,7 +95,7 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
                           style: _titleStyle,
                         ),
                         Text(
-                          "Harry Sahir",
+                          Okito.use<AuthService>().user.name,
                           style: _titleStyle,
                         )
                       ],
@@ -111,61 +115,12 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
               ),
               const SizedBox(height: 20),
               DetailItem(
-                title: "Agreed Pay per hour",
-                value: "\$12/hr",
-                boldValue: true,
-              ),
-              DetailItem(
-                title: "AOS Standard edition per hour",
-                value: "\$0",
-                boldValue: true,
-              ),
-              DetailItem(
-                title: "AOS one of Misc Payment",
-                value: "\$0",
-                boldValue: true,
-              ),
-              DetailItem(
-                title: "Total Worked Hours",
-                value: "12",
-                boldValue: true,
-                boldTitle: true,
-              ),
-              DetailItem(
                 title: "Total Pay",
-                value: "\$144",
+                value: transaction.amountPaid,
                 boldValue: true,
                 boldTitle: true,
               ),
               const SizedBox(height: 20),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  "Deductions",
-                  style: Okito.theme.textTheme.bodyText2!.copyWith(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              DetailItem(
-                title: "*AOS Acccound Refunds",
-                value: "\$0",
-                boldValue: true,
-              ),
-              DetailItem(
-                title: "Admin charges \$0.25/hr",
-                value: "\$3",
-                boldValue: true,
-              ),
-              DetailItem(
-                title: "Net Pay",
-                value: "\$198.50",
-                boldValue: true,
-                boldTitle: true,
-              ),
             ],
           ),
         ),
@@ -174,7 +129,9 @@ class _FinanceDetailsScreenState extends State<FinanceDetailsScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: KButton(
           color: Okito.theme.primaryColor,
-          onPressed: () {},
+          onPressed: () {
+            FinanceDetailsController.shared.downloadInvoice(transaction.transactionId);
+          },
           title: "DOWNLOAD PAYSLIP",
         ),
       ),

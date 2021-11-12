@@ -1,5 +1,5 @@
+import 'package:arcopen_employee/widgets/misc/rating_stars.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
@@ -36,15 +36,7 @@ class _InvoiceDetailsDialogState extends State<InvoiceDetailsDialog> {
                       ),
                     ),
                     SizedBox(height: 5),
-                    Row(
-                      children: [
-                        Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                        Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                        Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                        Icon(PhosphorIcons.star_fill, color: ColorConstants.yellow, size: 10),
-                        Icon(PhosphorIcons.star, color: ColorConstants.yellow, size: 10),
-                      ],
-                    ),
+                    RatingStars(score: 4.5),
                   ],
                 ),
               ),
