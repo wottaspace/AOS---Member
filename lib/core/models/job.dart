@@ -38,7 +38,7 @@ class Job {
   String jobCategory;
   String jobDescription;
   String jobType;
-  int postedBy;
+  int? postedBy;
   String? profilePic;
   bool saved;
   String shiftEndDate;
@@ -55,29 +55,29 @@ class Job {
 
   factory Job.fromJson(Map<String, dynamic> json) {
     return Job(
-      address: json["address"],
+      address: json["address"] ?? "Not defined",
       applicantsCount: json["applicants_count"],
       applied: json["applied"] ?? false,
       biddingStarted: json["bidding_started"] ?? false,
-      budget: json["budget"],
+      budget: json["budget"] ?? "Not defined",
       businessName: json["business_name"],
       city: json["city"],
-      createdAt: json["created_at"],
-      enquirerCompany: json["enquirer_company"],
+      createdAt: json["created_at"] ?? "Not defined",
+      enquirerCompany: json["enquirer_company"] ?? json["company_name"] ?? "Not defined",
       id: json["id"] ?? json["job_id"],
-      jobCategory: json["job_category"],
-      jobDescription: json["job_description"],
-      jobType: json["job_type"],
+      jobCategory: json["job_category"] ?? "Not defined",
+      jobDescription: json["job_description"] ?? "Not defined",
+      jobType: json["job_type"] ?? "Not defined",
       postedBy: json["posted_by"],
       instanceId: json["instance_id"],
       profilePic: json["profile_pic"],
       saved: json["saved"] ?? false,
-      shiftEndDate: json["shift_end_date"],
-      shiftEndTime: json["shift_end_time"],
+      shiftEndDate: json["shift_end_date"] ?? "Not defined",
+      shiftEndTime: json["shift_end_time"] ?? json["end_time"] ?? "Not defined",
       shiftStartDate: json["shift_start_date"],
-      shiftStartTime: json["shift_start_time"],
+      shiftStartTime: json["shift_start_time"] ?? json["start_time"] ?? "Not defined",
       shiftType: json["shift_type"] ?? "Day",
-      updatedAt: json["updated_at"],
+      updatedAt: json["updated_at"] ?? DateTime.now().toString(),
     );
   }
 }
