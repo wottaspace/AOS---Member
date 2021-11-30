@@ -9,6 +9,7 @@ import 'package:arcopen_employee/utils/mixins/validation_mixin.dart';
 import 'package:arcopen_employee/utils/repositories/auth_repository.dart';
 import 'package:arcopen_employee/utils/services/auth_service.dart';
 import 'package:arcopen_employee/widgets/dialogs/k_loader.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
 
@@ -18,6 +19,18 @@ class LoginController extends OkitoController with ValidationMixin, ToastMixin {
 
   factory LoginController() {
     return _singleton;
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      if (kDebugMode) {
+        emailController.text = "steveb@yopmail.com";
+        passwordController.text = "12345678";
+        setState(() {});
+      }
+    });
+    super.initState();
   }
 
   final AuthRepository _repository = AuthRepository();

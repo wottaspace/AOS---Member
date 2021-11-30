@@ -158,37 +158,7 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                                   color: Colors.black,
                                 ),
                               ),
-                              // const SizedBox(height: 5),
-                              // Row(
-                              //   children: [
-                              //     Icon(
-                              //       PhosphorIcons.map_pin,
-                              //       size: 12,
-                              //       color: ColorConstants.greyColor,
-                              //     ),
-                              //     const SizedBox(width: 5),
-                              //     Text(
-                              //       "KITCHENER",
-                              //       style: Okito.theme.textTheme.bodyText2!.copyWith(
-                              //         fontSize: 10.0,
-                              //         color: ColorConstants.greyColor,
-                              //         fontWeight: FontWeight.w600,
-                              //         letterSpacing: 1.3,
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
                             ],
-                          ),
-                        ),
-                        Container(
-                          height: 30,
-                          width: 100,
-                          child: KButton.outlined(
-                            onPressed: () {},
-                            dense: true,
-                            title: "VIEW PROFILE",
-                            color: Okito.theme.primaryColor,
                           ),
                         ),
                         const SizedBox(width: 5),
@@ -197,39 +167,6 @@ class _InboxDetailsScreenState extends State<InboxDetailsScreen> {
                   ),
                   const _Line(),
                   pageContent,
-                  if (InboxDetailsController.shared.canSendMessages)
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30.0),
-                          topRight: Radius.circular(30.0),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            prefixIcon: IconButton(
-                              icon: const Icon(
-                                PhosphorIcons.plus_circle_fill,
-                                color: Colors.black,
-                              ),
-                              onPressed: () {},
-                            ),
-                            suffixIcon: IconButton(
-                              icon: const Icon(PhosphorIcons.paper_plane_right_fill),
-                              onPressed: () {},
-                            ),
-                            hintText: "Write something",
-                            hintStyle: Okito.theme.textTheme.bodyText2!.copyWith(color: ColorConstants.greyColor),
-                            focusedBorder: InputBorder.none,
-                            border: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                          ),
-                        ),
-                      ),
-                    ),
                 ],
               );
             },

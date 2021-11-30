@@ -84,7 +84,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                           itemBuilder: (context, index) {
                             final Job job = controller.activeJobs[index];
                             return TimesheetCard(
-                              isActive: job.biddingStarted,
+                              isActive: true,
                               startTime: job.shiftStartTime,
                               endTime: job.shiftEndTime,
                               extraHours: "-",
@@ -108,7 +108,7 @@ class _TimesheetScreenState extends State<TimesheetScreen> {
                           itemBuilder: (context, index) {
                             final UpcomingJob job = controller.upcomingJobs[index];
                             return TimesheetCard(
-                              isActive: job.daysRemaining > 0,
+                              isActive: false,
                               startTime: "-",
                               endTime: "-",
                               extraHours: "-",
