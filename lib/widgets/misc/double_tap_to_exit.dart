@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:eyro_toast/eyro_toast.dart';
+import 'package:arcopen_employee/utils/mixins/toast_mixin.dart';
 import 'package:flutter/material.dart';
 
 class DoubleTapToExit extends StatefulWidget {
@@ -15,7 +15,7 @@ class DoubleTapToExit extends StatefulWidget {
   _DoubleTapToExitState createState() => _DoubleTapToExitState();
 }
 
-class _DoubleTapToExitState extends State<DoubleTapToExit> {
+class _DoubleTapToExitState extends State<DoubleTapToExit> with ToastMixin {
   late int _tappedTimes;
 
   @override
@@ -31,10 +31,7 @@ class _DoubleTapToExitState extends State<DoubleTapToExit> {
       onWillPop: () {
         ++_tappedTimes;
         if (_tappedTimes == 1) {
-          EyroToast.showToast(
-            text: "Hit back button again to quit",
-            duration: ToastDuration.long,
-          );
+          showInfoToast("Hit back button again to quit");
           Future.delayed(Duration(seconds: 1)).then((value) {
             _tappedTimes = 0;
           });

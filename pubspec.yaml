@@ -31,7 +31,6 @@ dependencies:
   flutter_phosphor_icons: ^0.0.1+5
   simple_moment: ^1.1.1
   okito: ^1.2.4
-  eyro_toast: ^1.0.0
   dio: ^4.0.0
   device_info: ^2.0.2
   syncfusion_flutter_sliders: ^19.3.44
