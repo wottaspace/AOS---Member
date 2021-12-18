@@ -63,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> with ValidationMixin {
                             controller: profileController.aboutController,
                             minLines: 3,
                             maxLines: 4,
-                            hintText: "Lorem ipsum dolor sit atmet, consectur adipiscing elit, sed do eiusmod tempor incicident ut labore et dolore magna aliqua",
+                            hintText: "Write something about you.",
                           ),
                           const SizedBox(height: 10),
                           SectionTitle(title: "RESUME/CV"),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:okito/okito.dart';
 
 mixin ToastMixin {
-  showErrorToast(String content) {
+  void showErrorToast(String content) {
     final SnackBar snackBar = SnackBar(
       content: Text(
         "$content",
@@ -14,7 +14,7 @@ mixin ToastMixin {
     Okito.showSnackBar(snackBar: snackBar);
   }
 
-  showWarningToast(String content) {
+  void showWarningToast(String content) {
     final SnackBar snackBar = SnackBar(
       content: Text(
         "$content",
@@ -25,7 +25,18 @@ mixin ToastMixin {
     Okito.showSnackBar(snackBar: snackBar);
   }
 
-  showSuccessToast(String content) {
+  void showInfoToast(String content) {
+    final SnackBar snackBar = SnackBar(
+      content: Text(
+        "$content",
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: ColorConstants.darkBlue,
+    );
+    Okito.showSnackBar(snackBar: snackBar);
+  }
+
+  void showSuccessToast(String content) {
     final SnackBar snackBar = SnackBar(
       content: Text(
         "$content",

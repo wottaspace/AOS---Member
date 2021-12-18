@@ -44,7 +44,7 @@ class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+                    "Invite your friends to join the app.",
                     textAlign: TextAlign.center,
                     style: Okito.theme.textTheme.bodyText2!.copyWith(
                       color: ColorConstants.greyColor,

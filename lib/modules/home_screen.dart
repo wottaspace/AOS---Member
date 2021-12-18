@@ -1,6 +1,7 @@
 import 'package:arcopen_employee/modules/jobs/explore/explore_screen/explore_screen.dart';
 import 'package:arcopen_employee/utils/helpers/asset_helper.dart';
 import 'package:arcopen_employee/utils/services/auth_service.dart';
+import 'package:arcopen_employee/utils/services/subscription_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
@@ -35,6 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
     _activeTabIndex = 0;
     _pageTitle = "Browse jobs";
     _pageController = PageController(initialPage: 0);
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+      await Okito.use<SubscriptionService>().init();
+      await Okito.use<SubscriptionService>().getCurrentSubscription();
+    });
     super.initState();
   }
 

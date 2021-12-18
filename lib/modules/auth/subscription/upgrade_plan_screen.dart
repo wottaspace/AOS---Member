@@ -3,7 +3,6 @@ import 'package:arcopen_employee/modules/auth/subscription/subscription_controll
 import 'package:flutter/material.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:okito/okito.dart';
-import 'package:arcopen_employee/config/routes/k_routes.dart';
 import 'package:arcopen_employee/constants/color_constants.dart';
 import 'package:arcopen_employee/widgets/buttons/k_button.dart';
 import 'package:arcopen_employee/widgets/navigation/k_app_bar.dart';
@@ -128,10 +127,9 @@ class _UpgradePlanScreenState extends State<UpgradePlanScreen> {
         padding: EdgeInsets.all(12.0),
         child: KButton(
           onPressed: () {
-            if (plan != null)
-              Okito.pushNamed(KRoutes.payRoute, arguments: {
-                "plan": plan,
-              });
+            if (plan != null) {
+              SubscriptionController.shared.upgradePlan(plan!);
+            }
           },
           title: "UPGRADE NOW",
           color: ColorConstants.greenColor,

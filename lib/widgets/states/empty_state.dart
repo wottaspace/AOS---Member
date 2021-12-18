@@ -64,7 +64,7 @@ class EmptyState extends StatelessWidget {
             _buildTitle(),
             SizedBox(height: 10),
             Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+              "We did not find any data matching your request.",
               textAlign: TextAlign.center,
               style: Okito.theme.textTheme.bodyText2!.copyWith(
                 color: ColorConstants.greyColor,
